@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Genre: MyString
+  Relationship: MyString
+  Post_comment: MyString
+  Favorite: MyString
+  Tag: MyString
+  Post_tag_relation: MyString
+
+two:
+  Genre: MyString
+  Relationship: MyString
+  Post_comment: MyString
+  Favorite: MyString
+  Tag: MyString
+  Post_tag_relation: MyString
