@@ -1,0 +1,10 @@
+<h3>投稿一覧</h3>
+<% @posts.each do |post| %>
+  <div>
+    <%= image_tag post.get_image(160, 120) %><br>
+    <%= post.title %><br>
+    <%= post.detail %><br>
+    <%= post.prefecture.name %>
+    <%= post.customer.name %>
+  </div>
+<% end %>

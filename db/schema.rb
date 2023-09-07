@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 2023_09_06_055106) do
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "name"
-    t.text "profile_text", null: false
+    t.string "name", null: false
+    t.text "profile_text"
     t.boolean "is_valid", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2023_09_06_055106) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "customer_id", null: false
+    t.integer "prefecture_id"
     t.string "title", null: false
     t.text "detail", null: false
     t.string "place", null: false
