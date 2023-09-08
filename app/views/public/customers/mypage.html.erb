@@ -1,0 +1,11 @@
+<div>
+  <%= link_to :back do %>
+    <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
+  <% end %>
+</div>
+<h2>登録情報</h2>
+    <%= image_tag @customer.get_profile_image(300, 250) %><br>
+    <%= @customer.name %><br>
+    <%= @customer.profile_text %><br>
+
+<%= link_to "編集", information_path %>

@@ -18,6 +18,11 @@ Rails.application.routes.draw do
 
     get "/about" => "homes#about"
     get "customer/mypage" => "customers#mypage", as: "mypage"
+    get "customer/information" => "customers#edit", as: "information"
+    patch "customer/information/update" => "customers#update", as: "information_update"
+    get "customer/confirm_withdraw" => "customers#confirm_withdraw", as: "confirm_withdraw"
+    get "customers/withdraw" => "customers#withdraw", as: "withdraw"
+    patch "/customers/withdraw" => "customers#withdraw"
 
     resources :posts
   end
