@@ -1,0 +1,39 @@
+<div>
+  <%= link_to :back do %>
+    <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
+  <% end %>
+</div>
+<div class="container mt-3">
+
+  <h3 class="font-weight-bold mb-4">会員一覧</h3>
+
+  <div class="row">
+    <table class="table table-sm table-hover">
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tdody>
+       <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td><%= link_to customer.name, admin_customer_path(customer) %></td>
+          <td><%= customer.email %></td>
+          <td class="font-weight-bold">
+            <% if customer.is_valid %>
+              <p class="text-success">有効</p>
+            <% else %>
+              <p class="text-danger">退会</p>
+            <% end %>
+          </td>
+        </tr>
+       <% end %>
+       <%= paginate @customers %>
+       </tdody>
+    </table>
+  </div>
+</div>
