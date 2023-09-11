@@ -1,0 +1,17 @@
+<div>
+  <%= link_to :back do %>
+    <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
+  <% end %>
+</div>
+<h2>投稿詳細画面</h2>
+    <%= image_tag @post.get_image(300, 250) %><br>
+    <%= @post.title %><br>
+    <%= @post.detail %><br>
+    <%= @post.prefecture.name %>
+    <%= @post.customer.name %>
+    <%= render "favorites/btn", post: @post %>
+
+<%= link_to "編集", edit_post_path(@post.id) %>
+<% if @post.customer == current_customer %>
+  <%= link_to "削除", post_path(@post), method: :delete %>
+<% end %>

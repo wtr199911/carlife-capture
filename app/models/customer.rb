@@ -6,6 +6,17 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, authentication_keys: [:name]
 
   has_many :posts, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
+  # ゲストログイン
+  GUEST_USER_EMAIL = "guest@example.com"
+
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲストユーザー"
+    end
+  end
 
   has_one_attached :profile_image
 
@@ -19,11 +30,16 @@ class Customer < ApplicationRecord
   end
 
   def customer_status
-    if is_valid == true
-      "有効"
-    else
+    if is_deleted == true
       "退会"
+    else
+      "有効"
     end
+  end
+
+  # 退会したユーザーがログインできないようにするためのメソッド
+  def active_for_authentication?
+    super && (is_deleted == false)
   end
 
 end

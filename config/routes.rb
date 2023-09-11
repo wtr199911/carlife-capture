@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  devise_scope :customer do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   namespace :admin do
     resources :customers, only: [ :index, :create, :show, :edit, :update ]
     resources :posts, only: [ :index, :show, :edit, :update ]
@@ -25,7 +29,9 @@ Rails.application.routes.draw do
     get "customers/withdraw" => "customers#withdraw", as: "withdraw"
     patch "/customers/withdraw" => "customers#withdraw"
 
-    resources :posts
+    resources :posts do
+      resource :favorites, only: [ :create, :destroy ]
+    end
   end
 
 

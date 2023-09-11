@@ -5,7 +5,12 @@ class Post < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
 
+  has_many :favorites, dependent: :destroy
   belongs_to :customer
+
+  def favorited_by?(customer)
+   favorites.exists?(customer_id: customer.id)
+  end
 
   # 画像呼び出しメソッド
   def get_image(width, height)
