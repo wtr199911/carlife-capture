@@ -10,10 +10,7 @@
     <%= @post.prefecture.name %>
     <%= @post.customer.name %>
 
-    <%= form_with model: [post, post_comment] do |f| %>
-     <%= f.text_area :comment, rows:'5', placeholder: "コメントをここに", class: "w-100" %>
-     <%= f.submit "送信" %>
-    <% end %>
+    <%= render "admin/post_comments/form", post: @post, post_comment: @post_comment %>
 
 <%= link_to "編集", edit_post_path(@post.id) %>
 <% if @post.customer == current_customer %>
