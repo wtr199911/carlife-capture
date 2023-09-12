@@ -15,8 +15,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :customers, only: [ :index, :create, :show, :edit, :update ]
-    resources :posts, only: [ :index, :show, :edit, :update ]
+    resources :posts, only: [ :index, :show, :edit, :update ] do
+      resource :post_comments, only: [ :create, :destroy ]
+      resource :favorites, only: [ :create, :destroy ]
+    end
   end
+
 
   scope module: :public do
     root to: "homes#top"
@@ -30,6 +34,7 @@ Rails.application.routes.draw do
     patch "/customers/withdraw" => "customers#withdraw"
 
     resources :posts do
+      resource :post_comments, only: [ :create, :destroy ]
       resource :favorites, only: [ :create, :destroy ]
     end
   end

@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   belongs_to :prefecture
 
   has_many :favorites, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
   belongs_to :customer
 
   def favorited_by?(customer)
