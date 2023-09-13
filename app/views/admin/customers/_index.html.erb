@@ -1,0 +1,31 @@
+<table class="table table-sm table-hover">
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>フォロー数</th>
+          <th>フォロワー数</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tdody>
+       <% customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td><%= link_to customer.name, admin_customer_path(customer) %></td>
+          <td><%= customer.email %></td>
+          <td><%= customer.followings.count %></td>
+          <td><%= customer.followers.count %></td>
+          <td class="font-weight-bold">
+            <% if customer.is_valid %>
+              <p class="text-success">有効</p>
+            <% else %>
+              <p class="text-danger">退会</p>
+            <% end %>
+          </td>
+        </tr>
+       <% end %>
+       <%= paginate customers %>
+       </tdody>
+    </table>

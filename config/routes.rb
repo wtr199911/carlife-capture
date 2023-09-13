@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :customers, only: [ :index, :create, :show, :edit, :update ]
+    resources :customers, only: [ :index, :create, :show, :edit, :update ] do
+      resource :relationships, only: [:create, :destroy]
+      	get "followings" => "relationships#followings", as: "followings"
+      	get "followers" => "relationships#followers", as: "followers"
+    end
     resources :posts, only: [ :index, :show, :edit, :update ] do
       resource :post_comments, only: [ :create, :destroy ]
       resource :favorites, only: [ :create, :destroy ]
@@ -32,6 +36,12 @@ Rails.application.routes.draw do
     get "customer/confirm_withdraw" => "customers#confirm_withdraw", as: "confirm_withdraw"
     get "customers/withdraw" => "customers#withdraw", as: "withdraw"
     patch "/customers/withdraw" => "customers#withdraw"
+
+    resources :customers, only: [:edit] do
+      resource :relationships, only: [:create, :destroy]
+      	get "followings" => "relationships#followings", as: "followings"
+      	get "followers" => "relationships#followers", as: "followers"
+    end
 
     resources :posts do
       resource :post_comments, only: [ :create, :destroy ]

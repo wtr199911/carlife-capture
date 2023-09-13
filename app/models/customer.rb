@@ -9,6 +9,33 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
+  # フォローしている関連付け
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+
+  # フォローされている関連付け
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+
+  # フォローしているユーザーを取得
+  has_many :followings, through: :active_relationships, source: :followed
+
+  # フォロワーを取得
+  has_many :followers, through: :passive_relationships, source: :follower
+
+   # 指定したユーザーをフォローする
+  def follow(user)
+   active_relationships.create(followed_id: customer.id)
+  end
+
+  # 指定したユーザーのフォローを解除する
+  def unfollow(user)
+   active_relationships.find_by(followed_id: customer.id).destroy
+  end
+
+  # 指定したユーザーをフォローしているかどうかを判定
+  def following?(user)
+   followings.include?(user)
+  end
+
   # ゲストログイン
   GUEST_USER_EMAIL = "guest@example.com"
 
@@ -31,16 +58,18 @@ class Customer < ApplicationRecord
   end
 
   def customer_status
-    if is_deleted == true
-      "退会"
-    else
+    if is_valid == false
       "有効"
+    else
+      "退会"
     end
   end
 
   # 退会したユーザーがログインできないようにするためのメソッド
   def active_for_authentication?
-    super && (is_deleted == false)
+    super && (is_valid == false)
   end
+
+
 
 end
