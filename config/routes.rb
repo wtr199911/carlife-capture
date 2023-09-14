@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     get "customer/confirm_withdraw" => "customers#confirm_withdraw", as: "confirm_withdraw"
     get "customers/withdraw" => "customers#withdraw", as: "withdraw"
     patch "/customers/withdraw" => "customers#withdraw"
+    get "search_tag" => "posts#search_tag"
 
     resources :customers, only: [:edit] do
       resource :relationships, only: [:create, :destroy]

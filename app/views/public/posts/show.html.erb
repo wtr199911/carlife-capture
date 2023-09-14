@@ -10,6 +10,12 @@
     <%= @post.prefecture.name %>
     <%= @post.customer.name %>
 
+    <!-- タグリスト -->
+      <% @post_tags.each do |tag| %>
+      <i class="fa-sharp fa-solid fa-tag"></i>
+        <%= link_to tag.name,search_tag_path(tag_id: tag.id) %>
+      <% end %>
+
     <%= render "admin/post_comments/form", post: @post, post_comment: @post_comment %>
 
 <%= link_to "編集", edit_post_path(@post.id) %>
