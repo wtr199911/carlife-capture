@@ -2,6 +2,8 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @tag_list = @post.tags.pluck(:name).join(",")
+    @post_tags = @post.tags
   end
 
   def create
@@ -31,14 +33,17 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:name).join(",")
   end
 
   def update
     @post = Post.find(params[:id])
+    tag_list=params[:post][:name].split(",")
     if @post.update(post_params)
-      redirect_to post_path(@post)
+      @post.save_tags(tag_list)
+      redirect_to posts_path
     else
-      render "edit"
+      render :edit
     end
   end
 

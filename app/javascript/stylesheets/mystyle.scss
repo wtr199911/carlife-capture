@@ -21,16 +21,15 @@ li+ li {
 // フッター用
 
 .footerFixed{
-    min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
-    position: relative;/* ←相対位置 */
-    padding-bottom: 60px; /* ←フッターの高さを指定 */
-    box-sizing: border-box;
-    /* ↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
+  min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
+  position: relative;/* ←相対位置 */
+  box-sizing: border-box;
+  /* ↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
 }
 
 footer{
-    position: absolute;/* ←絶対位置 */
-    bottom: 0;
+  position: absolute;/* ←絶対位置 */
+  bottom: 0;
 }
 
 .footer04 {
@@ -51,4 +50,28 @@ footer{
 .footer04 .copyright {
  margin: 0;
  padding: 15px 0;
+}
+
+// 投稿ボタン
+.post-button {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 16pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 1px 30px;   /* 余白       */
+  background    : rgba(89, 179, 0, 0.37);     /* 背景色     */
+  color         : #006600;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  border        : 2px solid rgba(89, 179, 0, 0.37);    /* 枠の指定 */
+}
+.post-button:hover {
+  color         : rgba(89, 179, 0, 0.37);     /* 背景色     */
+  background    : #006600;     /* 文字色     */
+}
+
+// ファイルを選択
+input[type="file"] {
+    display: none;
 }
