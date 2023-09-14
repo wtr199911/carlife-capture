@@ -8,4 +8,8 @@
     <%= @customer.name %><br>
     <%= @customer.profile_text %><br>
 
+    フォロー数: <%= link_to @customer.followings.count, customer_followings_path(@customer) %>
+    フォロワー数: <%= link_to @customer.followers.count, customer_followers_path(@customer) %>
+
+
 <%= link_to "編集", information_path %>

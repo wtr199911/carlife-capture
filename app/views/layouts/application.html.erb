@@ -12,6 +12,7 @@
   </head>
 
   <body>
+   <div class="footerFixed">
     <%= render 'layouts/header' %>
     <% if flash[:notice] %>
         <p class="alert alert-success"><%= notice %></p>
@@ -19,5 +20,9 @@
         <p class="alert alert-danger"><%= alert %></p>
     <% end %>
     <%= yield %>
+    <footer>
+      <%= render "layouts/footer" %>
+    </footer>
+   </div>
   </body>
 </html>
