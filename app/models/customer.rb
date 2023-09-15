@@ -70,6 +70,8 @@ class Customer < ApplicationRecord
     super && (is_valid == false)
   end
 
-
+  def self.ransackable_attributes(auth_object = nil)
+    ["name"]
+  end
 
 end

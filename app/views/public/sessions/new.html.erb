@@ -1,31 +1,24 @@
-<h2>Log in</h2>
+<div class = "container">
+	<div class="wrapper my-5">
+		<form class="form form-signin">
+    <%= form_with model: @customer, url: customer_session_path do |f| %>
 
-<%= form_with model: @customer, url: customer_session_path do |f| %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+		    <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
+			  <hr class="colorgraph"><br>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+			  <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+			  <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
+			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">ログイン</button>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+			  <h5 class="mt-5 text-center">ゲストログインはこちらから</h5>
+        <div class="col mb-3 mt-3 text-center">
+          <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-secondary", method: :post %>
+        </div>
 
-<%= render "public/shared/links" %>
-
-<h5 class="mt-5">ゲストログインはこちらから</h5>
-  <div class="col mb-3 mt-3">
-    <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-secondary", method: :post %>
-  </div>
+    <% end %>
+		</form>
+	</div>
+</div>
