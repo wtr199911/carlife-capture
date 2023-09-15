@@ -1,11 +1,22 @@
   <div class="header-nav">
      <header class="header py-3">
-      <div class="flex-nowrap justify-content-between align-items-center">
-        <div class="text-center">
-          <%= link_to root_path, data:{"turbolinks" => false} do %>
-              <img class="navbar-brand"><%= image_tag("logo.png", width: "20%" ) %>
-          <% end %>
+
+      <div class="d-flex flex-nowrap justify-content-center align-items-center text-center">
+        <%= link_to root_path, data:{"turbolinks" => false} do %>
+            <img class="navbar-brand"><%= image_tag "logo.png", class: "logo" %>
+        <% end %>
+
+        <div class="social">
+          <% if customer_signed_in? %>
+          <div class="collapse navbar-collapse" >
+            <div class="text-light">
+               <%= current_customer.name %>　ようこそ！
+            </div>
+          </div>
+        　<% end %>
+        <%= render "layouts/search" %>
         </div>
+
       </div>
      </header>
 

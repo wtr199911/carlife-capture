@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'searches/public/searches'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -23,6 +26,7 @@ Rails.application.routes.draw do
       resource :post_comments, only: [ :create, :destroy ]
       resource :favorites, only: [ :create, :destroy ]
     end
+    get "search" => "searches#search"
   end
 
 
@@ -37,6 +41,7 @@ Rails.application.routes.draw do
     get "customers/withdraw" => "customers#withdraw", as: "withdraw"
     patch "/customers/withdraw" => "customers#withdraw"
     get "search_tag" => "posts#search_tag"
+    get "search" => "searches#search"
 
     resources :customers, only: [:edit] do
       resource :relationships, only: [:create, :destroy]

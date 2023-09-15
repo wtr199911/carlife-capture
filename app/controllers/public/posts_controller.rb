@@ -62,6 +62,10 @@ class Public::PostsController < ApplicationController
     @posts = @tag.posts
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["detail", "place", "prefecture_id", "title"]
+  end
+
   private
 
   def post_params
