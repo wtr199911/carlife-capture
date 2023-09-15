@@ -3,13 +3,13 @@
     <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
   <% end %>
 </div>
-<h2>登録情報</h2>
-    <%= image_tag @customer.get_profile_image(300, 250) %><br>
-    <%= @customer.name %><br>
-    <%= @customer.profile_text %><br>
+<h2>User Info</h2>
+  <%= image_tag @customer.get_profile_image(200,200), style: "border-radius: 50%; object-fit:cover;" %> %><br>
+  <%= @customer.name %><br>
+  <%= @customer.profile_text %><br>
 
-    フォロー数: <%= link_to @customer.followings.count, customer_followings_path(@customer) %>
-    フォロワー数: <%= link_to @customer.followers.count, customer_followers_path(@customer) %>
+  フォロー数: <%= link_to @customer.followings.count, customer_followings_path(@customer) %>
+  フォロワー数: <%= link_to @customer.followers.count, customer_followers_path(@customer) %>
 
 
 <%= link_to "編集", information_path %>

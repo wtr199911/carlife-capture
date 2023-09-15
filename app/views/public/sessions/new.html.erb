@@ -1,6 +1,7 @@
+<%= render "public/shared/error_messages", resource: resource %>
 <div class = "container">
 	<div class="wrapper my-5">
-		<form class="form form-signin">
+		<div class="form form-signin">
     <%= form_with model: @customer, url: customer_session_path do |f| %>
 
 		    <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
@@ -9,7 +10,9 @@
         <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "User name" %>
         <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Password" %>
 
-			  <button class="btn btn-lg btn-primary btn-block mt-4"  name="Submit" value="Login" type="Submit">ログイン</button>
+			  <div class="mx-3 mt-4 text-center">
+          <%= f.submit "ログイン", class: "btn btn-outline-primary"%>
+        </div>
 
 			  <h5 class="mt-5 text-center">ゲストログインはこちらから</h5>
         <div class="col mb-3 mt-3 text-center">
@@ -17,6 +20,6 @@
         </div>
 
     <% end %>
-		</form>
+		</div>
 	</div>
 </div>
