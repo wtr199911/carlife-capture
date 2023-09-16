@@ -4,7 +4,9 @@
   <% end %>
 </div>
 <h2>User Info</h2>
-  <%= image_tag @customer.get_profile_image(200,200), style: "border-radius: 50%; object-fit:cover;" %> %><br>
+<div>
+  <%= image_tag @customer.get_profile_image(200,200), style: "border-radius: 50%; object-fit:cover;"%><br>
+</div>
   <%= @customer.name %><br>
   <%= @customer.profile_text %><br>
 
@@ -13,3 +15,4 @@
 
 
 <%= link_to "編集", information_path %>
+
