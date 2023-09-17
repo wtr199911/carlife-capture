@@ -10,7 +10,7 @@
     <%= post.customer.name %>
     
     <!--タグリスト-->
-    <% @tag_list.each do |list|%>
+    <% post.tags.each do |list|%>
       <i class="fa-sharp fa-solid fa-tag"></i>
       <%=link_to list.name,search_tag_path(tag_id: list.id) %>
       <%="(#{list.posts.count})" %>

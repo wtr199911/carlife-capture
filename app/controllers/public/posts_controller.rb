@@ -2,17 +2,15 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @tag_list = @post.tags.pluck(:name).join(",")
     @post_tags = @post.tags
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.end_customer_id = current_end_customer.id
+    @post = current_customer.posts.build(post_params)
     # 受け取った値を,で区切って配列にする
-    tag_list = params[:post][:name].split(",")
+    tag_list = @post.name.split(',')
     if @post.save
-      @post.save_tags(tag_list)
+      @post.save_tag(tag_list)
       redirect_to posts_path, notice: "投稿が完了しました"
     else
       render :new
@@ -33,14 +31,14 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @tag_list = @post.tags.pluck(:name).join(",")
+    @post.name = @post.tags.pluck(:name).join(",")
   end
 
   def update
     @post = Post.find(params[:id])
     tag_list=params[:post][:name].split(",")
     if @post.update(post_params)
-      @post.save_tags(tag_list)
+      @post.save_tag(tag_list)
       redirect_to posts_path
     else
       render :edit
@@ -69,7 +67,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :image, :detail, :place, :prefecture_id)
+    params.require(:post).permit(:title, :image, :detail, :place, :prefecture_id, :name)
   end
 
 end

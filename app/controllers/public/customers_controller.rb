@@ -2,6 +2,7 @@ class Public::CustomersController < ApplicationController
 
   def mypage
     @customer = current_customer
+    @posts = @customer.posts.order("created_at DESC").page(params[:page]).per(5)
   end
 
   def edit
