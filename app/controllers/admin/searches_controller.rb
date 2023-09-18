@@ -1,4 +1,4 @@
 class Admin::SearchesController < ApplicationController
-  def public/searches
+  def searches
   end
 end
