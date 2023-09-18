@@ -1,4 +1,5 @@
 <h3>投稿一覧</h3>
+<%= render "layouts/tag_search", post: @posts %>
 <% @posts.each do |post| %>
   <div>
     <%= link_to post_path(post.id) do %>
@@ -8,7 +9,7 @@
     <% end %>
     <%= post.prefecture.name %>
     <%= post.customer.name %>
-    
+
     <!--タグリスト-->
     <% post.tags.each do |list|%>
       <i class="fa-sharp fa-solid fa-tag"></i>

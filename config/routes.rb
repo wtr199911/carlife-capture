@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     get "search_tag" => "posts#search_tag"
     get "search" => "searches#search"
 
-    resources :customers, only: [:edit] do
+    resources :customers, only: [ :show, :edit] do
       resource :relationships, only: [:create, :destroy]
       	get "followings" => "relationships#followings", as: "followings"
       	get "followers" => "relationships#followers", as: "followers"

@@ -17,8 +17,5 @@
 <%= link_to "編集", information_path %>
 
 <div class="container">
-  <h3 class="mb-3 font-weight-bold text-center">
-    <%= @customer.name %>さんの投稿履歴 (全 <%= @count_posts%>件)
-  </h3>
-  <%= render "public/posts/list", posts: @posts, customer: @customer %>
+  <%= render "public/posts/list", posts: @posts, customer: @customer, count_posts: @count_posts %>
 </div>

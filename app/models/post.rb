@@ -51,4 +51,8 @@ class Post < ApplicationRecord
     ["detail", "place", "prefecture_id", "title"]
   end
 
+  def self.search(keyword)
+    where("facility_name LIKE ? or address LIKE ? or detailed_description LIKE ?", "%#{sanitize_sql_like(keyword)}%", "%#{sanitize_sql_like(keyword)}%", "%#{sanitize_sql_like(keyword)}%")
+  end
+
 end

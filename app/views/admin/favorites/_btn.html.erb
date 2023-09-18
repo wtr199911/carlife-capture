@@ -1,11 +1,11 @@
 <% if post.favorited_by?(current_customer) %>
-  <%= link_to post_favorites_path(post), method: :delete do %>
-    <i class="fa-solid fa-thumbs-up"></i>
-    <%= post.favorites.count %> いいね
+  <%= link_to post_favorites_path(post), class: "like-link", method: :delete do %>
+    <i class="fa-solid fa-thumbs-up gud_red"></i>
+    <%= post.favorites.count %>
   <% end %>
 <% else %>
-  <%= link_to post_favorites_path(post), method: :post do %>
-    <i class="fa-regular fa-thumbs-up"></i>
-    <%= post.favorites.count %> いいね
+  <%= link_to post_favorites_path(post), class: "like-link", method: :post do %>
+    <i class="fa-regular fa-thumbs-up gud_blue"></i>
+    <%= post.favorites.count %>
   <% end %>
 <% end %>
