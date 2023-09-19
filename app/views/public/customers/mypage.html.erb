@@ -13,12 +13,11 @@
   フォロー数: <%= link_to @customer.followings.count, customer_followings_path(@customer) %>
   フォロワー数: <%= link_to @customer.followers.count, customer_followers_path(@customer) %>
 
-
-<%= link_to "編集", information_path %>
+  <%= link_to "編集", information_path %>
 
 <div class="container">
   <h3 class="mb-3 font-weight-bold text-center">
-    <%= @customer.name %>さんの投稿履歴 (全 <%= @count_posts%>件)
+    投稿履歴 (全 <%= @count_posts%>件)
   </h3>
   <%= render "public/posts/list", posts: @posts, customer: @customer %>
 </div>

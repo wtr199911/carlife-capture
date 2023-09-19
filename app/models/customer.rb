@@ -22,18 +22,18 @@ class Customer < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
    # 指定したユーザーをフォローする
-  def follow(user)
+  def follow(customer)
    active_relationships.create(followed_id: customer.id)
   end
 
   # 指定したユーザーのフォローを解除する
-  def unfollow(user)
+  def unfollow(customer)
    active_relationships.find_by(followed_id: customer.id).destroy
   end
 
   # 指定したユーザーをフォローしているかどうかを判定
-  def following?(user)
-   followings.include?(user)
+  def following?(customer)
+   followings.include?(customer)
   end
 
   # ゲストログイン

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       	get "followers" => "relationships#followers", as: "followers"
     end
     resources :posts, only: [ :index, :show, :edit, :update ] do
-      resource :post_comments, only: [ :create, :destroy ]
+      resources :post_comments, only: [ :create, :destroy ]
       resource :favorites, only: [ :create, :destroy ]
     end
     get "search" => "searches#search"
@@ -50,7 +50,7 @@ Rails.application.routes.draw do
     end
 
     resources :posts do
-      resource :post_comments, only: [ :create, :destroy ]
+      resources :post_comments, only: [ :create, :destroy ]
       resource :favorites, only: [ :create, :destroy ]
     end
   end
