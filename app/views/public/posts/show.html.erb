@@ -3,38 +3,56 @@
     <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
   <% end %>
 </div>
-<div class="container">
-<h2>投稿詳細画面</h2>
-    <%= image_tag @post.get_image(300, 250) %><br>
-    <%= @post.title %><br>
-    <%= @post.detail %><br>
-    <%= @post.prefecture.name %>
-    <%= @post.customer.name %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "public/customers/info", customer: @post.customer, customer_info: @customer_info %>
+    </div>
+       <div class="card mx-auto col-md-6 mb-5" style="width: 18rem; border-radius: 27px;">
+       <%= image_tag @post.get_image(330, 250),class: "card-img-top post-image mt-3" %>
+         <div class="card-body">
+            <h5 class="text-center">
+              <strong><i class="fa-solid fa-car"></i><span> <%= @post.title %></span></strong>
+            </h5>
+            <p class="card-text"><%= @post.detail %></p>
+            <p class="card-text text-right">
+              <%= @post.customer.name %>  |
+              <span  id="comment_counter" class="mx-2">
+                <%= render "admin/post_comments/counter", post: @post %>
+              </span>
+              <span id="favorite_btn_<%= @post.id %>" class="ml-2">
+                  <%= render "admin/favorites/btn", post: @post %>
+              </span>
+            </p>
+         </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item text-center">
+          <!-- タグリスト -->
+            <% @post_tags.each do |tag| %>
+            <i class="fa-sharp fa-solid fa-tag"></i>
+              <%= link_to tag.name,search_tag_path(tag_id: tag.id) %>
+            <% end %>
+          </li>
+          <li class="list-group-item text-center"><%= @post.prefecture.name %> <%= @post.place %></li>
+        </ul>
+          <div class="card-body text-center">
+          <% if @post.customer == current_customer %>
+            <%= link_to "編集", edit_post_path(@post.id), class: "card-link btn btn-outline-success" %>
+            <%= link_to "削除", post_path(@post), class: "card-link btn btn-outline-danger", method: :delete %>
+          <% else %>
+            <% if @post_comment.present? %>
+              <%= render "layouts/errors", obj: @post_comment %>
+            <% end %>
+            <%= render "admin/post_comments/form", post: @post, post_comment: @post_comment %>
+          <% end %>
+          </div>
+       </div>
 
-    <!-- タグリスト -->
-      <% @post_tags.each do |tag| %>
-      <i class="fa-sharp fa-solid fa-tag"></i>
-        <%= link_to tag.name,search_tag_path(tag_id: tag.id) %>
-      <% end %>
-
-    <span  id="comment_counter" class="mx-2">
-      <%= render "admin/post_comments/counter", post: @post %>
-    </span>
-    <span id="favorite_btn_<%= @post.id %>" class="ml-2">
-        <%= render "admin/favorites/btn", post: @post %>
-    </span>
-
-    <% if @post_comment.present? %>
-     <%= render "layouts/errors", obj: @post_comment %>
-    <% end %>
-    <%= render "admin/post_comments/form", post: @post, post_comment: @post_comment %>
-
-<%= link_to "編集", edit_post_path(@post.id) %>
-<% if @post.customer == current_customer %>
-  <%= link_to "削除", post_path(@post), method: :delete %>
-<% end %>
+     <div class="col-md-3">
+        <div id="comment_index">
+          <%= render "admin/post_comments/index", post: @post %>
+        </div>
+     </div>
+  </div>
 </div>
 
-<div id="comment_index">
-  <%= render "admin/post_comments/index", post: @post %>
-</div>

@@ -26,6 +26,7 @@ class Public::PostsController < ApplicationController
     @post_comment = PostComment.new
     @tag_list = @post.tags.pluck(:name).join(",")
     @post_tags = @post.tags
+    @customer_info = @post.customer
   end
 
   def edit

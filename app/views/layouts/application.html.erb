@@ -19,10 +19,10 @@
     <% elsif flash[:alert] %>
         <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-    
+
     <%= yield %>
 
-    <footer>
+    <footer class="footer">
       <%= render "layouts/footer" %>
     </footer>
    </div>

@@ -1,7 +1,7 @@
 <table class="table table-sm table-hover">
       <thead>
         <tr>
-          <th>会員ID</th>
+          <th>image</th>
           <th>氏名</th>
           <th>メールアドレス</th>
           <th>フォロー数</th>
@@ -12,7 +12,7 @@
       <tdody>
        <% customers.each do |customer| %>
         <tr>
-          <td><%= customer.id %></td>
+          <td><%= image_tag customer.get_profile_image(80,80) %></td>
           <td><%= link_to customer.name, admin_customer_path(customer) %></td>
           <td><%= customer.email %></td>
           <td><%= customer.followings.count %></td>
@@ -26,6 +26,5 @@
           </td>
         </tr>
        <% end %>
-       <%= paginate customers %>
        </tdody>
     </table>
