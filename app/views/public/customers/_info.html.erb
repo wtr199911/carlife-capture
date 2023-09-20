@@ -1,6 +1,10 @@
 <div class="card px-3" style="width: 14rem; border-radius: 24px;">
   <h4 class="text-center mt-2">User Info</h4>
-  <%= image_tag customer.get_profile_image(80,80), class: "info-image m-auto" %>
+  <div class="m-auto">
+  <%= link_to customer_path(customer.id) do %>
+    <%= image_tag customer.get_profile_image(80,80), class: "info-image m-auto" %>
+  <% end %>
+  </div>
   <div class="card-body">
     <h5 class="card-title text-center"><%= customer.name %></h5>
     <p class="card-text"><%= customer.profile_text %></p>

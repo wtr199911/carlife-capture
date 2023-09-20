@@ -142,6 +142,26 @@ input[type="password"] {
   height: 30rem;
 }
 
+// ユーザー編集ボタン
+.user-edit {
+  border: 1px solid #008800;
+  border-radius: 3px;
+  padding: 1px 3px 0;
+  text-decoration: none;
+  color: #008800;
+}
+
+a.user-edit:hover {
+  background: #008800;
+  background-color: #fff!important;
+  border-color: #008800;
+  opacity: 1!important;
+}
+.user-edit::after {
+  content:"編集";
+}
+
+
 // いいね機能
 .gud_red {
   color:#e54747 !important;

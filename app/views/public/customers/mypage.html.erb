@@ -3,17 +3,41 @@
     <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
   <% end %>
 </div>
-<h2>User Info</h2>
-<div>
-  <%= image_tag @customer.get_profile_image(200,200), style: "border-radius: 50%; object-fit:cover;"%><br>
+<div class="container">
+  <h2 class="text-center">User Info</h2>
+  <div class="d-flex">
+    <div class="m-5 col-5 text-center">
+      <%= image_tag @customer.get_profile_image(200,200), style: "border-radius: 50%; object-fit:cover;"%><br>
+
+      <div class="mt-3">
+        <%= link_to information_path, class: "user-edit" do %>
+          <i class="fa-solid fa-user-pen"></i>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-5 pt-5">
+      <table class="table table-borderless">
+        <tr>
+          <th>name</th>
+          <td><%= @customer.name %></td>
+        </tr>
+        <tr>
+          <th>information</th>
+          <td><%= @customer.profile_text %></td>
+        </tr>
+        <tr>
+          <th>followed</th>
+          <td><%= link_to @customer.followings.count, customer_followings_path(@customer) %></td>
+        </tr>
+        <tr>
+          <th>followers</th>
+          <td><%= link_to @customer.followers.count, customer_followers_path(@customer) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
-  <%= @customer.name %><br>
-  <%= @customer.profile_text %><br>
-
-  フォロー数: <%= link_to @customer.followings.count, customer_followings_path(@customer) %>
-  フォロワー数: <%= link_to @customer.followers.count, customer_followers_path(@customer) %>
-
-  <%= link_to "編集", information_path %>
 
 <div class="container">
   <h3 class="mb-3 font-weight-bold text-center">
