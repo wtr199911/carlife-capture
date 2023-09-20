@@ -4,6 +4,8 @@ class Public::SearchesController < ApplicationController
     @model = params[:model]
     @content = params[:content]
     @method = params[:method]
+    @post_page = Post.order("created_at DESC").page(params[:page]).per(6)
+    @customer_page = Customer.page(params[:page])
 
    # 選択したモデルに応じて検索を実行
     if @model == "customer"

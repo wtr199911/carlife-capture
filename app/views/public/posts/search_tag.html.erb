@@ -1,7 +1,8 @@
-<h2>タグが<%=@tag.name%>の投稿一覧</h2>
+<div class="container">
+<h2 class="m-3 text-center">タグが<%=@tag.name%>の投稿一覧</h2>
 
   <!--タグリスト-->
-  <div class="d-flex">
+  <div class="d-flex justify-content-center">
   <% @tag_list.each do |list|%>
     <i class="fa-sharp fa-solid fa-tag"></i>
     <%=link_to list.name,search_tag_path(tag_id: list.id) %>
@@ -9,4 +10,5 @@
   <% end %>
   </div>
 
-  <%= render "public/posts/list", posts: @posts %>
+  <div><%= render "public/posts/index", posts: @posts, post_page: @posts %></div>
+</div>

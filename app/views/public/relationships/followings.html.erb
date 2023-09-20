@@ -1,6 +1,8 @@
-<h2>Follow Users</h2>
-<% if @customers.exists? %>
-  <%= render "admin/customers/index", customers: @customers %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+<div class="container">
+  <h2 class="m-3 text-center">Follower Users</h2>
+  <% if @customers.exists? %>
+    <div><%= render "admin/customers/index", customers: @customers, customer_page: @page %></div>
+  <% else %>
+    <p class="text-center">ユーザーはいません</p>
+  <% end %>
+</div>

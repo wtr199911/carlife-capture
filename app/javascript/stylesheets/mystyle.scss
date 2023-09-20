@@ -22,7 +22,10 @@ body {
 
 // ロゴ
 .logo {
+  position: absolute;
   height: 80px;
+  left: 606px;
+  top: -20px;
 }
 
 // ナビゲーションバー
@@ -64,6 +67,12 @@ footer{
 .footer04 .copyright {
  margin: 0;
  padding: 15px 0;
+}
+
+// 戻るボタン
+.back-button {
+  position: absolute;
+  left: 100px;
 }
 
 // 投稿ボタン
@@ -199,12 +208,9 @@ a.user-edit:hover {
 .balloon5 .faceicon {
   float: left;
   margin-right: -90px;
-  width: 80px;
 }
 
 .balloon5 .faceicon img{
-  width: 100%;
-  height: auto;
   border: solid 3px #d7ebfe;
   border-radius: 50%;
 }

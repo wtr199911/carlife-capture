@@ -1,28 +1,53 @@
-<div>
-  <%= link_to :back do %>
-    <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
-  <% end %>
+<div class="container mt-3">
+  <h2 class="font-weight-bold text-center">投稿編集画面</h2>
+    <div class="my-4 d-flex justify-content-center">
+    <%= form_with model: @post do |f| %>
+
+          <table class="table table-borderless">
+           <tbody>
+
+            <div class="text-center">
+              <label class="mt-2 sm:mt-0 py-2 w-[212px] sm:w-[164px] h-8 border btn btn-outline-primary">
+                <i class="fa-solid fa-camera"></i>
+                <span class="ml-2">画像を選択する</span>
+                <%= f.file_field :image, class: "hidden"%>
+              </label>
+            </div>
+
+            <tr>
+              <td>
+                <label>タイトル</label><br>
+                <%= f.text_field :title, class: "h-2 col-12" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <label>投稿文</label><br>
+                <%= f.text_area :detail, rows:'5', class: "w-100" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <label>撮影場所</label><br>
+                <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name,{include_blank: "---"} ) %><br>
+                <%= f.text_field :place, class: "col-12 mt-2", placeholder: "撮影場所を記入して下さい" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <label>タグ(,で区切ると複数タグ登録できます)</label>
+                <%= f.text_field :name,value: @tag_list, class: "form-control", placeholder: "山,見晴らしがいい" %>
+              </td>
+            </tr>
+           </tbody>
+          </table>
+          <div class="text-center mb-2">
+            <%= f.submit "変更を保存", class: "post-button" %>
+          </div>
+        </div>
+    <% end %>
+    </div>
 </div>
-<h2>投稿編集画面</h2>
-
-<%= form_with model: @post do |f| %>
-
- <h4>画像</h4>
- <%= f.file_field :image, accept: "image/*" %>
-
- <h4>タイトル</h4>
- <%= f.text_field :title, placeholder: "" %>
-
- <h4>投稿文</h4>
- <%= f.text_area :detail %>
-
- <h4>撮影場所</h4>
- <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name,{include_blank: "---"} ) %>
- <%= f.text_field :place, placeholder: "撮影場所を記入して下さい" %>
-
- <label>タグ(,で区切ると複数タグ登録できます)</label>
- <%= f.text_field :name,value: @tag_list, class: "form-control", placeholder: "山,見晴らしがいい" %>
-
- <%= f.submit "変更を保存" %>
-
-<% end %>

@@ -1,17 +1,28 @@
+<div>
+  <%= link_to :back do %>
+    <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
+  <% end %>
+</div>
 <div class="container">
   <div class='row'>
     <table class="table border table-hover table-inverse">
       <% if @model == [] %>
         <h3 class="mt-3 text-center">検索結果がありません。</h3>
       <% elsif @model == "customer" %>
-        <h2 class="mt-3">Userの検索結果 "<%= @content %>"</h2>
-        <%= render "admin/customers/index", customers: @records %>
+        <div class="container">
+        <h2 class="m-3 text-center">Userの検索結果 "<%= @content %>"</h2>
+        <div><%= render "admin/customers/index", customers: @records, customer_page: @customer_page %></div>
+        </div>
       <% elsif @model == "post" %>
-        <h2 class="mt-3">投稿の検索結果 "<%= @content %>"</h2>
-        <%= render "public/posts/index", posts: @records %>
+        <div class="container">
+          <h2 class="m-3 text-center">投稿の検索結果 "<%= @content %>"</h2>
+          <div><%= render "public/posts/index", posts: @records, post_page: @post_page %></div>
+        </div>
       <% elsif @model == "prefecture" %>
-        <h2 class="mt-3">都道府県の検索結果 "<%= @content %>"</h2>
-        <%= render "public/posts/index", posts: @records %>
+        <div class="container">
+          <h2 class="m-3 text-center">都道府県の検索結果 "<%= @content %>"</h2>
+          <div><%= render "public/posts/index", posts: @records, post_page: @post_page %></div>
+        </div>
       <% end %>
     </table>
   </div>

@@ -1,8 +1,3 @@
-<div class="pl-5">
-  <%= link_to :back do %>
-    <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
-  <% end %>
-</div>
 <div class="container mt-3">
   <h2 class="font-weight-bold text-center">投稿フォーム</h2>
     <div class="my-4 d-flex justify-content-center">
@@ -29,7 +24,7 @@
             <tr>
               <td>
                 <label>投稿文</label><br>
-                <%= f.text_area :detail, class: "col-12" %>
+                <%= f.text_area :detail, rows:'5', class: "w-100" %>
               </td>
             </tr>
 

@@ -16,18 +16,18 @@
       <table class="table table-borderless">
         <tr>
           <th>name</th>
-          <td><%= f.text_field :name %></td>
+          <td class="text-center"><%= f.text_field :name %></td>
         </tr>
         <tr>
           <th>information</th>
-          <td><%= f.text_area :profile_text %></td>
-        </tr>
-        <tr>
-          <td><%= f.submit "変更を保存" %></td>
-          <td class="text-right"><%= link_to "退会する", confirm_withdraw_path %></td>
+          <td><%= f.text_area :profile_text, rows:'5', class: "w-100" %></td>
         </tr>
       </table>
     </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="m-5"><%= f.submit "変更を保存", class: "btn btn-outline-success" %></div>
+    <div class="m-5"><%= link_to "退会する", confirm_withdraw_path, class: "btn btn-outline-danger" %></div>
   </div>
   <% end %>
 </div>

@@ -1,6 +1,6 @@
 <div class="row justify-content-center my-5">
 <% posts.each do |post| %>
-  <div class="card mb-4 shadow-sm mx-3" style="border-radius: 27px;">
+  <div class="card mb-4 shadow-sm mx-3 shadow-lg" style="border-radius: 27px;">
     <%= link_to post_path(post.id) do %>
       <%= image_tag post.get_image(260,220), class: "card-img-top post-image" %>
     <% end %>
@@ -31,4 +31,7 @@
     </div>
   </div>
 <% end %>
+</div>
+<div class="pagination mt-3 d-flex justify-content-center">
+  <%= paginate post_page %>
 </div>

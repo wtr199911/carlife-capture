@@ -1,9 +1,9 @@
 <% post.post_comments.each do |post_comment| %>
   <div class="balloon5">
-    <div class="faceicon">
+    <div class="faceicon text-center">
       <%= link_to customer_path(post_comment.customer) do %>
-        <%= image_tag post_comment.customer.get_profile_image(50,50) %>
-        <div class="text-center like-link"><%= post_comment.customer.name %></div>
+        <%= image_tag post_comment.customer.get_profile_image(50,50), class: "w-75" %>
+        <div class="like-link"><%= post_comment.customer.name %></div>
       <% end %>
     </div>
     <div class="chatting">
