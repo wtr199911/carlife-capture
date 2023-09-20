@@ -41,6 +41,8 @@ GEM
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
     active_hash (3.2.0)
       activesupport (>= 5.0.0)
+    active_hash-like (0.1.0)
+      active_hash
     activejob (6.1.7.6)
       activesupport (= 6.1.7.6)
       globalid (>= 0.3.6)
@@ -265,6 +267,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_hash
+  active_hash-like
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)

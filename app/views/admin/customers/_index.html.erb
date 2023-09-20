@@ -19,9 +19,9 @@
           <td><%= customer.followers.count %></td>
           <td class="font-weight-bold">
             <% if customer.is_valid %>
-              <p class="text-success">有効</p>
-            <% else %>
               <p class="text-danger">退会</p>
+            <% else %>
+              <p class="text-success">有効</p>
             <% end %>
           </td>
         </tr>

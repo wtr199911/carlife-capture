@@ -20,19 +20,18 @@ class Prefecture < ActiveHash::Base
   ]
 
   def self.search_for(content, method)
-
-   if method == 'perfect'
-    Prefecture.where(name: content)
-
-   elsif method == 'forward'
-    Prefecture.where('name LIKE ?', content + '%')
-
-   elsif method == 'backward'
-    Prefecture.where('name LIKE ?', '%' + content)
-
-   else
-    Prefecture.where('name LIKE ?', '%' + content + '%')
-   end
+   prefecture_ids = 
+    if method == 'perfect'
+      Prefecture.where(name: content).ids
+    elsif method == 'forward'
+      Prefecture.like(name: "#{content}%").pluck(:id)
+    elsif method == 'backward'
+      Prefecture.like(name: "%#{content}").pluck(:id)
+    else
+      Prefecture.like(name: "%#{content}%").pluck(:id)
+    end
+   
+   Post.where(prefecture_id: prefecture_ids)
   end
 
 end

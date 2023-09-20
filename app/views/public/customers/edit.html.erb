@@ -3,24 +3,31 @@
     <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
   <% end %>
 </div>
-<h2>プロフィール編集画面</h2>
 
-<div>
-<%= form_with model: @customer, url: information_update_path, local:true do |f| %>
+<div class="container">
+  <h2 class="text-center">プロフィール編集画面</h2>
+  <%= form_with model: @customer, url: information_update_path, local:true do |f| %>
+  <div class="d-flex">
+    <div class="m-5 col-5 text-center">
+      <%= f.file_field :profile_image, accept: "image/*"%><br>
+    </div>
 
-  <h4>プロフィール画像</h4>
-  <%= f.file_field :profile_image, accept: "image/*" %>
-
-  <h4>ユーザーネーム</h4>
-  <%= f.text_field :name %>
-
-  <h4>自己紹介文</h4>
-  <%= f.text_area :profile_text %>
-
-  <%= f.submit "変更を保存" %>
-
-
-
-<% end %>
- <%= link_to "退会する", confirm_withdraw_path %>
+    <div class="col-5 pt-5">
+      <table class="table table-borderless">
+        <tr>
+          <th>name</th>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <th>information</th>
+          <td><%= f.text_area :profile_text %></td>
+        </tr>
+        <tr>
+          <td><%= f.submit "変更を保存" %></td>
+          <td class="text-right"><%= link_to "退会する", confirm_withdraw_path %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <% end %>
 </div>
