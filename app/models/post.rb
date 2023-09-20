@@ -47,12 +47,20 @@ class Post < ApplicationRecord
      end
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["detail", "place", "prefecture_id", "title"]
-  end
+  def self.search_for(content, method)
 
-  def self.search(keyword)
-    where("facility_name LIKE ? or address LIKE ? or detailed_description LIKE ?", "%#{sanitize_sql_like(keyword)}%", "%#{sanitize_sql_like(keyword)}%", "%#{sanitize_sql_like(keyword)}%")
+    if method == 'perfect'
+      Post.where(title: content)
+
+    elsif method == 'forward'
+      Post.where('title LIKE ?', content + '%')
+
+    elsif method == 'backward'
+      Post.where('title LIKE ?', '%' + content)
+
+    else
+      Post.where('title LIKE ?', '%' + content + '%')
+    end
   end
 
 end

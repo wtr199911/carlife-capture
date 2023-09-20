@@ -9,7 +9,7 @@
     <li class="list-group-item text-center">follows: <%= link_to customer.followings.count, customer_followings_path(customer) %></li>
     <li class="list-group-item text-center">followers: <%= link_to customer.followers.count, customer_followers_path(customer) %></li>
     <% if current_customer != customer %>
-      <div class="text-center my-2"><%= render "admin/relationships/btn", customer: customer_info, options: { class: ""} %></div>
+      <div id="follow_ajax_<%= customer.id %>" class="text-center my-2"><%= render "admin/relationships/btn", customer: customer_info, options: { class: ""} %></div>
     <% end %>
   </ul>
 </div>

@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-end">
+<div class="d-flex justify-content-center">
   <%= form_with url: posts_path, method: :get, local: true, class: 'boards__searchForm' do |f|%>
       <%= select_tag :tag_id,
         options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),

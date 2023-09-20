@@ -1,20 +1,6 @@
-<h3>投稿一覧</h3>
-<%= render "layouts/tag_search", post: @posts %>
-<% @posts.each do |post| %>
-  <div>
-    <%= link_to post_path(post.id) do %>
-      <%= image_tag post.get_image(160, 120) %><br>
-      <%= post.title %><br>
-      <%= post.detail %><br>
-    <% end %>
-    <%= post.prefecture.name %>
-    <%= post.customer.name %>
-
-    <!--タグリスト-->
-    <% post.tags.each do |list|%>
-      <i class="fa-sharp fa-solid fa-tag"></i>
-      <%=link_to list.name,search_tag_path(tag_id: list.id) %>
-      <%="(#{list.posts.count})" %>
-    <% end %>
+<div class="container">
+  <div class="m-3">
+   <%= render "layouts/tag_search", post: @posts %>
   </div>
-<% end %>
+   <%= render "public/posts/index", posts: @post %>
+</div>
