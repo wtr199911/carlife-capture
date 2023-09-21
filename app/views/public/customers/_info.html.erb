@@ -1,19 +1,22 @@
 <div class="card px-3" style="width: 14rem; border-radius: 24px;">
   <h4 class="text-center mt-2">User Info</h4>
   <div class="m-auto">
-  <%= link_to customer_path(customer.id) do %>
-    <%= image_tag customer.get_profile_image(80,80), class: "info-image m-auto" %>
-  <% end %>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title text-center"><%= customer.name %></h5>
-    <p class="card-text"><%= customer.profile_text %></p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item text-center">follows: <%= link_to customer.followings.count, customer_followings_path(customer) %></li>
-    <li class="list-group-item text-center">followers: <%= link_to customer.followers.count, customer_followers_path(customer) %></li>
-    <% if current_customer != customer %>
-      <div id="follow_ajax_<%= customer.id %>" class="text-center my-2"><%= render "admin/relationships/btn", customer: customer_info, options: { class: ""} %></div>
+    <div class="text-center">
+    <%= link_to customer_path(customer.id) do %>
+      <%= image_tag customer.get_profile_image(80,80), class: "info-image" %>
     <% end %>
-  </ul>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title text-center"><%= customer.name %></h5>
+      <p class="card-text"><%= customer.profile_text %></p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item text-center">follows: <%= link_to customer.followings.count, customer_followings_path(customer) %></li>
+      <li class="list-group-item text-center">followers: <%= link_to customer.followers.count, customer_followers_path(customer) %></li>
+      <% if admin_signed_in? %>
+      <% elsif current_customer != customer %>
+        <div id="follow_ajax_<%= customer.id %>" class="text-center my-2"><%= render "admin/relationships/btn", customer: customer_info, options: { class: ""} %></div>
+      <% end %>
+    </ul>
+  </div>
 </div>

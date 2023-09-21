@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :ensure_guest_customer, only: [:new]
 
   def new
     @post = Post.new
@@ -70,6 +71,12 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :image, :detail, :place, :prefecture_id, :name)
+  end
+
+  def ensure_guest_customer
+   if current_customer.guest_customer?
+     redirect_to mypage_path(current_customer), notice: "ゲストユーザーは投稿できません。"
+   end
   end
 
 end

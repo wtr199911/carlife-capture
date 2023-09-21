@@ -1,4 +1,8 @@
-<%= form_with model: [post, post_comment], local: false do |f| %>
-  <%= f.text_area :comment, rows:'5', placeholder: "コメントをここに", class: "w-100", id: "comment_textarea" %>
-  <%= f.submit "送信" %>
+<% if current_customer.guest_customer? %>
+  <strong><p>コメントの投稿には新規登録/ログインが必要です</p></strong>
+<% else %>
+  <%= form_with model: [post, post_comment], local: false do |f| %>
+    <%= f.text_area :comment, rows:'5', placeholder: "コメントをここに", class: "w-100", id: "comment_textarea" %>
+    <%= f.submit "送信" %>
+  <% end %>
 <% end %>

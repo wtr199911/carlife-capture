@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :ensure_guest_customer, only: [:edit]
 
   def mypage
     @customer = current_customer
@@ -36,10 +37,25 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
+  def favorites
+    @customer = Customer.find(params[:id])
+    favorites = Favorite.where(customer_id: @customer.id).pluck(:post_id)
+    @customers = @customer.favorites
+    @favorite_posts = Post.find(favorites)
+    @post = Post.find(params[:id])
+    @post_page = Post.order("created_at DESC").page(params[:page]).per(6)
+  end
+
   private
 
   def customer_params
     params.require(:customer).permit( :name, :profile_image, :profile_text)
+  end
+
+  def ensure_guest_customer
+   if current_customer.guest_customer?
+     redirect_to mypage_path(current_customer), notice: "ゲストユーザーは編集できません。"
+   end
   end
 
 

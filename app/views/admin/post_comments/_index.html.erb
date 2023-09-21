@@ -18,6 +18,11 @@
             <i class="fa-solid fa-trash-can"></i>
             <% end %>
           <% end %>
+          <% if admin_signed_in? %>
+            <%= link_to  post_post_comment_path(post, post_comment), class: "comment-delete", method: :delete, remote: true do %>
+            <i class="fa-solid fa-trash-can"></i>
+            <% end %>
+          <% end %>
          </div>
         </div>
     </div>

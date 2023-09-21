@@ -1,11 +1,19 @@
-<% if post.favorited_by?(current_customer) %>
-  <%= link_to post_favorites_path(post), class: "like-link", method: :delete, remote: true do %>
-    <i class="fa-solid fa-thumbs-up gud_red"></i>
-    <%= post.favorites.count %>
-  <% end %>
+<% if post.customer == current_customer %>
+  <i class="fa-solid fa-thumbs-up text-dark"></i>
+  <%= post.favorites.count %>
+<% elsif admin_signed_in? %>
+  <i class="fa-solid fa-thumbs-up text-dark"></i>
+  <%= post.favorites.count %>
 <% else %>
-  <%= link_to post_favorites_path(post), class: "like-link", method: :post, remote: true do %>
-    <i class="fa-regular fa-thumbs-up gud_blue"></i>
-    <%= post.favorites.count %>
+  <% if post.favorited_by?(current_customer) %>
+    <%= link_to post_favorites_path(post), class: "like-link", method: :delete, remote: true do %>
+      <i class="fa-solid fa-thumbs-up gud_red"></i>
+      <%= post.favorites.count %>
+    <% end %>
+  <% else %>
+    <%= link_to post_favorites_path(post), class: "like-link", method: :post, remote: true do %>
+      <i class="fa-regular fa-thumbs-up gud_blue"></i>
+      <%= post.favorites.count %>
+    <% end %>
   <% end %>
 <% end %>

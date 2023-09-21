@@ -44,6 +44,9 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
 
     resources :customers, only: [ :show, :edit] do
+      member do
+        get :favorites
+      end
       resource :relationships, only: [:create, :destroy]
       	get "followings" => "relationships#followings", as: "followings"
       	get "followers" => "relationships#followers", as: "followers"

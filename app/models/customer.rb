@@ -46,6 +46,10 @@ class Customer < ApplicationRecord
     end
   end
 
+  def guest_customer?
+    email == GUEST_USER_EMAIL
+  end
+
   has_one_attached :profile_image
 
    # プロフィール画像呼び出しメソッド

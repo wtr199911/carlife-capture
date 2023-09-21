@@ -3,10 +3,9 @@
         <tr>
           <th class="align-middle">image</th>
           <th class="align-middle">name</th>
-          <th class="align-middle">Email</th>
           <th class="align-middle">followed</th>
           <th class="align-middle">followers</th>
-          <th class="align-middle">status</th>
+          <th class="align-middle">favorites<br>index</th>
         </tr>
       </thead>
       <tdody>
@@ -18,16 +17,9 @@
             <% end %>
           </td>
           <td class="align-middle"><%= link_to customer.name, customer_path(customer.id), class: "text-dark" %></td>
-          <td class="align-middle"><%= customer.email %></td>
           <td class="align-middle"><%= link_to customer.followings.count, customer_followings_path(customer), class: "text-dark" %></td>
           <td class="align-middle"><%= link_to customer.followers.count, customer_followers_path(customer), class: "text-dark" %></td>
-          <td class="font-weight-bold align-middle">
-            <% if customer.is_valid %>
-              <p class="text-danger">退会</p>
-            <% else %>
-              <p class="text-success">有効</p>
-            <% end %>
-          </td>
+          <td class="align-middle"><%= render "admin/favorites/counter", customer: customer %></td>
         </tr>
        <% end %>
        </tdody>
