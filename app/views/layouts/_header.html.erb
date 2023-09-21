@@ -9,7 +9,7 @@
             管理者画面
           <% elsif customer_signed_in? %>
             <%= current_customer.name %>　ようこそ！
-        　<% end %>
+          <% end %>
          </div>
 
          <div class="">
@@ -55,6 +55,15 @@
           <li class="px-5">
             <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-item" %>
           </li>
+          <div class="bell-icon">
+            <%= link_to notifications_path, class: "nav-link" do %>
+              <% if current_customer.notifications.where(checked: false).exists? %>
+                <i class="fa-sharp fa-solid fa-bell fa-beat" style="color: #f2ee7d;"></i>
+              <% else %>
+                <i class="fa-sharp fa-solid fa-bell"></i>
+              <% end %>
+            <% end %>
+          </div>
         <% elsif admin_signed_in? %>
           <div class="back-button">
             <%= link_to :back do %>

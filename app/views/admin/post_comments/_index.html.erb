@@ -2,7 +2,7 @@
   <div class="balloon5">
     <div class="faceicon text-center">
       <%= link_to customer_path(post_comment.customer) do %>
-        <%= image_tag post_comment.customer.get_profile_image(50,50), class: "w-75" %>
+        <%= image_tag post_comment.customer.get_profile_image(100,100), class: "w-75" %>
         <div class="like-link"><%= post_comment.customer.name %></div>
       <% end %>
     </div>

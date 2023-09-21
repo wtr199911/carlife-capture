@@ -6,14 +6,24 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <noscript>
+    	<style>
+    	.simplebar-content-wrapper {
+    		overflow: auto;
+    	}
+    	</style>
+    </noscript>
+
     <script src="https://kit.fontawesome.com/a36c0b29c4.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.4/simplebar.min.css" integrity="sha512-rptDreZF629VL73El0GaBEH9tlYEKDJFUr+ysb+9whgSGbwYfGGA61dVtQFL0qC8/SZv/EQFW5JtwEFf+8zKYg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
 
   <body>
    <div class="footerFixed">
     <%= render 'layouts/header' %>
+   <main>
     <% if flash[:notice] %>
         <p class="alert alert-success"><%= notice %></p>
     <% elsif flash[:alert] %>
@@ -21,10 +31,12 @@
     <% end %>
 
     <%= yield %>
+   </main>
 
     <footer class="footer">
       <%= render "layouts/footer" %>
     </footer>
    </div>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.4/simplebar.min.js" integrity="sha512-K//QeDiscFFAs5yljnbZCuoAmzv5KdtVY0W70WLQZ+BFCxi4PotspvxZwpaGJOao2l4oIQhgsHX5tHxyRe+YYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </body>
 </html>
