@@ -1,10 +1,8 @@
 class ApplicationController < ActionController::Base
-  before_action :search
+  before_action :authenticate_admin!, if: :admin_url
 
-  def search
-    @q = Post.ransack(params[:q])
-    @item = @q.result(distinct: true)
-    @result = params[:q]&.values&.reject(&:blank?)
+  def admin_url
+    request.fullpath.include?("/admin")
   end
 
 end

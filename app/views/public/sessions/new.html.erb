@@ -1,5 +1,5 @@
-<%= render "public/shared/error_messages", resource: resource %>
 <div class = "container">
+  <%= render "layouts/errors", obj: @customer %>
 	<div class="wrapper my-5">
 		<div class="form form-signin">
     <%= form_with model: @customer, url: customer_session_path do |f| %>

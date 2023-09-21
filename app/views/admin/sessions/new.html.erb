@@ -1,20 +1,20 @@
-<div class="container mt-5">
+<div class="container m-auto">
 
-  <h3 class="offset-md-2 mt-4">管理者ログイン</h3>
-  <div class="mt-5 p-5">
+  <h3 class="text-center">管理者ログイン</h3>
+  <div class="p-5">
     <%= form_with model: @admin, url: new_admin_session_path do |f| %>
       <%= render "admin/shared/error_messages", resource: resource %>
-      <div class="row offset-md-3 mb-3">
+      <div class="row offset-md-4 mb-3">
         <%= f.label :email, "メールアドレス", class:"mr-3" %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
-      <div class="row offset-md-3 mb-3">
+      <div class="row offset-md-4 mb-3">
         <%= f.label :password,"パスワード", class:"mr-5" %>
         <%= f.password_field :password, autocomplete: "current-password" %>
       </div>
 
-      <div class="row offset-7" >
+      <div class="text-center mt-5" >
         <%= f.submit "ログイン", class: "btn btn-sm btn-outline-primary" %>
         <%= render "admin/shared/links" %>
       </div>

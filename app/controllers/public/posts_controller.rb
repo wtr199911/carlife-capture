@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :ensure_guest_customer, only: [:new]
+  before_action :authorize_access
 
   def new
     @post = Post.new
@@ -71,6 +72,13 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :image, :detail, :place, :prefecture_id, :name)
+  end
+
+  def authorize_access
+    # 管理者か会員のいずれかであればアクセスを許可
+    unless admin_signed_in? || customer_signed_in?
+      redirect_to root_path
+    end
   end
 
   def ensure_guest_customer

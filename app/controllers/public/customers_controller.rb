@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :ensure_guest_customer, only: [:edit]
+  before_action :authorize_access
 
   def mypage
     @customer = current_customer
@@ -31,7 +32,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
-    current_customer.update(is_valid: false)
+    current_customer.update(is_valid: true)
     reset_session
     flash[:alert] = "退会処理を実行いたしました"
     redirect_to root_path
@@ -50,6 +51,13 @@ class Public::CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit( :name, :profile_image, :profile_text)
+  end
+
+  def authorize_access
+    # 管理者か会員のいずれかであればアクセスを許可
+    unless admin_signed_in? || customer_signed_in?
+      redirect_to root_path
+    end
   end
 
   def ensure_guest_customer

@@ -7,7 +7,7 @@
       <div class="mt-3">
         <% if admin_signed_in? %>
             <div>
-              <%= link_to information_path, class: "user-edit" do %>
+              <%= link_to edit_admin_customer_path, class: "user-edit" do %>
                   <i class="fa-solid fa-user-pen"></i>
               <% end %>
             </div>
