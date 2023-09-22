@@ -1,8 +1,8 @@
 <div class="card-list-container py-5">
   <% posts.each do |post| %>
-  <div class="card-list card mx-auto mt-4 shadow-lg">
+  <div class="card-list card mx-auto mt-4 shadow-lg" style="border-radius: 27px;">
     <%= link_to post_path(post.id) do %>
-      <%= image_tag post.get_image(260,220), class: "card-img-top" %>
+      <%= image_tag post.get_image(260,220), class: "card-img-top post-image" %>
     <% end %>
     <div class="card-body">
       <div class="row">
@@ -17,7 +17,7 @@
               <strong><i class="fa-solid fa-car"></i><span> <%= post.title %></span></strong>
             <% end %>
           </p>
-          <p class="card-text">text：<%= post.detail %></p>
+          <p class="card-text textOverflow">text：<%= post.detail %></p>
           <span><i class="fas fa-user"></i> <%= post.customer.name %> ｜ </span>
           <span class="mx-2">
             <%= render "admin/post_comments/counter", post: post %>

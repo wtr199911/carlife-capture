@@ -18,7 +18,7 @@
             <% else %>
             <% end %>
            </div>
-            <p class="card-text"><%= @post.detail %></p>
+            <p class="card-text mt-3 post-detail"><%= @post.detail %></p>
             <p class="card-text text-right">
               <span id="comment_counter" class="mx-2">
                 <%= render "admin/post_comments/counter", post: @post %>

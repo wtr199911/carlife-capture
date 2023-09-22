@@ -1,0 +1,62 @@
+<div class="container about_contents mt-5">
+  <h1 class="text-center"><strong>About</strong></h1>
+   <div class="row">
+   <section>
+    <div class="col-md-7 about1 sa sa--up"></div>
+    <div class="col-md-5 offset-md-1 sa sa--up">
+      <p class="text-center mb-3 title-about">Welcome to the world of car appeal !</p>
+      <p class="ml-3 text-about">
+        車映えスポットをシェアするコミュニティへようこそ！
+        私たちは自動車愛好家、写真愛好家、そして美しい景色を求める旅行者のためのプラットフォームです。
+        他のユーザーがシェアしている写真を探し、ドライブでの最高の写真スポットを探しましょう！
+      </p>
+    </div>
+   </section>
+   </div>
+
+   <div class="row">
+   <section>
+    <div class="col-md-5 sa sa--up">
+      <p class="text-center mb-3 title-about">Share your drive adventure !</p>
+      <p class="ml-3 text-about">
+         車映えスポットの写真を共有し、自分の車とその背後に広がる素晴らしい風景を披露しましょう。
+         他のメンバーとの交流、アイデアの共有、そして新しい場所の探索をお楽しみください。
+      </p>
+    </div>
+    <div class="col-md-7 offset-md-1 about2 sa sa--up"></div>
+   </section>
+   </div>
+
+   <div class="row">
+   <section>
+    <div class="col-md-7 about3 sa sa--up"></div>
+    <div class="col-md-5 offset-md-1 sa sa--up">
+      <p class="text-center mb-3 title-about">Let's enjoy car life together !</p>
+      <p class="ml-3 text-about">
+        私たちは、車がもたらす冒険と美しさを共に追求する仲間です。
+        私たちと一緒にドライブをもっと楽しみ、美しい瞬間をキャプチャしましょう！
+      </p>
+      <p class="text-center mt-5">
+        <%= link_to new_customer_registration_path, class: "about-link" do %>
+        登録はこちら <i class="fa-solid fa-car-side"></i>
+        <% end %>
+      </p>
+    </div>
+   </section>
+   </div>
+
+</div>
+
+<script>
+  var scrollAnimationElm = document.querySelectorAll('.sa');
+  var scrollAnimationFunc = function() {
+    for(var i = 0; i < scrollAnimationElm.length; i++) {
+      var triggerMargin = 300;
+      if (window.innerHeight > scrollAnimationElm[i].getBoundingClientRect().top + triggerMargin) {
+        scrollAnimationElm[i].classList.add('show');
+      }
+    }
+  }
+  window.addEventListener('load', scrollAnimationFunc);
+  window.addEventListener('scroll', scrollAnimationFunc);
+</script>

@@ -12,10 +12,12 @@
 .main-visual-text {
   margin-top: 30px;
   color:#fff;
+  font-family: 'Courier',"HiraMinProN-W3"
 }
 
 .main-visual-comment {
   color:#fff;
+  font-family: 'Courier',"HiraMinProN-W3"
 }
 
 hr {
@@ -66,3 +68,73 @@ hr {
   border-radius: 10px;
 }
 
+// Aboutページ
+
+section {
+  display: flex;
+  padding: 5%;
+  box-sizing: border-box;
+}
+
+section div {
+  width: 100px;
+  margin: 0 0 2.5vw;
+  padding: 3%;
+  box-sizing: border-box;
+}
+
+.about1 {
+  background-image: url(/assets/about1.jpg);
+  width: 200px;
+  height: 380px;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.about2 {
+  background-image: url(/assets/about2.jpg);
+  width: 200px;
+  height: 380px;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.about3 {
+  background-image: url(/assets/about3.jpg);
+  width: 200px;
+  height: 380px;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.sa {
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.sa.show {
+  opacity: 1;
+  transform: none;
+}
+
+.sa--up {
+  transform: translate(0, 100px);
+}
+
+.title-about {
+  font-size: 25px;
+  font-family: "Impact";
+}
+
+.text-about {
+  font-size: 15px;
+  line-height: 3.4;
+}
+
+.about-link {
+  font-size: 25px;
+  color: #669933;
+}

@@ -2,14 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-// 背景画像
-body {
-  background-image: image-url("/assets/back-image.jpg");
-  background-size: cover;
-  background-position: center;
-  background: rgba(255,255,255,0.5);
+  font-family: ヒラギノ角ゴ ProN W6;
 }
 
 // ヘッダー・ナビゲーションバー
@@ -297,4 +290,21 @@ a.comment-delete:hover {
 
 .scroll-contents::-webkit-scrollbar {  /* Chrome, Safari 対応 */
   display:none;
+}
+
+// 投稿テキスト
+.textOverflow {
+	overflow: hidden;
+	line-height: 1.0;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-webkit-text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+}
+
+.post-detail {
+  font-size: 14px;
+  border: 2px double #000;
+  border-radius: 10px;
+  padding: 5px;
 }
