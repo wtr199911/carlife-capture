@@ -48,10 +48,6 @@
             <% end %>
             <%= render "admin/post_comments/form", post: @post, post_comment: @post_comment %>
           <% else %>
-            <% if @post_comment.present? %>
-              <%= render "layouts/errors", obj: @post_comment %>
-            <% end %>
-            <%= render "admin/post_comments/form", post: @post, post_comment: @post_comment %>
           <% end %>
           </div>
        </div>
@@ -63,4 +59,19 @@
      </div>
   </div>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const postcomments = document.querySelectorAll('.says');
+
+    post_comments.forEach(post_comment => {
+      const comment = post_comment.textContent;
+      if (comment.length >= 21) {
+        // テキストの21文字目以降に改行を挿入
+        const formattedContent = comment.replace(/(.{20})/g, '$1\n');
+        post_comment.innerHTML = formattedContent;
+      }
+    });
+  });
+</script>
+
 

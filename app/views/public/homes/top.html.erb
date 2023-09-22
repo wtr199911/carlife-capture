@@ -1,0 +1,72 @@
+<div class="container justify-content-center">
+  <div class="slideshow-container my-5">
+    <div class="slide fade">
+      <%= image_tag "top1.jpg", class: "active" %>
+    </div>
+    <div class="slide fade">
+      <%= image_tag "top2.jpg" %>
+    </div>
+    <div class="slide fade">
+      <%= image_tag "top3.jpg" %>
+    </div>
+    <div class="slide fade">
+      <%= image_tag "top4.jpg" %>
+    </div>
+    <div class="slide fade">
+      <%= image_tag "top5.jpg" %>
+    </div>
+    <div class="row">
+      <div class="col-xl-10 offset-md-1 outline text-center mt-5 main-visual-contents">
+        <div class="display-3 copy">
+          <span class="d-inline-block main-visual-title">Welcome to Carlife Capture!!</span>
+        </div>
+        <p class="lead mt-5 main-visual-text">
+          このサイトは、車・ドライブ好きの為のサイトです！<br>
+          This site is for car and driving enthusiasts.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-10 offset-md-1 outline text-center main-visual-contents">
+        <hr>
+        <ul class="download list-inline">
+        </ul>
+        <div class="basedon small main-visual-comment">
+          <p>車映えスポットをお探しの方も<br>
+          映え写真をシェアしたい方もぜひご利用ください！！</p><br>
+          <p>
+            For those looking for spots where cars look beautiful and<br>
+            those who want to share photos of cars taken beautifully, please feel free to use it!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  let slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    // スライドの要素を取得
+    const slides = document.querySelectorAll(".slide.fade");
+
+    // slideIndexを1増やす（次のスライドに進む）
+    slideIndex++;
+
+    // スライドの数よりもslideIndexが大きくなった場合、最初のスライドに戻る
+    if (slideIndex > slides.length) {
+      slideIndex = 1;
+    }
+
+    // 現在のスライドを表示（opacityを1に設定）
+    slides[slideIndex - 1].style.opacity = "1";
+
+    // 1つ前のスライドを非表示（opacityを0に設定）
+    slides[slideIndex - 2 < 0 ? slides.length - 1 : slideIndex - 2].style.opacity = "0";
+
+    // 一定時間（6000ミリ秒＝6秒）後に再度showSlides関数を呼び出す（次のスライドに進むための処理）
+    setTimeout(showSlides, 3000);
+  }
+</script>

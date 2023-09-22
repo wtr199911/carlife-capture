@@ -12,9 +12,11 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
-import '../stylesheets/mystyle.scss'
-import 'simplebar';
-import 'simplebar/dist/simplebar.css';
+import "../stylesheets/mystyle.scss";
+import "../stylesheets/homes.scss";
+import "simplebar";
+import "simplebar/dist/simplebar.css";
+import "script.js"
 
 Rails.start()
 Turbolinks.start()

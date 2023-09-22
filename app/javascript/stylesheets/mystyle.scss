@@ -6,7 +6,10 @@
 
 // 背景画像
 body {
-  background-image: image-url("");
+  background-image: image-url("/assets/back-image.jpg");
+  background-size: cover;
+  background-position: center;
+  background: rgba(255,255,255,0.5);
 }
 
 // ヘッダー・ナビゲーションバー
@@ -207,6 +210,7 @@ a.user-edit:hover {
 
 // コメント欄
 
+
 .balloon5 {
   width: 100%;
   margin: 1.5em 0;
@@ -234,6 +238,8 @@ a.user-edit:hover {
   padding: 17px 13px;
   border-radius: 12px;
   background: #d7ebfe;
+  font-size: 13px; /* テキストのフォントサイズを調整 */
+  line-height: 1.4; /* テキストの行間を調整 */
 }
 
 .says:after {
