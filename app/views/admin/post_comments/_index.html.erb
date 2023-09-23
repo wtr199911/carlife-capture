@@ -1,8 +1,8 @@
  <div class="comment-index my-5">
-   <h4 class="text-center my-3">コメント一覧</h4>
+   <h4 class="text-center my-3">コメント一覧　<%= post.post_comments.count%> 件</h4>
    <hr style="border-top: 1px solid #C0C0C0;">
   <div class="<%= "scroll-contents" if post.post_comments.count > 5 %>">
-    <% post.post_comments.each do |post_comment| %>
+    <% post.post_comments.where(parent_id: nil).each do |post_comment| %>
       <div class="balloon5">
         <div class="faceicon text-center">
           <%= link_to customer_path(post_comment.customer) do %>
@@ -21,16 +21,63 @@
                 <%= link_to  post_post_comment_path(post, post_comment), class: "comment-delete", method: :delete, remote: true do %>
                 <i class="fa-solid fa-trash-can"></i>
                 <% end %>
-              <% end %>
-              <% if admin_signed_in? %>
+              <% elsif admin_signed_in? %>
                 <%= link_to  post_post_comment_path(post, post_comment), class: "comment-delete", method: :delete, remote: true do %>
                 <i class="fa-solid fa-trash-can"></i>
                 <% end %>
+              <% else %>
               <% end %>
              </div>
             </div>
         </div>
+        <p class="text-center">
+          <button class="btn btn-outline-success btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            返信する
+          </button>
+        </p>
       </div>
+
+      <% parent_comment = post_comment.replies.find_by(params[:parent_id]) %>
+      <% if parent_comment.present? %>
+          <p class="text-center">
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample">
+              返信一覧
+            </button>
+          </p>
+          <% post_comment.replies.each do |reply| %>
+            <div class="balloon5 collapse multi-collapse" id="multiCollapseExample1">
+              <div class="faceicon text-center">
+                <%= link_to customer_path(reply.customer) do %>
+                  <%= image_tag reply.customer.get_profile_image(100,100), class: "w-75" %>
+                  <div class="like-link"><%= reply.customer.name %></div>
+                <% end %>
+              </div>
+              <div class="chatting">
+                <div class="says">
+                  <div class=""><%= simple_format(reply.comment, class: "comment-user") %></div>
+                </div>
+                  <div class="mt-2">
+                   <div class="comment-option">
+                    <div class ="time"><%= l reply.created_at %></div>
+                    <% if reply.customer == current_customer %>
+                      <%= link_to  post_post_comment_path(post, post_comment), class: "comment-delete", method: :delete, remote: true do %>
+                      <i class="fa-solid fa-trash-can"></i>
+                      <% end %>
+                    <% elsif admin_signed_in? %>
+                      <%= link_to  post_post_comment_path(post, post_comment), class: "comment-delete", method: :delete, remote: true do %>
+                      <i class="fa-solid fa-trash-can"></i>
+                      <% end %>
+                    <% else %>
+                    <% end %>
+                   </div>
+                  </div>
+              </div>
+            </div>
+          <% end %>
+      <% end %>
     <% end %>
+  </div>
+  <div>
+    <%= render "admin/post_comments/reply_form", post: post, comment_reply: comment_reply %>
   </div>
 </div>

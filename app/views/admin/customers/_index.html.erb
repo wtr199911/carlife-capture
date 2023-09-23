@@ -1,4 +1,4 @@
-<table class="table table-sm table-hover text-center">
+<table class="table table-sm table-borderless text-center">
       <thead>
         <tr>
           <th class="align-middle">image</th>
@@ -13,15 +13,26 @@
        <% customers.each do |customer| %>
         <tr>
           <td class="align-middle">
+           <% if customer.guest_customer? %>
+             <%= image_tag customer.get_profile_image(80,80), style: "border-radius: 50%; object-fit:cover;" %>
+           <% else %>
             <%= link_to customer_path(customer.id) do %>
              <%= image_tag customer.get_profile_image(80,80), style: "border-radius: 50%; object-fit:cover;" %>
             <% end %>
+           <% end %>
           </td>
-          <td class="align-middle"><%= link_to customer.name, customer_path(customer.id), class: "text-dark" %></td>
-          <td class="align-middle"><%= customer.email %></td>
-          <td class="align-middle"><%= link_to customer.followings.count, customer_followings_path(customer), class: "text-dark" %></td>
-          <td class="align-middle"><%= link_to customer.followers.count, customer_followers_path(customer), class: "text-dark" %></td>
-          <td class="font-weight-bold align-middle">
+          <% if customer.guest_customer? %>
+            <td class="align-middle"><%= customer.name %></td>
+            <td class="align-middle"><%= customer.email %></td>
+            <td class="align-middle">無</td>
+            <td class="align-middle">無</td>
+          <% else %>
+            <td class="align-middle"><%= link_to customer.name, customer_path(customer.id), class: "text-dark" %></td>
+            <td class="align-middle"><%= customer.email %></td>
+            <td class="align-middle"><%= link_to customer.followings.count, customer_followings_path(customer), class: "text-dark" %></td>
+            <td class="align-middle"><%= link_to customer.followers.count, customer_followers_path(customer), class: "text-dark" %></td>
+          <% end %>
+            <td class="font-weight-bold align-middle">
             <% if customer.is_valid %>
               <p class="text-danger">退会</p>
             <% else %>

@@ -136,3 +136,24 @@ section div {
   font-size: 25px;
   color: #66CC33;
 }
+
+@media screen and (max-width: 425px) {
+
+  .slideshow-container {
+    width: 56rem;
+  }
+
+  .contents {
+    width: 56rem;
+  }
+
+  section {
+    padding: 3%;
+  }
+
+  .about1,
+  .about2,
+  .about3 {
+    width: 715px;
+  }
+}

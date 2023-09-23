@@ -2,9 +2,14 @@
      <header class="header py-3">
 
       <div class="nav-scroller py-1 mb-2 mt-2">
-        <nav class="navbar justify-content-around">
 
-         <div class="text-light">
+        <div class="back-button">
+          <%= link_to :back do %>
+            <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
+          <% end %>
+        </div>
+
+         <div class="text-light header-current">
           <% if admin_signed_in? %>
             管理者画面
           <% elsif customer_signed_in? %>
@@ -18,6 +23,20 @@
           <% end %>
          </div>
 
+          <% if customer_signed_in? %>
+          <div class="bell-icon">
+            <%= link_to notifications_path, class: "nav-link" do %>
+              <% if current_customer.notifications.where(checked: false).exists? %>
+                <i class="fa-sharp fa-solid fa-bell fa-beat" style="color: #f2ee7d;"></i>
+              <% else %>
+                <i class="fa-sharp fa-solid fa-bell" style="color: #808080;"></i>
+              <% end %>
+            <% end %>
+          </div>
+          <% else %>
+          <% end %>
+
+
         <div class="social">
         <% if admin_signed_in? %>
            <%= render "layouts/search" %>
@@ -27,76 +46,70 @@
         <% end %>
         </div>
 
-       </nav>
       </div>
      </header>
 
       <div class="nav-scroller py-1 mb-2">
-       <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
-        <ul class="navbar-nav">
-        <% if customer_signed_in? %>
-          <div class="back-button">
-            <%= link_to :back do %>
-              <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
-            <% end %>
-          </div>
-          <li class="px-5">
-            <%= link_to "About", about_path, class: "nav-item" %>
-          </li>
-          <li class="px-5">
-            <%= link_to "投稿", new_post_path, class: "nav-item" %>
-          </li>
-          <li class="px-5">
-            <%= link_to "投稿一覧", posts_path, class: "nav-item" %>
-          </li>
-          <li class="px-5">
-            <%= link_to "マイページ", mypage_path, class: "nav-item" %>
-          </li>
-          <li class="px-5">
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-item" %>
-          </li>
-          <div class="bell-icon">
-            <%= link_to notifications_path, class: "nav-link" do %>
-              <% if current_customer.notifications.where(checked: false).exists? %>
-                <i class="fa-sharp fa-solid fa-bell fa-beat" style="color: #f2ee7d;"></i>
-              <% else %>
-                <i class="fa-sharp fa-solid fa-bell"></i>
+       <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <% if customer_signed_in? %>
+          <ul class="navbar-nav">
+            <li class="px-5">
+              <%= link_to "About", about_path, class: "nav-item" %>
+            </li>
+            <li class="px-5">
+              <%= link_to "投稿", new_post_path, class: "nav-item" %>
+            </li>
+            <li class="px-5">
+              <%= link_to "投稿一覧", posts_path, class: "nav-item" %>
+            </li>
+            <li class="px-5">
+              <%= link_to "マイページ", mypage_path, class: "nav-item" %>
+            </li>
+            <li class="px-5">
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-item" %>
+            </li>
+          </ul>
+          <% elsif admin_signed_in? %>
+            <div class="back-button">
+              <%= link_to :back do %>
+                <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
               <% end %>
-            <% end %>
-          </div>
-        <% elsif admin_signed_in? %>
-          <div class="back-button">
-            <%= link_to :back do %>
-              <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
-            <% end %>
-          </div>
-          <li class="px-5">
-            <%= link_to "投稿一覧", posts_path, class: "nav-item" %>
-          </li>
-          <li class="px-5">
-            <%= link_to "会員一覧", admin_customers_path, class: "nav-item" %>
-          </li>
-          <li class="px-5">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-item" %>
-          </li>
-        <% else %>
-          <li class="px-5">
-            <%= link_to "About", about_path, class: "nav-item" %>
-          </li>
-          <li class="px-5">
-            <%= link_to "投稿一覧", posts_path, class: "nav-item" %>
-          </li>
-          <li class="px-5">
-            <%= link_to "新規登録", new_customer_registration_path, class: "nav-item" %>
-          </li>
-          <li class="px-5">
-            <%= link_to "ログイン", new_customer_session_path, class: "nav-item" %>
-          </li>
-          <li class="px-5">
-            <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "nav-item" %>
-          </li>
-        <% end %>
-        </ul>
+            </div>
+           <ul class="navbar-nav">
+            <li class="px-5">
+              <%= link_to "投稿一覧", posts_path, class: "nav-item" %>
+            </li>
+            <li class="px-5">
+              <%= link_to "会員一覧", admin_customers_path, class: "nav-item" %>
+            </li>
+            <li class="px-5">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-item" %>
+            </li>
+           </ul>
+          <% else %>
+           <ul class="navbar-nav">
+            <li class="px-5">
+              <%= link_to "About", about_path, class: "nav-item" %>
+            </li>
+            <li class="px-5">
+              <%= link_to "投稿一覧", posts_path, class: "nav-item" %>
+            </li>
+            <li class="px-5">
+              <%= link_to "新規登録", new_customer_registration_path, class: "nav-item" %>
+            </li>
+            <li class="px-5">
+              <%= link_to "ログイン", new_customer_session_path, class: "nav-item" %>
+            </li>
+            <li class="px-5">
+              <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "nav-item" %>
+            </li>
+           </ul>
+          <% end %>
+         </div>
        </nav>
       </div>
   </div>

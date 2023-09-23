@@ -8,3 +8,10 @@ body {
   width: 100%;
 }
 
+@media screen and (max-width: 425px) {
+
+  main {
+    margin-top: 135px;
+  }
+
+}

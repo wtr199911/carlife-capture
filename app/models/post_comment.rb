@@ -2,8 +2,11 @@ class PostComment < ApplicationRecord
 
   belongs_to :customer
   belongs_to :post
+  belongs_to :parent, class_name: "PostComment", optional: true
 
-  validates :comment,presence: true
+  has_many :replies, class_name: "PostComment", foreign_key: :parent_id, dependent: :destroy
+
+  validates :comment,presence: true, length: { maximum: 200 }
 
   has_one :notification, as: :subject, dependent: :destroy
 

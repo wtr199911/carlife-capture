@@ -30,6 +30,8 @@ class Public::PostsController < ApplicationController
     @tag_list = @post.tags.pluck(:name).join(",")
     @post_tags = @post.tags
     @customer_info = @post.customer
+    # 返信コメント
+    @comment_reply = @post.post_comments.new
   end
 
   def edit

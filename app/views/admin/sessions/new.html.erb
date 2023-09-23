@@ -1,6 +1,6 @@
-<div class="container m-auto">
-
-  <h3 class="text-center">管理者ログイン</h3>
+<div class="container mt-5">
+ <div class="back-list">
+  <h3 class="text-center mt-4">管理者ログイン</h3>
   <div class="p-5">
     <%= form_with model: @admin, url: new_admin_session_path do |f| %>
       <%= render "admin/shared/error_messages", resource: resource %>
@@ -20,4 +20,5 @@
       </div>
     <% end %>
   </div>
+ </div>
 </div>
