@@ -13,7 +13,7 @@
             <% if @post.customer == current_customer %>
             <div>
               <%= link_to "編集", edit_post_path(@post.id), class: "card-link btn btn-outline-success btn-sm" %>
-              <%= link_to "削除", post_path(@post), class: "card-link btn btn-outline-danger btn-sm", method: :delete %>
+              <%= link_to "削除", post_path(@post), method: :delete, class: "card-link btn btn-outline-danger btn-sm" %>
             </div>
             <% else %>
             <% end %>
@@ -53,25 +53,9 @@
        </div>
 
      <div class="col-md-3 ">
-        <div id="comment_index" class="scroll-contents" data-simplebar>
+        <div id="comment_index">
           <%= render "admin/post_comments/index", post: @post %>
         </div>
      </div>
   </div>
 </div>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const postcomments = document.querySelectorAll('.says');
-
-    post_comments.forEach(post_comment => {
-      const comment = post_comment.textContent;
-      if (comment.length >= 21) {
-        // テキストの21文字目以降に改行を挿入
-        const formattedContent = comment.replace(/(.{20})/g, '$1\n');
-        post_comment.innerHTML = formattedContent;
-      }
-    });
-  });
-</script>
-
-

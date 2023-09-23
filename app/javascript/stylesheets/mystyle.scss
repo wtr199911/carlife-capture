@@ -79,6 +79,25 @@ footer{
   font-size: 1.5em;
 }
 
+// 投稿リストスタイル
+.list-style {
+  border: 5px solid #009900;
+  background-color: rgba( 255,255,255,0.8);
+}
+
+// ユーザー詳細画面・マイページ
+.back-list {
+  border: 5px solid #000;
+  border-radius: 25px;
+  background-color: rgba( 255,255,255,0.7);
+}
+
+// 投稿詳細ページのユーザー
+.info-follow {
+  background-color: rgba( 255,255,255,0);
+}
+
+
 // 投稿ボタン
 .post-button {
   display       : inline-block;
@@ -189,7 +208,7 @@ a.user-edit:hover {
 }
 
 .like-link:hover {
-  background-color: #fff!important;
+  background-color: rgba( 255,255,255,0);
 }
 
 .post-image {
@@ -197,6 +216,7 @@ a.user-edit:hover {
 }
 
 .info-image {
+  border-radius: 50px;
   width: 80px;
   height: 80px;
 }
@@ -233,6 +253,11 @@ a.user-edit:hover {
   background: #d7ebfe;
   font-size: 13px; /* テキストのフォントサイズを調整 */
   line-height: 1.4; /* テキストの行間を調整 */
+  max-width: 200px;
+}
+
+.comment-user {
+  white-space: pre-wrap;
 }
 
 .says:after {
@@ -259,9 +284,9 @@ a.user-edit:hover {
 }
 a.comment-delete:hover {
   background: tomato;
-  background-color: #fff!important;
+  background-color: rgba( 255,255,255,0);
   border-color: tomato;
-  opacity: 1!important;
+  opacity: 0.8!important;
 }
 .comment-delete::after {
   content:"削除";
@@ -272,24 +297,21 @@ a.comment-delete:hover {
 
 .comment-option {
   font-size: 10px;
-  padding-left: 100px;
+  padding-left: 140px;
 }
 
 // 投稿コメント一覧
-.scroll-contents {
-  margin: 0 auto;
-  width: 100%;
-  height: 500px;
-  max-height: 500px;
-  border-radius: 4px;
-  white-space: nowrap;
-  overflow: scroll;
-  -ms-overflow-style: none;    /* IE, Edge 対応 */
-  scrollbar-width: none;       /* Firefox 対応 */
+.comment-index {
+  border-radius: 15px;
+  border: 5px solid #009900;
+  background-color: rgba( 255,255,255,0.8);
 }
-
-.scroll-contents::-webkit-scrollbar {  /* Chrome, Safari 対応 */
-  display:none;
+.scroll-contents {
+  margin-right: 10px;
+  width: 100%;
+  height: 800px;
+  max-height: 800px;
+  overflow-y: scroll;
 }
 
 // 投稿テキスト

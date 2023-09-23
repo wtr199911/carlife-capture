@@ -16,7 +16,6 @@ import "../stylesheets/mystyle.scss";
 import "../stylesheets/homes.scss";
 import "simplebar";
 import "simplebar/dist/simplebar.css";
-import "script.js"
 
 Rails.start()
 Turbolinks.start()

@@ -1,6 +1,5 @@
 class Public::SearchesController < ApplicationController
-  before_action :authenticate_admin!
-  before_action :authenticate_customer!
+  before_action :authorize_access
 
   def search
     @model = params[:model]
@@ -16,6 +15,15 @@ class Public::SearchesController < ApplicationController
       @records = Post.search_for(@content, @method)
     elsif @model == "prefecture"
       @records = Prefecture.search_for(@content, @method)
+    end
+  end
+
+  private
+
+  def authorize_access
+    # 管理者か会員かゲストユーザーのいずれかであればアクセスを許可
+    unless admin_signed_in? || customer_signed_in? || guest_customer?
+      redirect_to root_path
     end
   end
 

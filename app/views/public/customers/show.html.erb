@@ -1,5 +1,5 @@
-<div class="container">
-  <h2 class="text-center mt-4">User Info</h2>
+<div class="container back-list mt-5">
+  <h1 class="text-center mt-4">User Info</h1>
   <div class="d-flex">
     <div class="m-5 col-5 text-center">
       <%= image_tag @customer.get_profile_image(200,200), style: "border-radius: 50%; object-fit:cover;"%><br>
@@ -78,7 +78,7 @@
 
 <% if admin_signed_in? %>
 <div class="container">
-  <h3 class="mb-3 font-weight-bold text-center">
+  <h3 class="mt-5 mb-3 font-weight-bold text-center text-white">
     <%= @customer.name %>さんの投稿履歴 (全 <%= @count_posts%>件)
   </h3>
   <%= render "public/posts/list", posts: @posts, customer: @customer, count_posts: @count_posts %>
@@ -86,7 +86,7 @@
 <% elsif current_customer.guest_customer? %>
 <% else %>
 <div class="container">
-  <h3 class="mb-3 font-weight-bold text-center">
+  <h3 class="mt-5 mb-3 font-weight-bold text-center text-white">
     <%= @customer.name %>さんの投稿履歴 (全 <%= @count_posts%>件)
   </h3>
   <%= render "public/posts/list", posts: @posts, customer: @customer, count_posts: @count_posts %>

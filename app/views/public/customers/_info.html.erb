@@ -1,9 +1,15 @@
-<div class="card px-3" style="width: 14rem; border-radius: 24px;">
-  <h4 class="text-center mt-2">User Info</h4>
+<div class="card px-3 list-style" style="width: 14rem; border-radius: 24px;">
+  <h4 class="text-center mt-3 pb-2" style="border-bottom: 1px solid #C0C0C0;">User Info</h4>
   <div class="m-auto">
     <div class="text-center">
-    <%= link_to customer_path(customer.id) do %>
-      <%= image_tag customer.get_profile_image(80,80), class: "info-image" %>
+    <% if current_customer = customer %>
+      <%= link_to mypage_path do %>
+        <%= image_tag customer.get_profile_image(80,80), class: "info-image" %>
+      <% end %>
+    <% else %>
+      <%= link_to customer_path(customer.id) do %>
+        <%= image_tag customer.get_profile_image(80,80), class: "info-image" %>
+      <% end %>
     <% end %>
     </div>
     <div class="card-body">
@@ -11,8 +17,8 @@
       <p class="card-text"><%= customer.profile_text %></p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item text-center">follows: <%= link_to customer.followings.count, customer_followings_path(customer) %></li>
-      <li class="list-group-item text-center">followers: <%= link_to customer.followers.count, customer_followers_path(customer) %></li>
+      <li class="list-group-item text-center info-follow">follows: <%= link_to customer.followings.count, customer_followings_path(customer), class: "like-link" %></li>
+      <li class="list-group-item text-center info-follow">followers: <%= link_to customer.followers.count, customer_followers_path(customer), class: "like-link" %></li>
       <% if admin_signed_in? %>
       <% elsif current_customer != customer %>
         <div id="follow_ajax_<%= customer.id %>" class="text-center my-2"><%= render "admin/relationships/btn", customer: customer_info, options: { class: ""} %></div>

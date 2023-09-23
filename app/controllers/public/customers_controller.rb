@@ -4,14 +4,14 @@ class Public::CustomersController < ApplicationController
 
   def mypage
     @customer = current_customer
-    @posts = @customer.posts.order("created_at DESC").page(params[:page]).per(5)
+    @posts = @customer.posts.order("created_at DESC").page(params[:page]).per(4)
     @count_posts = @customer.posts.count
   end
 
   def show
     @customer = Customer.find(params[:id])
     @post = Post.find(params[:id])
-    @posts = @customer.posts.order("created_at DESC").page(params[:page]).per(5)
+    @posts = @customer.posts.order("created_at DESC").page(params[:page]).per(4)
     @count_posts = @customer.posts.count
     @customer_info = @post.customer
   end

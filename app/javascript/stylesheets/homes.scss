@@ -69,7 +69,6 @@ hr {
 }
 
 // Aboutページ
-
 section {
   display: flex;
   padding: 5%;
@@ -125,16 +124,18 @@ section div {
 }
 
 .title-about {
+  color: #fff;
   font-size: 25px;
   font-family: "Impact";
 }
 
 .text-about {
+  color: #fff;
   font-size: 15px;
   line-height: 3.4;
 }
 
 .about-link {
   font-size: 25px;
-  color: #669933;
+  color: #66CC33;
 }
