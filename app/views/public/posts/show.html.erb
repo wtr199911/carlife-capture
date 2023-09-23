@@ -1,9 +1,9 @@
 <div class="container-fluid px-5 px-sm-0 mt-5">
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col-md-2 offset-md-1">
       <%= render "public/customers/info", customer: @post.customer, customer_info: @customer_info %>
     </div>
-       <div class="card mx-auto col-md-4 mb-5" style="width: 18rem; border-radius: 27px;">
+       <div class="card mx-5 col-md-4 mb-5" style="width: 18rem; border-radius: 27px;">
        <%= image_tag @post.get_image(330, 250),class: "card-img-top post-image mt-3" %>
          <div class="card-body">
            <div class="d-flex justify-content-between">
@@ -42,12 +42,11 @@
           <% if admin_signed_in? %>
             <%= link_to "編集", edit_post_path(@post.id), class: "card-link btn btn-outline-success" %>
             <%= link_to "削除", post_path(@post), class: "card-link btn btn-outline-danger", method: :delete %>
-          <% elsif @post.customer == current_customer %>
+          <% else %>
             <% if @post_comment.present? %>
               <%= render "layouts/errors", obj: @post_comment %>
             <% end %>
             <%= render "admin/post_comments/form", post: @post, post_comment: @post_comment %>
-          <% else %>
           <% end %>
           </div>
        </div>
