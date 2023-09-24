@@ -66,6 +66,8 @@ gem 'active_hash-like'
 
 gem 'ransack'
 
+gem 'active_storage_validations'
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

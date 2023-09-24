@@ -1,8 +1,15 @@
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
     <%= form_with model: [post, comment_reply], local: false do |f| %>
+      <%= f.hidden_field :parent_id %>
       <%= f.text_area :comment, rows:'2', placeholder: "コメントに返信する", class: "w-100", id: "comment_textarea" %>
       <%= f.submit "返信する" %>
     <% end %>
   </div>
 </div>
+
+<script>
+  $(".reply-btn").on("click", function () {
+    $("#post_comment_parent_id").val($(this).data("parent-id"))
+  })
+</script>

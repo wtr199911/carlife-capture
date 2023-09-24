@@ -16,6 +16,9 @@ class Post < ApplicationRecord
 
   attribute :name
 
+  validates :image, attached: true,
+                    content_type: ['image/png', 'image/jpeg']
+
   def favorited_by?(customer)
    favorites.exists?(customer_id: customer.id)
   end
