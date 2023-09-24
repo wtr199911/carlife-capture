@@ -22,6 +22,13 @@ class Customer < ApplicationRecord
   # フォロワーを取得
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_one_attached :profile_image
+  
+  validates :name, presence: true
+
+  validates :profile_image, content_type: ['image/png', 'image/jpeg']
+ 
+
    # 指定したユーザーをフォローする
   def follow(customer)
    active_relationships.create(followed_id: customer.id)
@@ -50,8 +57,6 @@ class Customer < ApplicationRecord
   def guest_customer?
     email == GUEST_USER_EMAIL
   end
-
-  has_one_attached :profile_image
 
    # プロフィール画像呼び出しメソッド
   def get_profile_image(width, height)

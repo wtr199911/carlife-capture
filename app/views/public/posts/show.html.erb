@@ -13,7 +13,7 @@
             <% if @post.customer == current_customer %>
             <div>
               <%= link_to "編集", edit_post_path(@post.id), class: "card-link btn btn-outline-success btn-sm" %>
-              <%= link_to "削除", post_path(@post), method: :delete, class: "card-link btn btn-outline-danger btn-sm" %>
+              <%= link_to "削除", post_path(@post), method: :delete, class: "card-link btn btn-outline-danger btn-sm", data: {confirm: "本当に削除しますか？"} %>
             </div>
             <% else %>
             <% end %>
@@ -41,7 +41,7 @@
           <div class="card-body text-center">
           <% if admin_signed_in? %>
             <%= link_to "編集", edit_post_path(@post.id), class: "card-link btn btn-outline-success" %>
-            <%= link_to "削除", post_path(@post), class: "card-link btn btn-outline-danger", method: :delete %>
+            <%= link_to "削除", post_path(@post), method: :delete, class: "card-link btn btn-outline-danger", data: {confirm: "本当に削除しますか？"} %>
           <% else %>
             <% if @post_comment.present? %>
               <%= render "layouts/errors", obj: @post_comment %>

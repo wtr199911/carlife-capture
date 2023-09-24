@@ -16,6 +16,10 @@ class Post < ApplicationRecord
 
   attribute :name
 
+  validates :title,
+            :place,
+  presence: true
+
   validates :image, attached: true,
                     content_type: ['image/png', 'image/jpeg']
 
