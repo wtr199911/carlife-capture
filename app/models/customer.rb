@@ -22,9 +22,13 @@ class Customer < ApplicationRecord
   # フォロワーを取得
   has_many :followers, through: :passive_relationships, source: :follower
 
+  mount_uploader :avatar, AvatarUploader
+
   has_one_attached :profile_image
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
+
+  validates :profile_text, length: { maximum: 100 }
 
   validates :profile_image, content_type: ['image/png', 'image/jpeg']
 

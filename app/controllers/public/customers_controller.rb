@@ -25,7 +25,7 @@ class Public::CustomersController < ApplicationController
    if current_customer.update(customer_params)
      redirect_to mypage_path, notice: "編集が完了しました"
    else
-     redirect_to infomation_path
+     redirect_to information_path, alert: "編集に失敗しました"
    end
   end
 
@@ -47,7 +47,7 @@ class Public::CustomersController < ApplicationController
     @post = Post.find(params[:id])
     @post_page = Post.order("created_at DESC").page(params[:page]).per(6)
   end
-  
+
   def favorite_users
     @customer = Customer.find(params[:id])
     favorites = Favorite.where(customer_id: @customer.id).pluck(:post_id)
@@ -60,7 +60,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit( :name, :profile_image, :profile_text)
+    params.require(:customer).permit( :name, :profile_text,  :avatar)
   end
 
   def authorize_access

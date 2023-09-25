@@ -7,13 +7,13 @@
         <div class="faceicon text-center">
           <% if post_comment.customer == current_customer %>
             <%= link_to mypage_path do %>
-              <%= image_tag post_comment.customer.get_profile_image(100,100), class: "w-75" %>
-              <div class="like-link"><%= post_comment.customer.name %></div>
+              <%= image_tag post_comment.customer.avatar.url, class: 'rounded-circle mr15', width: '90', height: '90' %>
+              <div class="like-link textOverflow"><%= post_comment.customer.name %></div>
             <% end %>
           <% else %>
             <%= link_to customer_path(post_comment.customer) do %>
-              <%= image_tag post_comment.customer.get_profile_image(100,100), class: "w-75" %>
-              <div class="like-link"><%= post_comment.customer.name %></div>
+              <%= image_tag post_comment.customer.avatar.url, class: 'rounded-circle mr15', width: '90', height: '90' %>
+              <div class="like-link textOverflow"><%= post_comment.customer.name %></div>
             <% end %>
           <% end %>
         </div>
@@ -77,13 +77,13 @@
             <div class="faceicon text-center">
             <% if reply.customer == current_customer %>
                 <%= link_to mypage_path do %>
-                <%= image_tag reply.customer.get_profile_image(50,50), class: "img-fluid" %>
-                <div class="like-link"><%= reply.customer.name %></div>
+                <%= image_tag reply.customer.avatar.url, class: 'rounded-circle mr15', width: '50', height: '50' %>
+                <div class="like-link textOverflow"><%= reply.customer.name %></div>
               <% end %>
             <% else %>
               <%= link_to customer_path(reply.customer) do %>
-                <%= image_tag reply.customer.get_profile_image(50,50), class: "img-fluid" %>
-                <div class="like-link"><%= reply.customer.name %></div>
+                <%= image_tag reply.customer.avatar.url, class: 'rounded-circle mr15', width: '50', height: '50' %>
+                <div class="like-link textOverflow"><%= reply.customer.name %></div>
               <% end %>
             <% end %>
             </div>

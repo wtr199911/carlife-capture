@@ -40,3 +40,4 @@ yarn-debug.log*
 .yarn-integrity
 #追記
 /.env
+/public/uploads

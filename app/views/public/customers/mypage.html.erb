@@ -2,7 +2,7 @@
   <h2 class="text-center mt-4">My Information</h2>
   <div class="d-flex">
     <div class="m-5 col-5 text-center">
-      <%= image_tag @customer.get_profile_image(200,200), style: "border-radius: 50%; object-fit:cover;"%><br>
+      <%= image_tag @customer.avatar.url, class: 'rounded-circle mr15', width: '200', height: '200' %><br>
 
       <% if current_customer.guest_customer? %>
       <% else %>
@@ -18,13 +18,13 @@
       <table class="table table-borderless text-center">
         <tr>
           <th>name</th>
-          <td><%= @customer.name %></td>
+          <td class="text-eng"><%= @customer.name %></td>
         </tr>
         <% if current_customer.guest_customer? %>
         <% else %>
         <tr>
           <th>information</th>
-          <td><%= @customer.profile_text %></td>
+          <td class="text-eng"><%= @customer.profile_text %></td>
         </tr>
         <tr>
           <th>followed</th>

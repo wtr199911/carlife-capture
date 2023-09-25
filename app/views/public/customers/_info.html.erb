@@ -4,17 +4,17 @@
     <div class="text-center">
     <% if current_customer = customer %>
       <%= link_to mypage_path do %>
-        <%= image_tag customer.get_profile_image(80,80), class: "info-image" %>
+        <%= image_tag customer.avatar.url, class: 'rounded-circle mr15', width: '100', height: '100' %>
       <% end %>
     <% else %>
       <%= link_to customer_path(customer.id) do %>
-        <%= image_tag customer.get_profile_image(80,80), class: "info-image" %>
+        <%= image_tag customer.avatar.url, class: 'rounded-circle mr15', width: '100', height: '100' %>
       <% end %>
     <% end %>
     </div>
     <div class="card-body">
-      <h5 class="card-title text-center"><%= customer.name %></h5>
-      <p class="card-text"><%= customer.profile_text %></p>
+      <h5 class="card-title text-center textOverflow"><%= customer.name %></h5>
+      <p class="card-text textOverflow"><%= customer.profile_text %></p>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item text-center info-follow">follows: <%= link_to customer.followings.count, customer_followings_path(customer), class: "like-link" %></li>

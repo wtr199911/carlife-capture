@@ -73,6 +73,12 @@ footer{
  padding: 15px 0;
 }
 
+// テキスト（折り返し用）
+.text-eng {
+  word-break: break-all;
+}
+
+
 // 戻るボタン
 .back-button {
   position: absolute;
@@ -100,15 +106,6 @@ footer{
   border-radius: 25px;
   background-color: rgba( 255,255,255,0.7);
 }
-
-// ユーザー画像
- img_icon {
-   max-width: 100px;
-   max-height: 100px;
-   width: 100px;
-   height: 100px;
-   border-radius: 50px;
- }
 
 // 投稿詳細ページのユーザー
 .show-info {
@@ -411,7 +408,7 @@ a.comment-reply-button {
 
 .reply-balloon5 {
   display: flex;
-  width: 335px;
+  width: 361px;
   padding: 1.1em 10px;
   overflow: hidden;
 }
@@ -442,7 +439,7 @@ a.comment-reply-button {
   line-height: 1; /* テキストの行間を調整 */
   max-width: 200px;
   left: 95%;
-  transform: translateX(-100%);
+  transform: translateX(-15%);
 }
 
 .reply-comment-user {
@@ -454,12 +451,12 @@ a.comment-reply-button {
 .reply-says:before {
   content: "";
   position: absolute;
-  top: 23px;
+  top: 13px;
   right: -19px;
   border: 8px solid transparent;
   border-left: 18px solid #99CC99;
   -webkit-transform: rotate(-35deg);
-  transform: rotate(30deg);
+  transform: rotate(10deg);
 }
 
 .reply-says p {
@@ -489,8 +486,8 @@ a.reply-comment-delete:hover {
 
 .reply-comment-option {
   font-size: 10px;
-  padding-left: 50px;
-  padding-right: 55px;
+  padding-left: 69px;
+  padding-right: 11px;
 }
 
 // 投稿コメント一覧
@@ -551,7 +548,8 @@ a.reply-comment-delete:hover {
   .header-current {
     position: absolute;
     height: 80px;
-    left: 130px;
+    left: 63px;
+    top: 9px;
   }
 
   .social {

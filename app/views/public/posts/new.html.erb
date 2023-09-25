@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<div class="container my-3 px-5">
  <div class="back-list">
   <h2 class="font-weight-bold text-center mt-4">投稿フォーム</h2>
     <div><%= render 'layouts/errors', obj: @post %></div>
@@ -9,30 +9,37 @@
            <tbody>
 
             <div class="text-center">
+              <% if @post.image.present? %>
+                <%= image_tag @post.image, class: 'mb-3', id: 'preview', size: '300x200' %>
+              <% else %>
+                <%= image_tag "no_image.jpg", class: 'mb-3', id: 'preview', size: '300x200' %>
+              <% end %>
+            </div>
+            <div class="text-center">
               <label class="mt-2 sm:mt-0 py-2 w-[212px] sm:w-[164px] h-8 border btn btn-outline-primary">
                 <i class="fa-solid fa-camera"></i>
                 <span class="ml-2">画像を選択する</span>
-                <%= f.file_field :image, class: "hidden"%>
+                <%= f.file_field :image, onchange: 'previewImage()', class: 'form-control hidden' %>
               </label>
             </div>
 
             <tr>
               <td>
-                <label>タイトル</label><br>
+                <label><i class="fa-solid fa-car"></i> タイトル（Title）</label><br>
                 <%= f.text_field :title, class: "h-2 col-12" %>
               </td>
             </tr>
 
             <tr>
               <td>
-                <label>投稿文</label><br>
+                <label><i class="fa-solid fa-message"></i> 投稿文（Text）</label><br>
                 <%= f.text_area :detail, rows:'5', class: "w-100" %>
               </td>
             </tr>
 
             <tr>
               <td>
-                <label>撮影場所</label><br>
+                <label><i class="fa-solid fa-location-arrow"></i> 撮影した都道府県（Prefecture）</label><br>
                 <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name,{include_blank: "---"} ) %><br>
                 <%= f.text_field :place, class: "col-12 mt-2", placeholder: "撮影場所を記入して下さい" %>
               </td>
@@ -40,7 +47,15 @@
 
             <tr>
               <td>
-                <label>タグ(,で区切ると複数タグ登録できます)</label>
+                <label><i class="fa-solid fa-location-dot"></i> 撮影した場所（Place）※ なるべく詳細に</label><br>
+                <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name,{include_blank: "---"} ) %><br>
+                <%= f.text_field :place, class: "col-12 mt-2", placeholder: "撮影場所を記入して下さい" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <label><i class="fa-solid fa-tag"></i> タグ(,で区切ると複数タグ登録できます)</label>
                 <%= f.text_field :name, class: "form-control", placeholder: "山,見晴らしがいい" %>
               </td>
             </tr>
@@ -54,3 +69,20 @@
     </div>
   </div>
 </div>
+
+<script>
+    function previewImage() {
+      const target = this.event.target;
+      const file = target.files[0];
+      const reader  = new FileReader();
+      reader.onloadend = function () {
+          const preview = document.querySelector("#preview")
+          if(preview) {
+              preview.src = reader.result;
+          }
+      }
+      if (file) {
+          reader.readAsDataURL(file);
+      }
+    }
+</script>

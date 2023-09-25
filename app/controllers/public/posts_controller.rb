@@ -12,7 +12,7 @@ class Public::PostsController < ApplicationController
     # 受け取った値を,で区切って配列にする
     tag_list = @post.name.split(',')
     if @post.save
-      tag_list.each do |tag|
+        tag_list.each do |tag|
         if Tag.new(name: tag).invalid?
           flash[:alert] = "一部のタグが空、もしくは10文字以上の為、保存されませんでした。"
         end

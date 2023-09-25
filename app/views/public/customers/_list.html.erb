@@ -13,7 +13,7 @@
         <tr>
           <td class="align-middle">
             <%= link_to customer_path(customer.id) do %>
-             <%= image_tag customer.get_profile_image(80,80), style: "border-radius: 50%; object-fit:cover;" %>
+             <%= image_tag customer.avatar.url, class: 'rounded-circle mr15', width: '90', height: '90' %>
             <% end %>
           </td>
           <td class="align-middle"><%= link_to customer.name, customer_path(customer.id), class: "text-dark" %></td>

@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-3">
           <%= link_to customer_path(post.customer.id) do %>
-            <%= image_tag post.customer.get_profile_image(70,70), class:"mt-3 rounded-circle"; %>
+            <%= image_tag post.customer.avatar.url, class: 'rounded-circle mr15', width: '70', height: '70' %>
           <% end %>
         </div>
         <div class="col-9">
@@ -18,13 +18,15 @@
             <% end %>
           </p>
           <p class="card-text textOverflow">text：<%= post.detail %></p>
-          <span><i class="fas fa-user"></i> <%= post.customer.name %> ｜ </span>
-          <span class="mx-2">
-            <%= render "admin/post_comments/counter", post: post %>
-          </span>
-          <span id="favorite_btn_<%= post.id %>" class="ml-2">
-              <%= render "admin/favorites/btn", post: post %>
-          </span>
+          <div class="d-flex">
+            <span class="d-flex"><i class="fas fa-user"></i> <p class="textOverflow"><%= post.customer.name %></p> ｜ </span>
+            <span class="mx-2">
+              <%= render "admin/post_comments/counter", post: post %>
+            </span>
+            <span id="favorite_btn_<%= post.id %>" class="ml-2">
+                <%= render "admin/favorites/btn", post: post %>
+            </span>
+          </div>
         </div>
       </div>
     </div>

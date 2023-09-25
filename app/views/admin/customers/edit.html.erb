@@ -8,7 +8,10 @@
   <%= form_with model: [:admin, @customer] do |f| %>
   <div class="d-flex">
     <div class="m-5 col-5 text-center">
-      <%= f.file_field :profile_image, accept: "image/*"%><br>
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar, onchange: 'previewImage()', class: 'form-control' %>
+      <%= f.hidden_field :avatar_cache %>
+      <%= image_tag @customer.avatar.url, class: 'rounded-circle mt-3', id: 'preview', size: '100x100' %>
     </div>
 
     <div class="col-5 pt-5">
@@ -19,7 +22,7 @@
         </tr>
         <tr>
           <th>information</th>
-          <td><%= f.text_area :profile_text, rows:'5', autofocus: true, class: "w-100" %></td>
+          <td class="text-eng"><%= f.text_area :profile_text, rows:'5', autofocus: true, class: "w-100" %></td>
         </tr>
         <tr>
           <th>Email</th>
@@ -43,3 +46,20 @@
   </div>
   <% end %>
 </div>
+
+<script>
+    function previewImage() {
+      const target = this.event.target;
+      const file = target.files[0];
+      const reader  = new FileReader();
+      reader.onloadend = function () {
+          const preview = document.querySelector("#preview")
+          if(preview) {
+              preview.src = reader.result;
+          }
+      }
+      if (file) {
+          reader.readAsDataURL(file);
+      }
+    }
+</script>

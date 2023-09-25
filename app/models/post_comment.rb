@@ -6,7 +6,7 @@ class PostComment < ApplicationRecord
 
   has_many :replies, class_name: "PostComment", foreign_key: :parent_id, dependent: :destroy
 
-  validates :comment,presence: true, length: { maximum: 200 }
+  validates :comment,presence: true, length: { maximum: 100 }
 
   has_one :notification, as: :subject, dependent: :destroy
 

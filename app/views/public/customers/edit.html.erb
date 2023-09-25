@@ -1,18 +1,20 @@
 <div class="container back-list my-5">
   <h2 class="text-center mt-3">プロフィール編集画面</h2>
-  <div><%= render 'layouts/errors', obj: @customer %></div>
+
   <%= form_with model: @customer, url: information_update_path, local:true do |f| %>
-  <div class="d-flex">
-    <div class="m-5 col-5 text-center">
-      <%= f.file_field :profile_image, class: "img_field", style: 'display:none;', id: "file_field" %>
-      <% if @customer.profile_image %>
-        <%= image_tag @customer.profile_image, onclick: "$('#file_field').click()", class: "img_prev img_icon" %>
-      <% else %>
-        <%= image_pack_tag 'profile_image.jpg' %>
-      <% end %>
+  <div class="row">
+    <div class="m-5 col-md-5 text-center">
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar, onchange: 'previewImage()', class: 'form-control' %>
+    <%= f.hidden_field :avatar_cache %>
+    <% if @customer.avatar.present? %>
+      <%= image_tag @customer.avatar.url, class: 'rounded-circle mt-3', id: 'preview', size: '100x100' %>
+    <% else %>
+      <%= image_tag "profile_image.jpg", class: 'rounded-circle mt-3', id: 'preview', size: '100x100' %>
+    <% end %>
     </div>
 
-    <div class="col-5 pt-5">
+    <div class="col-md-5 pt-5">
       <table class="table table-borderless">
         <tr>
           <th>name</th>
@@ -25,11 +27,26 @@
       </table>
     </div>
   </div>
-  <div class="d-flex justify-content-center">
-    <div class="m-5"><%= f.submit "変更を保存", class: "btn btn-outline-success" %></div>
-    <div class="m-5"><%= link_to "退会する", confirm_withdraw_path, class: "btn btn-outline-danger" %></div>
+  <div class="row justify-content-center">
+    <div class="col-md-2 m-5"><%= f.submit "変更を保存", class: "btn btn-outline-success" %></div>
+    <div class="col-md-2 m-5"><%= link_to "退会する", confirm_withdraw_path, class: "btn btn-outline-danger" %></div>
   </div>
   <% end %>
 </div>
 
-<%= javascript_pack_tag "js/edit" %>
+<script>
+    function previewImage() {
+      const target = this.event.target;
+      const file = target.files[0];
+      const reader  = new FileReader();
+      reader.onloadend = function () {
+          const preview = document.querySelector("#preview")
+          if(preview) {
+              preview.src = reader.result;
+          }
+      }
+      if (file) {
+          reader.readAsDataURL(file);
+      }
+    }
+</script>

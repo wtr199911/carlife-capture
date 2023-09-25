@@ -8,7 +8,3 @@
 
 # 管理者登録
 Admin.create!(email: "admin@email.com", password: "adminpass")
-
-100.times do |number|
-  Post.create(post_id: "#{number}")
-end
