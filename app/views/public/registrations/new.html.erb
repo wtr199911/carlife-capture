@@ -1,4 +1,3 @@
-<%= render "public/shared/error_messages", resource: resource %>
 <div class = "container contents">
 	<div class="wrapper my-5">
 		<div class="form form-signin">
@@ -6,6 +5,8 @@
 
 		    <h3 class="form-signin-heading">Welcome! Sign up</h3>
 			  <hr class="colorgraph"><br>
+
+			  <%= render "public/shared/error_messages", resource: resource %>
 
         <%= f.label :name %>
         <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "User name" %>

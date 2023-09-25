@@ -12,15 +12,16 @@
               <% end %>
             </div>
         <% elsif current_customer.guest_customer? %>
-          <% if current_customer != @customer %>
-            <div><%= render "admin/relationships/btn", customer: @customer_info, options: { class: ""} %></div>
-          <% else %>
-            <div>
-              <%= link_to information_path, class: "user-edit" do %>
-                  <i class="fa-solid fa-user-pen"></i>
-              <% end %>
-            </div>
+        <% elsif @post.customer == current_customer %>
+        <div class="mt-3">
+          <%= link_to information_path, class: "user-edit" do %>
+            <i class="fa-solid fa-user-pen"></i>
           <% end %>
+        </div>
+        <% else %>
+            <div>
+              <%= render "admin/relationships/btn", customer: @customer %>
+            </div>
         <% end %>
       </div>
     </div>
@@ -84,6 +85,13 @@
   <%= render "public/posts/list", posts: @posts, customer: @customer, count_posts: @count_posts %>
 </div>
 <% elsif current_customer.guest_customer? %>
+<% elsif @post.customer == current_customer %>
+<div class="container">
+  <h3 class="mt-5 mb-3 font-weight-bold text-center text-white">
+    投稿履歴 (全 <%= @count_posts%>件)
+  </h3>
+  <%= render "public/posts/list", posts: @posts, customer: @customer, count_posts: @count_posts %>
+</div>
 <% else %>
 <div class="container">
   <h3 class="mt-5 mb-3 font-weight-bold text-center text-white">

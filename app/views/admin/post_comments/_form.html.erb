@@ -1,8 +1,9 @@
 <% if current_customer.guest_customer? %>
   <strong><p>コメントの投稿には新規登録/ログインが必要です</p></strong>
 <% else %>
+  <div id ="comments-error"></div>
   <%= form_with model: [post, post_comment], local: false do |f| %>
-    <%= f.text_area :comment, rows:'5', placeholder: "コメントをここに", class: "w-100", id: "comment_textarea" %>
-    <%= f.submit "送信" %>
+    <%= f.text_area :comment, rows:'5', placeholder: "コメントをここに", class: "w-100 post_comment_input", id: "comment_textarea" %>
+    <%= f.submit "送信", class: "post_button" %>
   <% end %>
 <% end %>

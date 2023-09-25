@@ -1,13 +1,20 @@
  <div class="comment-index my-5">
-   <h4 class="text-center my-3">コメント一覧　<%= post.post_comments.where(parent_id: nil).count%> 件</h4>
+   <h4 class="text-center my-3">コメント一覧　<%= post.post_comments.where(parent_id: nil).count %> 件</h4>
    <hr style="border-top: 1px solid #C0C0C0;">
   <div class="<%= "scroll-contents" if post.post_comments.where(parent_id: nil).count > 5 %>">
     <% post.post_comments.where(parent_id: nil).each do |post_comment| %>
       <div class="balloon5">
         <div class="faceicon text-center">
-          <%= link_to customer_path(post_comment.customer) do %>
-            <%= image_tag post_comment.customer.get_profile_image(100,100), class: "w-75" %>
-            <div class="like-link"><%= post_comment.customer.name %></div>
+          <% if post_comment.customer == current_customer %>
+            <%= link_to mypage_path do %>
+              <%= image_tag post_comment.customer.get_profile_image(100,100), class: "w-75" %>
+              <div class="like-link"><%= post_comment.customer.name %></div>
+            <% end %>
+          <% else %>
+            <%= link_to customer_path(post_comment.customer) do %>
+              <%= image_tag post_comment.customer.get_profile_image(100,100), class: "w-75" %>
+              <div class="like-link"><%= post_comment.customer.name %></div>
+            <% end %>
           <% end %>
         </div>
         <div class="chatting">

@@ -23,11 +23,11 @@ class Customer < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   has_one_attached :profile_image
-  
-  validates :name, presence: true
+
+  validates :name, presence: true, uniqueness: true
 
   validates :profile_image, content_type: ['image/png', 'image/jpeg']
- 
+
 
    # 指定したユーザーをフォローする
   def follow(customer)

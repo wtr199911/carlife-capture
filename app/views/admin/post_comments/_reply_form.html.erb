@@ -1,12 +1,19 @@
+<% if current_customer.guest_customer? %>
+  <div class="collapse" id="collapseExample">
+    <strong><p class="p-2">コメントの返信には新規登録/ログインが必要です</p></strong>
+  </div>
+<% else %>
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
+    <div id ="reply-comments-error"></div>
     <%= form_with model: [post, comment_reply], local: false do |f| %>
       <%= f.hidden_field :parent_id %>
-      <%= f.text_area :comment, rows:'2', placeholder: "コメントに返信する", class: "w-100", id: "comment_textarea" %>
-      <%= f.submit "返信する" %>
+      <%= f.text_area :comment, rows:'2', placeholder: "コメントに返信する", class: "w-100 post_comment_reply", id: "comment_textarea" %>
+      <p class="text-center"><%= f.submit "返信する", class: "post_comment_button" %></p>
     <% end %>
   </div>
 </div>
+<% end %>
 
 <script>
   $(".reply-btn").on("click", function () {

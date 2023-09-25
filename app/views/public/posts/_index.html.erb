@@ -6,15 +6,21 @@
     <% end %>
    <div class="d-flex">
     <p class="m-3">
+    <% if post.customer == current_customer %>
+      <%= link_to mypage_path do %>
+        <%= image_tag post.customer.get_profile_image(50,50), class:"rounded-circle"; %>
+      <% end %>
+    <% else %>
       <%= link_to customer_path(post.customer.id) do %>
         <%= image_tag post.customer.get_profile_image(50,50), class:"rounded-circle"; %>
       <% end %>
+    <% end %>
     </p>
-    <p class="card-title flex-fill pt-4" style="padding-left: 20px;">
       <%= link_to(post_path(post.id), class: "text-dark") do %>
-        <strong><i class="fa-solid fa-car"></i><span> <%= post.title %></span></strong>
+        <div class="card-title flex-fill pt-4" style="padding-left: 20px;">
+          <p class="textOverflow"><strong><i class="fa-solid fa-car"></i> <%= post.title %></strong></p>
+        </div>
       <% end %>
-    </p>
    </div>
     <div class="card-body">
        <div class="row">

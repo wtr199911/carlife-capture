@@ -1,1 +1,1 @@
-$("#follow_ajax_<%= @customer.id %>").html("<%= j(render 'admin/relationships/btn', customer: @customer) %>");
+$("#follow_ajax_<%= @customer.id %>").html("<%= j(render 'admin/relationships/btn', customer: @customer, customer: @customer_info ) %>");

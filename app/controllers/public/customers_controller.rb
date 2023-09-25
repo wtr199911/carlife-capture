@@ -14,6 +14,7 @@ class Public::CustomersController < ApplicationController
     @posts = @customer.posts.order("created_at DESC").page(params[:page]).per(4)
     @count_posts = @customer.posts.count
     @customer_info = @post.customer
+    @customers = current_customer
   end
 
   def edit

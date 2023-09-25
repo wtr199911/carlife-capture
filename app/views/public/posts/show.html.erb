@@ -3,23 +3,22 @@
     <div class="col-md-2 offset-md-1">
       <%= render "public/customers/info", customer: @post.customer, customer_info: @customer_info %>
     </div>
-       <div class="card mx-5 col-md-4 mb-5" style="width: 18rem; border-radius: 27px;">
+       <div class="card mx-5 col-md-4 mb-5 show-list">
        <%= image_tag @post.get_image(330, 250),class: "card-img-top post-image mt-3" %>
          <div class="card-body">
            <div class="d-flex justify-content-between">
             <h5 class="text-center">
               <strong><i class="fa-solid fa-car"></i><span> <%= @post.title %></span></strong>
             </h5>
-            <% if @post.customer == current_customer %>
-            <div>
-              <%= link_to "編集", edit_post_path(@post.id), class: "card-link btn btn-outline-success btn-sm" %>
-              <%= link_to "削除", post_path(@post), method: :delete, class: "card-link btn btn-outline-danger btn-sm", data: {confirm: "本当に削除しますか？"} %>
-            </div>
-            <% else %>
-            <% end %>
            </div>
             <p class="card-text mt-3 post-detail"><%= @post.detail %></p>
-            <p class="card-text text-right">
+            <div class=" d-flex bd-highlight ">
+            <% if @post.customer == current_customer %>
+              <%= link_to "編集", edit_post_path(@post.id), class: "card-link btn btn-outline-success btn-sm bd-highlight" %>
+              <%= link_to "削除", post_path(@post), method: :delete, class: "card-link btn btn-outline-danger btn-sm bd-highlight", data: {confirm: "本当に削除しますか？"} %>
+            <% else %>
+            <% end %>
+            <p class="card-text ml-auto bd-highlight">
               <span id="comment_counter" class="mx-2">
                 <%= render "admin/post_comments/counter", post: @post %>
               </span>
@@ -27,6 +26,7 @@
                   <%= render "admin/favorites/btn", post: @post %>
               </span>
             </p>
+            </div>
          </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item text-center">

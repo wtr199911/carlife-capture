@@ -1,1 +1,1 @@
-$("#follow_ajax_<%= @customer.id %>").html("<%= j(render partial: 'admin/relationships/btn', locals: {customer: @customer}) %>")
+$("#follow_ajax_<%= @customer.id %>").html("<%= j(render partial: 'admin/relationships/btn', locals: {customer: @customer_info }) %>")

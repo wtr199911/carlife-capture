@@ -3,13 +3,15 @@
   <h2 class="text-center text-white"><strong>通知一覧</strong></h2>
   <% if @notifications.present? %>
     <div class="text-center">
-      <%= link_to "全削除",notifications_path(@notifications), method: :delete,class: "btn btn-light" %>
+      <%= link_to "全削除",notification_path(@notifications), method: :delete, class: "btn btn-secondary mt-5" %>
     </div>
-    <% @notifications.each do |notification| %>
-    <div data-simplebar>
-      <%= render "#{notification.action_type}", notification: notification %>
+    <div class="comment-index m-5">
+      <div class="<%= "scroll-contents" if @customer.notifications.count > 5 %>">
+      <% @notifications.each do |notification| %>
+        <%= render "#{notification.action_type}", notification: notification %>
+      <% end %>
+      </div>
     </div>
-    <% end %>
   <% else %>
     <p class="text-center text-white">通知はありません</p>
   <% end %>

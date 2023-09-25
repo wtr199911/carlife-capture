@@ -102,28 +102,39 @@ footer{
 }
 
 // 投稿詳細ページのユーザー
+.show-info {
+  width: 18rem;
+  border-radius: 27px;
+}
+
 .info-follow {
   background-color: rgba( 255,255,255,0);
+}
+
+// 投稿詳細ページの投稿
+.show-list {
+  width: 18rem;
+  border-radius: 27px;
 }
 
 
 // 投稿ボタン
 .post-button {
   display       : inline-block;
-  border-radius : 5%;          /* 角丸       */
-  font-size     : 16pt;        /* 文字サイズ */
-  text-align    : center;      /* 文字位置   */
-  cursor        : pointer;     /* カーソル   */
-  padding       : 1px 30px;   /* 余白       */
-  background    : rgba(89, 179, 0, 0.37);     /* 背景色     */
-  color         : #006600;     /* 文字色     */
-  line-height   : 1em;         /* 1行の高さ  */
-  transition    : .3s;         /* なめらか変化 */
-  border        : 2px solid rgba(89, 179, 0, 0.37);    /* 枠の指定 */
+  border-radius : 5%;
+  font-size     : 16pt;
+  text-align    : center;
+  cursor        : pointer;
+  padding       : 1px 30px;
+  background    : rgba(89, 179, 0, 0.37);
+  color         : #006600;
+  line-height   : 1em;
+  transition    : .3s;
+  border        : 2px solid rgba(89, 179, 0, 0.37);
 }
 .post-button:hover {
-  color         : rgba(89, 179, 0, 0.37);     /* 背景色     */
-  background    : #006600;     /* 文字色     */
+  color         : rgba(89, 179, 0, 0.37);
+  background    : #006600;
 }
 
 // ファイルを選択
@@ -230,11 +241,64 @@ a.user-edit:hover {
   height: 80px;
 }
 
+// コメント投稿画面
+
+.post_comment_input {
+  border-radius: 10px;
+}
+
+.post_button {
+  display       : inline-block;
+  border-radius : 10%;
+  font-size     : 18pt;
+  text-align    : center;
+  cursor        : pointer;
+  padding       : 7px 29px;
+  background    : #4da6ff;
+  color         : #ffffff;
+  line-height   : 1em;
+  transition    : .3s;
+  box-shadow    : 3px 3px 7px #666666;
+  border        : 2px solid #4da6ff;
+}
+
+.post_button:hover {
+  box-shadow    : none;
+  color         : #4da6ff;
+  background    : #ffffff;
+}
+
+// 返信コメント投稿画面
+
+.post_comment_button {
+  display       : inline-block;
+  border-radius : 43%;
+  font-size     : 12pt;
+  text-align    : center;
+  cursor        : pointer;
+  padding       : 7px 10px;
+  background    : #59b300;
+  color         : #ffffff;
+  line-height   : 1em;
+  transition    : .3s;
+  box-shadow    : 3px 3px 7px #666666;
+  border        : 2px solid #59b300;
+}
+.post_comment_button:hover {
+  box-shadow    : none;
+  color         : #59b300;
+  background    : #ffffff;
+}
+
+.post_comment_reply {
+  border-radius: 10px;
+  height: 100px;
+}
+
 // コメント欄
 
 
 .balloon5 {
-  width: 100%;
   margin: 1.5em 0;
   overflow: hidden;
 }
@@ -439,8 +503,13 @@ a.reply-comment-delete:hover {
 	overflow: hidden;
 	line-height: 1.0;
 	white-space: nowrap;
-	text-overflow: ellipsis;
-	-webkit-text-overflow: ellipsis;
+
+  /* 幅を指定しないとテキストの長さによって要素の幅が変わるため指定 */
+  width: 120px;
+
+  /* オーバーしたテキストを３点リーダーにする */
+  text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis;
 	-o-text-overflow: ellipsis;
 }
 
@@ -452,11 +521,6 @@ a.reply-comment-delete:hover {
 }
 
 @media screen and (max-width: 425px) {
-
-  body {
-    width: 100%;
-    height: 100%;
-  }
 
   .footerFixed {
     height: 115rem;
@@ -483,7 +547,7 @@ a.reply-comment-delete:hover {
 
   .social {
     position: absolute;
-    right: 20px;
+    right: 50px;
     top: 3px;
   }
 
@@ -512,4 +576,29 @@ a.reply-comment-delete:hover {
   .wrapper {
     margin: 185px;
   }
+
+  .show-list {
+    width: 50rem;
+  }
+
+  .show-info {
+    width: auto;
+    margin-bottom: 80px;
+  }
+
+  .balloon5 {
+    margin: 1.5em 70px;
+  }
+
+  .reply-balloon5 {
+    display: -webkit-inline-box;
+    max-width: 796px;
+    width: 796px;
+  }
+
+  .reply-comment-option {
+    padding-left: 400px;
+  }
+
+
 }

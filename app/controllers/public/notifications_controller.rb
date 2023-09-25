@@ -1,5 +1,6 @@
 class Public::NotificationsController < ApplicationController
   def index
+    @customer = current_customer
     @notifications = current_customer.notifications.order(created_at: :desc).page(params[:page]).per(20)
     @notifications.where(checked: false).each do |notification|
       notification.update(checked: true)

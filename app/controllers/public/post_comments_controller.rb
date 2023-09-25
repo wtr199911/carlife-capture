@@ -6,28 +6,8 @@ class Public::PostCommentsController < ApplicationController
     @post_comment.post_id = @post.id
     # 返信コメントの作成
     @comment_reply = @post.post_comments.new
-    if @post_comment.save
-      flash.now[:notice] = "コメントの投稿に成功しました。"
-    else
-      @post_new = Post.new
-      @customer_info = @post.customer
-      @posts = Post.all
-      @post_tags = @post.tags
-      flash.now[:alert] = "コメントの投稿に失敗しました。"
-      render template: "public/posts/show"
-    end
-  end
-
-  def create_reply
-    @parent_comment = PostComment.find(params[:parent_id])
-    @comment_reply = @parent_comment.replies.build(post_comment_params)
-    @comment_reply.customer = current_customer
-
-    if @comment_reply.save
-      redirect_to post_path(@parent_comment.post), notice: "コメントに返信しました。"
-    else
-      flash.now[:alert] = "コメントの返信に失敗しました。"
-      render template: "public/posts/show"
+    unless @post_comment.save
+      render 'error'
     end
   end
 
@@ -37,8 +17,6 @@ class Public::PostCommentsController < ApplicationController
     @comment_reply = @post.post_comments.new
 
     @comment = PostComment.find(params[:id]).destroy
-    # flash.now[:notice] = "コメントを削除しました。"
-    # render template: "posts/show"
   end
 
   private

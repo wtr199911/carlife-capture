@@ -28,7 +28,18 @@ body {
   background-color: #464646;
 }
 
+.devise-error-messages {
+  color: red;
+}
+
 @media screen and (max-width: 425px) {
+
+  body {
+    max-width: 926px;
+    max-height: 1845px;
+    width: 926px;
+    height: 1845px;
+  }
 
   main {
     margin-top: 135px;

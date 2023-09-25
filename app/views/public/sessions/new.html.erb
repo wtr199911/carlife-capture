@@ -1,11 +1,12 @@
 <div class = "container">
-  <%= render "layouts/errors", obj: @customer %>
 	<div class="wrapper my-5">
 		<div class="form form-signin">
     <%= form_with model: @customer, url: customer_session_path do |f| %>
 
 		    <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
 			  <hr class="colorgraph"><br>
+
+        <%= render "layouts/errors", obj: @customer %>
 
         <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "User name" %>
         <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Password" %>

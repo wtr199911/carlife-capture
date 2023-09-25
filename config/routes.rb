@@ -53,17 +53,12 @@ Rails.application.routes.draw do
     end
 
     resources :posts do
-      resources :post_comments, only: [ :create, :destroy ] do
-        member do
-          post "create_reply"
-          delete "destroy_reply"
-        end
-      end
+      resources :post_comments, only: [ :create, :destroy ]
 
       resource :favorites, only: [ :create, :destroy ]
     end
 
-    resources :notifications, only: [:index]
+    resources :notifications, only: [:index, :destroy]
 
   end
 
