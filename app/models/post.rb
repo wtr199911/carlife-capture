@@ -74,9 +74,13 @@ class Post < ApplicationRecord
 
     # 新しいタグを保存
     new_tags.each do |new|
+      if Tag.new(name: new).valid?
       new_post_tag = Tag.find_or_create_by(name: new)
       self.tags << new_post_tag
-     end
+      else
+        # flash[:alert] = "一部のタグが空、もしくは10文字以上の為、保存されませんでした。"
+      end
+    end
   end
 
   def self.search_for(content, method)

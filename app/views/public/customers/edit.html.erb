@@ -4,7 +4,12 @@
   <%= form_with model: @customer, url: information_update_path, local:true do |f| %>
   <div class="d-flex">
     <div class="m-5 col-5 text-center">
-      <%= f.file_field :profile_image, accept: "image/*"%><br>
+      <%= f.file_field :profile_image, class: "img_field", style: 'display:none;', id: "file_field" %>
+      <% if @customer.profile_image %>
+        <%= image_tag @customer.profile_image, onclick: "$('#file_field').click()", class: "img_prev img_icon" %>
+      <% else %>
+        <%= image_pack_tag 'profile_image.jpg' %>
+      <% end %>
     </div>
 
     <div class="col-5 pt-5">
@@ -26,3 +31,5 @@
   </div>
   <% end %>
 </div>
+
+<%= javascript_pack_tag "js/edit" %>

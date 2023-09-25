@@ -27,7 +27,8 @@
    <main>
     <% if flash[:notice] %>
         <p class="alert alert-success"><%= notice %></p>
-    <% elsif flash[:alert] %>
+    <% end %>
+    <% if flash[:alert] %>
         <p class="alert alert-danger"><%= alert %></p>
     <% end %>
 

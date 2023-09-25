@@ -19,7 +19,7 @@
           <% end %>
         </div>
         <% else %>
-            <div>
+            <div id="follow_ajax_<%= @customer.id %>">
               <%= render "admin/relationships/btn", customer: @customer %>
             </div>
         <% end %>
