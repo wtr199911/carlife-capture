@@ -1,4 +1,5 @@
-<% if current_customer.guest_customer? %>
+<% if admin_signed_in? %>
+<% elsif current_customer.guest_customer? %>
   <strong><p>コメントの投稿には新規登録/ログインが必要です</p></strong>
 <% else %>
   <div id ="comments-error"></div>

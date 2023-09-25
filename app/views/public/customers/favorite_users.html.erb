@@ -1,7 +1,7 @@
 <div class="container">
   <% if @customers.exists? %>
     <div class="container back-list mt-5">
-      <h2 class="m-3 text-center mt-4"><%= @customer.name %>をいいねした User <%= @customer.favorites.count %>人</h2>
+      <h2 class="m-3 text-center mt-4">人</h2>
       <div><%= render "public/customers/list", customers: @customers, customer_page: @customer_page %></div>
     </div>
   <% else %>

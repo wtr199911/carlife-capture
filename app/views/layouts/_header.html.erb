@@ -17,6 +17,16 @@
           <% end %>
          </div>
 
+          <div class="user-icon">
+            <% if admin_signed_in? %>
+            <% elsif customer_signed_in? %>
+              <%= link_to mypage_path do %>
+                <%= image_tag current_customer.avatar.url, class: 'rounded-circle mr15', width: '50', height: '50' %>
+              <% end %>
+            <% else %>
+            <% end %>
+          </div>
+
          <div class="">
           <%= link_to root_path, data:{"turbolinks" => false} do %>
               <img class="navbar-brand"><%= image_tag "logo.png", class: "logo" %>
@@ -74,11 +84,6 @@
             </li>
           </ul>
           <% elsif admin_signed_in? %>
-            <div class="back-button">
-              <%= link_to :back do %>
-                <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
-              <% end %>
-            </div>
            <ul class="navbar-nav">
             <li class="px-5">
               <%= link_to "投稿一覧", posts_path, class: "nav-item" %>

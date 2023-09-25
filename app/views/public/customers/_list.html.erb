@@ -12,8 +12,14 @@
        <% customers.each do |customer| %>
         <tr>
           <td class="align-middle">
-            <%= link_to customer_path(customer.id) do %>
-             <%= image_tag customer.avatar.url, class: 'rounded-circle mr15', width: '90', height: '90' %>
+            <% if current_customer == customer %>
+              <%= link_to mypage_path do %>
+                <%= image_tag customer.avatar.url, class: 'rounded-circle mr15', width: '80', height: '80' %>
+              <% end %>
+            <% else %>
+              <%= link_to customer_path(customer.id) do %>
+                <%= image_tag customer.avatar.url, class: 'rounded-circle mr15', width: '80', height: '80' %>
+              <% end %>
             <% end %>
           </td>
           <td class="align-middle"><%= link_to customer.name, customer_path(customer.id), class: "text-dark" %></td>

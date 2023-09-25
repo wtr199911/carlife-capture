@@ -1,6 +1,14 @@
 <div class="container">
-  <div class="m-3 sel sel--black-panther">
-   <%= render "layouts/tag_search", post: @posts %>
+
+  <div class="back-list row justify-content-ｙ mx-auto mt-5" style="width: 40%;">
+   <p class="m-auto">　タグで検索はこちら</p>
+   <div class="m-3 sel sel--black-panther">
+    <%= render "layouts/tag_search", post: @posts %>
+   </div>
   </div>
+  <% if @posts.present? %>
    <%= render "public/posts/index", posts: @post, post_page: @post %>
+  <% else %>
+   <h2 class="text-center text-white my-5"><strong>投稿は見つかりませんでした</strong></h2>
+  <% end %>
 </div>

@@ -1,4 +1,4 @@
-<div class="container back-list mt-5">
+<div class="container back-list my-5">
   <h1 class="text-center mt-4">User Info</h1>
   <div class="d-flex">
     <div class="m-5 col-5 text-center">
@@ -27,7 +27,7 @@
     </div>
 
     <div class="col-5 pt-5">
-      <table class="table table-borderless">
+      <table class="table table-borderless text-center">
         <tr>
           <th>name</th>
           <td class="text-eng"><%= @customer.name %></td>
@@ -46,16 +46,12 @@
           <td><%= link_to @customer.followers.count, customer_followers_path(@customer), class: "text-dark" %></td>
         </tr>
         <tr>
-          <th>favorites Users</th>
-          <td><%= render "admin/favorites/counter", customer: @customer %></td>
-        </tr>
-        <tr>
           <th>user status</th>
           <td class="font-weight-bold">
             <% if @customer.is_valid %>
-              <p class="text-success">有効</p>
-            <% else %>
               <p class="text-danger">退会</p>
+            <% else %>
+              <p class="text-success">有効</p>
             <% end %>
           </td>
         </tr>
@@ -79,11 +75,7 @@
         </tr>
         <tr>
           <th>favorites index</th>
-          <td><%= render "admin/favorites/counter", customer: @customer %></td>
-        </tr>
-        <tr>
-          <th>favorite users</th>
-          <td><%= render "admin/favorites/user_counter", customer: @customer %></td>
+          <td><%= render "admin/favorites/counter", customer: @customer, class: "text-dark" %></td>
         </tr>
         <% end %>
       </table>

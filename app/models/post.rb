@@ -16,10 +16,12 @@ class Post < ApplicationRecord
 
   attribute :name
 
-  validates :title,
-            :place,
-            :prefecture,
-  presence: true
+  validates :title, presence: true, length: { maximum: 20 }
+
+  validates :place, presence: true, length: { maximum: 30 }
+
+  validates :prefecture, presence: true
+
 
   validates :detail, length: { maximum: 200 }
 

@@ -1,7 +1,7 @@
-<div class="container">
-  <h2 class="m-3 text-center text-white"><strong>Follower Users</strong></h2>
+<div class="container my-5 back-list">
+  <h2 class="m-3 text-center"><strong>Follower Users</strong></h2>
   <% if @customers.exists? %>
-    <div><%= render "public/customers/list", customers: @customers, customer_page: @page %></div>
+    <div class="back-list my-5"><%= render "public/customers/list", customers: @customers, customer_page: @page %></div>
   <% else %>
     <p class="text-center text-white">ユーザーはいません</p>
   <% end %>

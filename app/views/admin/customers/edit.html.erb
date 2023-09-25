@@ -1,8 +1,8 @@
-<div class="container mt-3">
+<div class="container my-3 back-list">
 
-  <h4 class="font-weight-bold mb-5 text-center"><%= @customer.name %>さんの会員情報</h4>
+  <h4 class="font-weight-bold my-5 text-center"><%= @customer.name %>さんの会員情報</h4>
   <div class="row justify-content-center">
-    <h5 class="font-weight-bold mb-3 ml-3">会員ID</h5>
+    <h5 class="font-weight-bold mb-3 ml-3 text-center">会員ID</h5>
     <p class="font-weight-bold mb-3 ml-3"><%= @customer.id %></p>
   </div>
   <%= form_with model: [:admin, @customer] do |f| %>
@@ -31,11 +31,11 @@
         <tr>
           <th>status</th>
           <td class="text-center">
-            <%= f.radio_button :is_valid, :true, class: "mr-2" %>
-            <%= f.label :is_valid, "有効", value: true, class: "text-success mr-2" %>
-
             <%= f.radio_button :is_valid, :false, class: "mr-2" %>
-            <%= f.label :is_valid, "退会", value: false, class: "text-danger mr-2" %>
+            <%= f.label :is_valid, "有効", value: false, class: "text-success mr-2" %>
+
+            <%= f.radio_button :is_valid, :true, class: "mr-2" %>
+            <%= f.label :is_valid, "退会", value: true, class: "text-danger mr-2" %>
           </td>
         </tr>
       </table>

@@ -1,4 +1,5 @@
-<% if current_customer.guest_customer? %>
+<% if admin_signed_in? %>
+<% elsif current_customer.guest_customer? %>
   <div class="collapse" id="collapseExample">
     <strong><p class="p-2">コメントの返信には新規登録/ログインが必要です</p></strong>
   </div>

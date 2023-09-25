@@ -51,14 +51,14 @@ class Public::PostsController < ApplicationController
       @post.save_tag(tag_list)
       redirect_to post_path(@post), notice: "編集が完了しました"
     else
-      render :edit
+      render :edit, alert: "編集に失敗しました"
     end
   end
 
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_to posts_path
+    redirect_to posts_path, alert: "一件、投稿を削除しました"
   end
 
   def search_tag

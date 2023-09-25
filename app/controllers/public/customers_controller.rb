@@ -49,12 +49,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def favorite_users
-    @customer = Customer.find(params[:id])
-    favorites = Favorite.where(customer_id: @customer.id).pluck(:post_id)
-    @customers = @customer.favorites
-    @favorite_posts = Post.find(favorites)
-    @post = Post.find(params[:id])
-    @customer_page = Customer.order("created_at DESC").page(params[:page]).per(6)
+    customer = Customer.find(params[:id])
+    @customers = customer.favorites
+    @customer_page = Customer.page(params[:page])
   end
 
   private

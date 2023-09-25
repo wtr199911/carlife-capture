@@ -1,4 +1,4 @@
-<div class="container back-list mt-5">
+<div class="container back-list my-5">
   <h2 class="text-center mt-4">My Information</h2>
   <div class="d-flex">
     <div class="m-5 col-5 text-center">
@@ -37,10 +37,6 @@
         <tr>
           <th>favorites index</th>
           <td><%= render "admin/favorites/counter", customer: @customer %></td>
-        </tr>
-        <tr>
-          <th>favorite users</th>
-          <td><%= render "admin/favorites/user_counter", customer: @customer %></td>
         </tr>
         <% end %>
       </table>

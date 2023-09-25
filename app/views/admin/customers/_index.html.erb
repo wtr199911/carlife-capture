@@ -14,11 +14,9 @@
         <tr>
           <td class="align-middle">
            <% if customer.guest_customer? %>
-             <%= image_tag customer.get_profile_image(80,80), style: "border-radius: 50%; object-fit:cover;" %>
              <%= image_tag customer.avatar.url, class: 'rounded-circle mr15', width: '80', height: '80' %>
            <% else %>
             <%= link_to customer_path(customer.id) do %>
-             <%= image_tag customer.get_profile_image(80,80), style: "border-radius: 50%; object-fit:cover;" %>
              <%= image_tag customer.avatar.url, class: 'rounded-circle mr15', width: '80', height: '80' %>
             <% end %>
            <% end %>

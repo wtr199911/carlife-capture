@@ -24,6 +24,13 @@
   top: 3px;
 }
 
+// ユーザーアイコン
+.user-icon {
+  position: absolute;
+  right: 368px;
+  top: 16px;
+}
+
 // ロゴ
 .logo {
   position: absolute;
@@ -438,7 +445,7 @@ a.comment-reply-button {
   font-size: 10px; /* テキストのフォントサイズを調整 */
   line-height: 1; /* テキストの行間を調整 */
   max-width: 200px;
-  left: 95%;
+  left: 91%;
   transform: translateX(-15%);
 }
 

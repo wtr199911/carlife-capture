@@ -15,16 +15,16 @@ class Admin::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to admin_customer_path(@customer.id), notice: "保存に成功しました！"
+      redirect_to customer_path(@customer.id), notice: "保存に成功しました！"
     else
-      render :edit
+      render template: "public/edit"
     end
   end
 
   private
 
   def customer_params
-    params.require(:customer).permit( :name, :profile_image, :profile_text, :is_valid)
+    params.require(:customer).permit( :name, :profile_image, :profile_text, :is_valid, :avatar )
   end
 
 end

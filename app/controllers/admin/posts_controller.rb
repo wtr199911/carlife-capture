@@ -13,7 +13,7 @@ class Admin::PostsController < ApplicationController
       @post.save_tag(tag_list)
       redirect_to posts_path, notice: "投稿が完了しました"
     else
-      render :new
+      render :new, alert: "投稿に失敗しました"
     end
   end
 
@@ -40,16 +40,16 @@ class Admin::PostsController < ApplicationController
     tag_list=params[:post][:name].split(",")
     if @post.update(post_params)
       @post.save_tag(tag_list)
-      redirect_to posts_path
+      redirect_to posts_path, notice: "編集に成功しました"
     else
-      render :edit
+      render :edit, alert: "編集に失敗しました"
     end
   end
 
   def destroy
     posts = Post.find(params[:id])
     posts.destroy
-    redirect_to posts_path
+    redirect_to posts_path, alert: "一件、投稿を削除しました"
   end
 
   def search_tag
