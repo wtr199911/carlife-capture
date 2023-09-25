@@ -18,10 +18,32 @@ class Post < ApplicationRecord
 
   validates :title,
             :place,
+            :prefecture,
   presence: true
+
+  validates :detail, length: { maximum: 200 }
 
   validates :image, attached: true,
                     content_type: ['image/png', 'image/jpeg']
+
+  def self.create_favorite(customer_id, post_id)
+    # すでに「いいね」されているか検索
+    temp = Notification.where(["customer_id = ? and post_id = ? and action_type = ?", customer_id, post_id, 'favorite'])
+
+    # いいねされていない場合のみ、通知レコードを作成
+    if temp.blank?
+      notification = Notification.new(
+        post_id: post_id,
+        customer_id: customer_id,
+        action_type: 'favorite'
+      )
+      # 自分の投稿に対するいいねの場合は、通知済みとする
+      if notification.customer_id == notification.customer_id
+        notification.checked = true
+      end
+      notification.save if notification.valid?
+    end
+  end
 
   def favorited_by?(customer)
    favorites.exists?(customer_id: customer.id)

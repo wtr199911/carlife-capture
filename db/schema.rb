@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2023_09_23_105709) do
     t.integer "subject_id"
     t.integer "customer_id"
     t.integer "action_type", null: false
-    t.boolean "checked"
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_notifications_on_customer_id"
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2023_09_23_105709) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.integer "prefecture_id"
+    t.integer "prefecture_id", null: false
     t.string "title", null: false
     t.text "detail", null: false
     t.string "place", null: false

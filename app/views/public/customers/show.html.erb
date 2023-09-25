@@ -12,7 +12,7 @@
               <% end %>
             </div>
         <% elsif current_customer.guest_customer? %>
-        <% elsif @post.customer == current_customer %>
+        <% elsif @customer == current_customer %>
         <div class="mt-3">
           <%= link_to information_path, class: "user-edit" do %>
             <i class="fa-solid fa-user-pen"></i>

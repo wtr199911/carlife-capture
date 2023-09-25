@@ -1,6 +1,7 @@
 <div class="container mt-3">
  <div class="back-list">
   <h2 class="font-weight-bold text-center mt-4">投稿フォーム</h2>
+    <div><%= render 'layouts/errors', obj: @post %></div>
     <div class="my-4 d-flex justify-content-center">
     <%= form_with model: @post do |f| %>
 

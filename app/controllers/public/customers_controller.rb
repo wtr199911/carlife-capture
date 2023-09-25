@@ -23,7 +23,7 @@ class Public::CustomersController < ApplicationController
 
   def update
    if current_customer.update(customer_params)
-     redirect_to mypage_path
+     redirect_to mypage_path, notice: "編集が完了しました"
    else
      redirect_to infomation_path
    end

@@ -100,4 +100,15 @@ class Customer < ApplicationRecord
    end
   end
 
+  def create_notification_follow!(current_customer)
+    temp = Notification.where(["customer_id = ? and action_type = ? ",current_customer.id, id, 'follow'])
+    if temp.blank?
+      notification = current_customer.active_type_notifications.new(
+        customer_id: id,
+        action_type: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
+
 end

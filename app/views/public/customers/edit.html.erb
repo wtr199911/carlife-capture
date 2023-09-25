@@ -1,5 +1,6 @@
 <div class="container back-list my-5">
   <h2 class="text-center mt-3">プロフィール編集画面</h2>
+  <div><%= render 'layouts/errors', obj: @customer %></div>
   <%= form_with model: @customer, url: information_update_path, local:true do |f| %>
   <div class="d-flex">
     <div class="m-5 col-5 text-center">

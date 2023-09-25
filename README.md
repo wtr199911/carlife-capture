@@ -57,8 +57,21 @@ adminpass
 ## 設計書
 
 ### ER図
+[![Image from Gyazo](Carlife-Capture ER図.png)](https://gyazo.com/93a82694730dfcf75be87788ef0c1786)
+
+### ワイヤーフレーム
+https://app.diagrams.net/#G1DJ9z7d5ypm_uPVFzWBAv4AUUzXf1SvfA#%7B%22pageId%22%3A%22tFomftPzgDyUvdMJbXfl%22%7D
+
+### 画面遷移図
+
+- 管理者側
+[![Image from Gyazo](Carlife-Capture　画面遷移図（管理者側）.png)](https://gyazo.com/30c89373b953ab368d72648cf01646cf)
+
+- 会員側
+[![Image from Gyazo](Carlife-Capture　画面遷移図（会員側）.png)](https://gyazo.com/0492642e8e66ae11edcf02f8793b8ecb)
 
 ### テーブル定義書
+https://docs.google.com/spreadsheets/d/18_-kBj2UU4riZohXxwQG5YgbN1PUKjnKqeBxAAv-2NU/edit#gid=1285004865
 
 ### アプリケーション詳細設計書
 
