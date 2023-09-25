@@ -102,13 +102,13 @@ class Public::PostsController < ApplicationController
   def authorize_access
     # 管理者か会員のいずれかであればアクセスを許可
     unless admin_signed_in? || customer_signed_in?
-      redirect_to root_path
+      redirect_to root_path, alert: "ゲストログイン・新規登録・ログインをして下さい。"
     end
   end
 
   def ensure_guest_customer
    if current_customer.guest_customer?
-     redirect_to mypage_path(current_customer), notice: "ゲストユーザーは投稿できません。"
+     redirect_to mypage_path(current_customer), alert: "ゲストユーザーは投稿できません。"
    end
   end
 

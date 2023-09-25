@@ -41,14 +41,12 @@
               <td>
                 <label><i class="fa-solid fa-location-arrow"></i> 撮影した都道府県（Prefecture）</label><br>
                 <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name,{include_blank: "---"} ) %><br>
-                <%= f.text_field :place, class: "col-12 mt-2", placeholder: "撮影場所を記入して下さい" %>
               </td>
             </tr>
 
             <tr>
               <td>
                 <label><i class="fa-solid fa-location-dot"></i> 撮影した場所（Place）※ なるべく詳細に</label><br>
-                <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name,{include_blank: "---"} ) %><br>
                 <%= f.text_field :place, class: "col-12 mt-2", placeholder: "撮影場所を記入して下さい" %>
               </td>
             </tr>
