@@ -47,6 +47,15 @@ class Public::CustomersController < ApplicationController
     @post = Post.find(params[:id])
     @post_page = Post.order("created_at DESC").page(params[:page]).per(6)
   end
+  
+  def favorite_users
+    @customer = Customer.find(params[:id])
+    favorites = Favorite.where(customer_id: @customer.id).pluck(:post_id)
+    @customers = @customer.favorites
+    @favorite_posts = Post.find(favorites)
+    @post = Post.find(params[:id])
+    @customer_page = Customer.order("created_at DESC").page(params[:page]).per(6)
+  end
 
   private
 

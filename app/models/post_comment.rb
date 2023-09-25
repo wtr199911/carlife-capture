@@ -13,8 +13,12 @@ class PostComment < ApplicationRecord
   after_create_commit :create_notifications
 
   private
+
   def create_notifications
-    Notification.create(subject: self, customer: post.customer, action_type: :commented_to_own_post)
+      # 通知を作成する前に、コメントしたユーザーが投稿の作者と一致しない場合に通知を作成
+    if self.customer != self.post.customer
+      Notification.create(subject: self, customer: post.customer, action_type: :commented_to_own_post)
+    end
   end
 
 end

@@ -44,7 +44,7 @@ class Public::PostsController < ApplicationController
     tag_list=params[:post][:name].split(",")
     if @post.update(post_params)
       @post.save_tag(tag_list)
-      redirect_to posts_path, notice: "編集が完了しました"
+      redirect_to post_path(@post), notice: "編集が完了しました"
     else
       render :edit
     end
@@ -79,10 +79,19 @@ class Public::PostsController < ApplicationController
     Notification.create_favorite(customer_id, post_id)
   end
 
+  def create_post_comment
+    # current_customer から必要な情報を取得
+    customer_id = current_customer.id
+    post_id = params[:post_id]
+
+    # Notification モデルのメソッドを呼び出し
+    Notification.create_post_comment(customer_id, post_id)
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:title, :image, :detail, :place, :prefecture_id, :name)
+    params.require(:post).permit(:title, :image, :detail, :place, :prefecture_id, :name, :tags)
   end
 
   def authorize_access

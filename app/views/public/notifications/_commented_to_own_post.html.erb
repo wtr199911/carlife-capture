@@ -1,6 +1,10 @@
 <%= link_to transition_path(notification) do %>
   <div class="text-center m-3">
-    <%= link_to notification.subject.customer.name, customer_path(notification.subject.customer), class: "text-success" %>
+    <% if notification.subject.customer = current_customer %>
+      <%= link_to notification.subject.customer.name, mypage_path, class: "text-success" %>
+    <% else %>
+      <%= link_to notification.subject.customer.name, customer_path(notification.subject.customer), class: "text-success" %>
+    <% end %>
     があなたの
     <%= link_to '投稿', post_path(notification.subject.post), class: "text-success" %>
     にコメントしました

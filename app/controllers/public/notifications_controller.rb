@@ -11,4 +11,5 @@ class Public::NotificationsController < ApplicationController
     @notifications = current_customer.notifications.destroy_all
     redirect_to notifications_path
   end
+
 end

@@ -46,7 +46,7 @@
           <td><%= link_to @customer.followers.count, customer_followers_path(@customer), class: "text-dark" %></td>
         </tr>
         <tr>
-          <th>favorites index</th>
+          <th>favorites Users</th>
           <td><%= render "admin/favorites/counter", customer: @customer %></td>
         </tr>
         <% elsif current_customer.guest_customer? %>
@@ -70,6 +70,10 @@
         <tr>
           <th>favorites index</th>
           <td><%= render "admin/favorites/counter", customer: @customer %></td>
+        </tr>
+        <tr>
+          <th>favorite users</th>
+          <td><%= render "admin/favorites/user_counter", customer: @customer %></td>
         </tr>
         <% end %>
       </table>

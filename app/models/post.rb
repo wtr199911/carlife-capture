@@ -45,6 +45,7 @@ class Post < ApplicationRecord
     end
   end
 
+
   def favorited_by?(customer)
    favorites.exists?(customer_id: customer.id)
   end
