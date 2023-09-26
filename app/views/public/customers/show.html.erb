@@ -91,7 +91,7 @@
   <%= render "public/posts/list", posts: @posts, customer: @customer, count_posts: @count_posts %>
 </div>
 <% elsif current_customer.guest_customer? %>
-<% elsif @post.customer == current_customer %>
+<% elsif @customer == current_customer %>
 <div class="container">
   <h3 class="mt-5 mb-3 font-weight-bold text-center text-white">
     投稿履歴 (全 <%= @count_posts%>件)
