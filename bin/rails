@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
+
+# Load Spring (if you're using it)
 load File.expand_path("spring", __dir__)
+
+# Set the secret_key_base
+ENV['SECRET_KEY_BASE'] = 'your_secret_key_here'  # ここに秘密鍵を設定します
+
+# Load your Rails application
 APP_PATH = File.expand_path('../config/application', __dir__)
 require_relative "../config/boot"
 require "rails/commands"
