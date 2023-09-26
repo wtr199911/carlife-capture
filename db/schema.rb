@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 2023_09_25_131016) do
     t.string "title", null: false
     t.text "detail", null: false
     t.string "place", null: false
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -142,7 +142,7 @@ Post.find_or_create_by!(title: "クルマだから楽しめるワインディン
     post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample5.png"), filename:"sample5.png")
     post.detail = "変化に富んだ山岳パノラマを満喫できる道中は、白根山や横手山など見どころが多い"
     post.prefecture_id = 10
-    post.place = "群馬県草津温泉から志賀高原を抜け、長野県湯田中・渋温泉郷に至る約43㎞の道のり。"
+    post.place = "草津温泉から志賀高原を抜け、湯田中渋温泉郷に至る道のり。"
     post.customer = yuki
     post.tags << mountain
     post.tags << onroad

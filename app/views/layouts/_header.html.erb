@@ -3,11 +3,6 @@
 
       <div class="py-1 mb-2 mt-2">
 
-        <div class="back-button">
-          <%= link_to :back do %>
-            <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
-          <% end %>
-        </div>
 
          <div class="text-light header-current">
           <% if admin_signed_in? %>
@@ -37,7 +32,7 @@
           <div class="bell-icon">
             <%= link_to notifications_path, class: "nav-link" do %>
               <% if current_customer.notifications.where(checked: false).exists? %>
-                <i class="fa-sharp fa-solid fa-bell fa-beat" style="color: #f2ee7d;"></i>
+                <i class="fa-solid fa-bell fa-shake" style="color: #f2ee7d;"></i>
               <% else %>
                 <i class="fa-sharp fa-solid fa-bell" style="color: #808080;"></i>
               <% end %>
@@ -64,9 +59,29 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <div class="back-button">
+          <%= link_to :back do %>
+            <i class="fa-solid fa-arrow-left fa-xl" style="color: #000;"></i>
+          <% end %>
+        </div>
+
+        <% if admin_signed_in? %>
+        <% elsif customer_signed_in? %>
+            <div class="timeline-icon">
+            <%= link_to timeline_path, class: "nav-link" do %>
+              <% if current_customer.following_ids.any? { |user_id| Post.where(customer_id: user_id, checked: false).exists? } %>
+                <i class="fa-solid fa-clock fa-bounce" style="color: #66CC00;"></i>
+              <% else %>
+                <i class="fa-regular fa-clock" style="color: #808080;"></i>
+              <% end %>
+            <% end %>
+            </div>
+        <% else %>
+        <% end %>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-          <% if customer_signed_in? %>
           <ul class="navbar-nav">
+          <% if customer_signed_in? %>
             <li class="px-5">
               <%= link_to "About", about_path, class: "nav-item" %>
             </li>
@@ -82,9 +97,7 @@
             <li class="px-5">
               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-item" %>
             </li>
-          </ul>
           <% elsif admin_signed_in? %>
-           <ul class="navbar-nav">
             <li class="px-5">
               <%= link_to "投稿一覧", posts_path, class: "nav-item" %>
             </li>
@@ -94,9 +107,7 @@
             <li class="px-5">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-item" %>
             </li>
-           </ul>
           <% else %>
-           <ul class="navbar-nav">
             <li class="px-5">
               <%= link_to "About", about_path, class: "nav-item" %>
             </li>
@@ -109,8 +120,8 @@
             <li class="px-5">
               <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "nav-item" %>
             </li>
-           </ul>
           <% end %>
+          </ul>
          </div>
        </nav>
       </div>

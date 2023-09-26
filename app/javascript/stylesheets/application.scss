@@ -32,6 +32,41 @@ body {
   color: red;
 }
 
+.pagination {
+  justify-content: center;
+}
+/*ページネーション自体のデザイン*/
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #99CC66;
+  border-color: #99CC66;
+}
+
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #99CC66;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+.page-item:first-child .page-link {
+  margin-left: 0;
+  border-top-left-radius: 1.25rem;
+  border-bottom-left-radius: 1.25rem;
+}
+
+.page-item:last-child .page-link {
+  border-top-right-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+}
+
+
 @media screen and (max-width: 425px) {
 
   body {

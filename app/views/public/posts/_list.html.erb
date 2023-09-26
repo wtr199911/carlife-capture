@@ -19,7 +19,7 @@
           </p>
           <p class="card-text textOverflow">text：<%= post.detail %></p>
           <div class="d-flex">
-            <span class="d-flex"><i class="fas fa-user"></i> <p class="textOverflow"><%= post.customer.name %></p> ｜ </span>
+            <span class="d-flex"><i class="fas fa-user"></i> <p class="textOverflow"> <%= post.customer.name %></p> ｜ </span>
             <span class="mx-2">
               <%= render "admin/post_comments/counter", post: post %>
             </span>
@@ -34,5 +34,5 @@
   <% end %>
 </div>
 <div class="pagination mt-3 d-flex justify-content-center">
-  <%= paginate posts %>
+  <%= paginate posts, theme: 'bootstrap-5' %>
 </div>

@@ -1,6 +1,6 @@
 # Carlife Capture
 
-<img width="1680" alt="Carlife Capture top" src="https://github.com/wtr199911/carlife-capture/assets/135807325/f7ea1f95-376e-4509-ad0e-64b1049ab1f8">
+<img width="1680" alt="Carlife Capture top" src="https://github.com/wtr199911/carlife-capture/assets/135807325/f43656f8-e2f8-4a06-a3ca-feb48b8f5127">
 
 
 ## サイト概要
@@ -77,7 +77,7 @@ https://app.diagrams.net/#G1DJ9z7d5ypm_uPVFzWBAv4AUUzXf1SvfA#%7B%22pageId%22%3A%
 https://docs.google.com/spreadsheets/d/18_-kBj2UU4riZohXxwQG5YgbN1PUKjnKqeBxAAv-2NU/edit#gid=1285004865
 
 ### アプリケーション詳細設計書
-<img width="568" alt="carlife-capture アプリケーション詳細設計書" src="https://github.com/wtr199911/carlife-capture/assets/135807325/44e44b39-a8f1-4040-bc1b-44b6793e58dd">
+<img width="570" alt="carlife-capture アプリケーション詳細設計書" src="https://github.com/wtr199911/carlife-capture/assets/135807325/840966dd-0786-4288-a956-88fb50ed3e26">
 
 ## Gem一覧
 <img width="318" alt="carlife-capture-gem" src="https://github.com/wtr199911/carlife-capture/assets/135807325/73a5de05-a547-4ad2-b127-9175398ae781">

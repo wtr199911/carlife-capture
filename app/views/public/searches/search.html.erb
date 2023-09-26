@@ -11,12 +11,12 @@
         </div>
       <% elsif @model == "post" %>
         <div class="container">
-          <h2 class="m-3 text-center mt-4">投稿の検索結果 "<%= @content %>"</h2>
+          <h2 class="m-3 text-center mt-4 text-white">投稿の検索結果 "<%= @content %>"</h2>
           <div><%= render "public/posts/index", posts: @records, post_page: @post_page %></div>
         </div>
       <% elsif @model == "prefecture" %>
         <div class="container">
-          <h2 class="m-3 text-center mt-4">都道府県の検索結果 "<%= @content %>"</h2>
+          <h2 class="m-3 text-center mt-4 text-white">都道府県の検索結果 "<%= @content %>"</h2>
           <div><%= render "public/posts/index", posts: @records, post_page: @post_page %></div>
         </div>
       <% else %>

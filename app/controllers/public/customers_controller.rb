@@ -45,11 +45,24 @@ class Public::CustomersController < ApplicationController
     @post_page = Post.order("created_at DESC").page(params[:page]).per(6)
   end
 
-  def favorite_users
-    customer = Customer.find(params[:id])
-    @customers = customer.favorites
-    @customer_page = Customer.page(params[:page])
+
+  def timeline
+   #フォローしているユーザーのみタイムラインに表示
+   #N+1問題を防ぐためにincludesメソッド(gem: bulletを導入)を使用
+    @posts_all = Post.includes(:customer,:tags,:favorites)
+
+    @customer = Customer.find(current_customer.id)
+   #フォローしているユーザーを取得
+    @follow_users = @customer.followings
+   #フォローユーザーの投稿を表示
+    @posts = @posts_all.where(customer_id: @follow_users).order("created_at DESC").page(params[:page]).per(10)
+    @posts.where(checked: false).each do |post|
+      @customer = post.customer
+      post.update(checked: true)
+    end
   end
+
+
 
   private
 

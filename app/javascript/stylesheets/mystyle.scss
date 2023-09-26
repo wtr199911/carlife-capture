@@ -46,7 +46,13 @@
   -ms-transform: translate(-50%, -50%);
 }
 
+
 // ナビゲーションバー
+
+.nav-scroller {
+ position: relative;
+}
+
 .nav-item {
  color: #009900;
 }
@@ -54,6 +60,15 @@
 li+ li {
   border-left: 1px solid #333;
 }
+
+// タイムラインアイコン
+.timeline-icon {
+  position: absolute;
+  font-size: 30px;
+  top: -25%;
+  left: 19%;
+}
+
 
 // フッター用
 
@@ -96,8 +111,8 @@ footer{
 // 戻るボタン
 .back-button {
   position: absolute;
-  left: 100px;
-  top: 30px;
+  left: 5%;
+  top: 26%;
 }
 
 // 通知ボタン
@@ -578,7 +593,6 @@ a.reply-comment-delete:hover {
     top: 3px;
   }
 
-  // ロゴ
   .logo {
     position: absolute;
     height: 80px;
@@ -586,10 +600,14 @@ a.reply-comment-delete:hover {
     top: 26%;
   }
 
+  .timeline-icon {
+    top: -3%;
+  }
+
   .back-button {
     position: absolute;
     left: 33px;
-    top: 25px;
+    top: -50px;
     font-size: 24px;
   }
 
