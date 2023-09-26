@@ -4,6 +4,9 @@
 <% elsif admin_signed_in? %>
   <i class="fa-solid fa-thumbs-up text-dark"></i>
   <%= post.favorites.count %>
+<% elsif current_customer.guest_customer? %>
+  <i class="fa-solid fa-thumbs-up text-dark"></i>
+  <%= post.favorites.count %>
 <% else %>
   <% if post.favorited_by?(current_customer) %>
     <%= link_to post_favorites_path(post), class: "like-link", method: :delete, remote: true do %>

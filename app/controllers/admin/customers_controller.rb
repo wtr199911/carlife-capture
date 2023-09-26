@@ -6,6 +6,9 @@ class Admin::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @posts = @customer.posts.order("created_at DESC").page(params[:page]).per(4)
+    @count_posts = @customer.posts.count
+    @customers = current_customer
   end
 
   def edit
@@ -17,7 +20,7 @@ class Admin::CustomersController < ApplicationController
     if @customer.update(customer_params)
       redirect_to customer_path(@customer.id), notice: "保存に成功しました！"
     else
-      render template: "public/edit"
+      redirect_to information_path, alert: "編集に失敗しました"
     end
   end
 

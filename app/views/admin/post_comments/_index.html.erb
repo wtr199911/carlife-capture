@@ -34,9 +34,12 @@
                 <% end %>
               <% else %>
               <% end %>
+              <% if admin_signed_in? %>
+              <% else %>
               <a data-parent-id="<%= post_comment.id %>" class="comment-reply-button reply-btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                 <i class="fa-solid fa-reply"></i>
               </a>
+              <% end %>
               <!--返信がある場合は以下を表示-->
               <% parent_comment = post_comment.replies.find_by(params[:parent_id]) %>
               <% if parent_comment.present? %>

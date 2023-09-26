@@ -26,9 +26,11 @@ class Customer < ApplicationRecord
 
   has_one_attached :profile_image
 
-  validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
+  validates :name, presence: true, length: { maximum: 20 }
 
   validates :profile_text, length: { maximum: 100 }
+
+  validates :email, presence: true
 
   validates :profile_image, content_type: ['image/png', 'image/jpeg']
 

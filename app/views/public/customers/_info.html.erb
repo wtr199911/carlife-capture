@@ -14,7 +14,7 @@
     </div>
     <div class="card-body">
       <h5 class="card-title text-center textOverflow" style="width: 200px;"><%= customer.name %></h5>
-      <p class="card-text textOverflow"><%= customer.profile_text %></p>
+      <p class="card-text textOverflow" style="width: 209px;"><%= customer.profile_text %></p>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item text-center info-follow">follows: <%= link_to customer.followings.count, customer_followings_path(customer), class: "like-link" %></li>

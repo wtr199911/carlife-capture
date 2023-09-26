@@ -13,10 +13,11 @@ class Public::PostCommentsController < ApplicationController
 
   def destroy
     # 返信フォームに渡しているインスタンス変数の追加（下記２行）
-    @post = Post.find(params[:post_id])
+    @comment = PostComment.find(params[:id])
+    @post = @comment.post # コメントに紐づく投稿を取得
     @comment_reply = @post.post_comments.new
 
-    @comment = PostComment.find(params[:id]).destroy
+    @comment.destroy
   end
 
   private
