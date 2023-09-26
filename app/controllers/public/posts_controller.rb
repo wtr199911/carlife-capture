@@ -70,7 +70,7 @@ class Public::PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_to posts_path, alert: "一件、投稿を削除しました"
+    redirect_to posts_path, alert: "投稿を削除しました"
   end
 
   def search_tag

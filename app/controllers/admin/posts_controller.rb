@@ -7,13 +7,21 @@ class Admin::PostsController < ApplicationController
 
   def create
     @post = current_customer.posts.build(post_params)
-    # 受け取った値を,で区切って配列にする
-    tag_list = @post.name.split(',')
-    if @post.save
-      @post.save_tag(tag_list)
-      redirect_to posts_path, notice: "投稿が完了しました"
+    tag_list=params[:post][:name].split(",")
+    current_tags = @post.current_tags
+    new_tags = @post.new_tags(tag_list, current_tags)
+    if Tag.all_tags_valid?(new_tags)
+      if @post.update(post_params)
+        tag_list = tag_list.uniq
+        @post.save_tags(tag_list, current_tags, new_tags)
+        flash[:notice] = "投稿しました。"
+        redirect_to post_path(@post)
+      else
+        render :new, alert: "投稿に失敗しました"
+      end
     else
-      render :new, alert: "投稿に失敗しました"
+      @post.errors.add(:base, "タグは10文字以内にして下さい")
+      render :new
     end
   end
 
@@ -38,18 +46,27 @@ class Admin::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     tag_list=params[:post][:name].split(",")
-    if @post.update(post_params)
-      @post.save_tag(tag_list)
-      redirect_to posts_path, notice: "編集に成功しました"
+    current_tags = @post.current_tags
+    new_tags = @post.new_tags(tag_list, current_tags)
+    if Tag.all_tags_valid?(new_tags)
+      if @post.update(post_params)
+        tag_list = tag_list.uniq
+        @post.save_tags(tag_list, current_tags, new_tags)
+        flash[:notice] = "投稿を更新しました。"
+        redirect_to post_path(@post)
+      else
+        render :edit, alert: "編集に失敗しました"
+      end
     else
-      render :edit, alert: "編集に失敗しました"
+      @post.errors.add(:base, "タグは10文字以内にして下さい")
+      render :edit
     end
   end
 
   def destroy
     posts = Post.find(params[:id])
     posts.destroy
-    redirect_to posts_path, alert: "一件、投稿を削除しました"
+    redirect_to posts_path, alert: "投稿を削除しました"
   end
 
   def search_tag
