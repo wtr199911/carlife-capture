@@ -1,7 +1,7 @@
 <div class="container">
   <% if @customers.exists? %>
     <div class="container">
-      <h2 class="m-5 text-center">"<%= @customer.name %>"さんのいいねした投稿一覧</h2>
+      <h2 class="m-5 text-center text-white"><strong><%= @customer.name %>さんのいいねした投稿一覧</strong></h2>
       <div><%= render "public/posts/index", posts: @favorite_posts, post_page: @post_page %></div>
     </div>
   <% else %>

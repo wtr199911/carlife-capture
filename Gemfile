@@ -80,3 +80,4 @@ gem "net-imap"
 gem 'faker'
 
 gem 'carrierwave', '~> 2.0'
+gem 'fog-aws'
