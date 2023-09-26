@@ -74,8 +74,11 @@ https://app.diagrams.net/#G1DJ9z7d5ypm_uPVFzWBAv4AUUzXf1SvfA#%7B%22pageId%22%3A%
 https://docs.google.com/spreadsheets/d/18_-kBj2UU4riZohXxwQG5YgbN1PUKjnKqeBxAAv-2NU/edit#gid=1285004865
 
 ### アプリケーション詳細設計書
+<img width="568" alt="carlife-capture アプリケーション詳細設計書" src="https://github.com/wtr199911/carlife-capture/assets/135807325/44e44b39-a8f1-4040-bc1b-44b6793e58dd">
 
 ## Gem一覧
+<img width="318" alt="carlife-capture-gem" src="https://github.com/wtr199911/carlife-capture/assets/135807325/73a5de05-a547-4ad2-b127-9175398ae781">
+
 
 ## 開発環境
 
