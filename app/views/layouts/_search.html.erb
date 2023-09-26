@@ -3,8 +3,7 @@
   <%= form_with url: search_path, method: :get, local: true, class:"row justify-content-end" do |f| %>
   <div class="col-9 p-0 mr-2">
     <%= f.text_field :content, class:"form-control", placeholder: "Search" %>
-    <%= f.select :model, options_for_select({"User" => "customer", "投稿" => "post", "都道府県" => "prefecture"}) %>
-    <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}) %>
+    <%= f.select :model, options_for_select({"User" => "customer", "投稿" => "post", "都道府県" => "prefecture"} ), { prompt: '選択してください' } %>
   </div>
   <div class="col-1 p-0">
     <button class="btn btn-outline-success" type="submit">
