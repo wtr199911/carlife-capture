@@ -57,7 +57,7 @@ adminpass
 ## 設計書
 
 ### ER図
-[![Image from Gyazo](Carlife-Capture ER図.png)](https://gyazo.com/93a82694730dfcf75be87788ef0c1786)
+<img width="1069" alt="Carlife-Capture ER図" src="https://github.com/wtr199911/carlife-capture/assets/135807325/ccb2d44e-6701-4844-a78d-c239d748d5d8">
 
 ### ワイヤーフレーム
 https://app.diagrams.net/#G1DJ9z7d5ypm_uPVFzWBAv4AUUzXf1SvfA#%7B%22pageId%22%3A%22tFomftPzgDyUvdMJbXfl%22%7D
@@ -65,10 +65,10 @@ https://app.diagrams.net/#G1DJ9z7d5ypm_uPVFzWBAv4AUUzXf1SvfA#%7B%22pageId%22%3A%
 ### 画面遷移図
 
 - 管理者側
-[![Image from Gyazo](Carlife-Capture　画面遷移図（管理者側）.png)](https://gyazo.com/30c89373b953ab368d72648cf01646cf)
+<img width="729" alt="Carlife-Capture　画面遷移図（管理者側）" src="https://github.com/wtr199911/carlife-capture/assets/135807325/916aaf1d-76ba-4b93-9d60-017acda444b3">
 
 - 会員側
-[![Image from Gyazo](Carlife-Capture　画面遷移図（会員側）.png)](https://gyazo.com/0492642e8e66ae11edcf02f8793b8ecb)
+<img width="1046" alt="Carlife-Capture　画面遷移図（会員側）" src="https://github.com/wtr199911/carlife-capture/assets/135807325/bfa87114-bc73-4465-858a-f92a16306678">
 
 ### テーブル定義書
 https://docs.google.com/spreadsheets/d/18_-kBj2UU4riZohXxwQG5YgbN1PUKjnKqeBxAAv-2NU/edit#gid=1285004865
