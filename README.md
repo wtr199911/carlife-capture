@@ -1,5 +1,8 @@
 # Carlife Capture
 
+<img width="1680" alt="Carlife Capture top" src="https://github.com/wtr199911/carlife-capture/assets/135807325/f7ea1f95-376e-4509-ad0e-64b1049ab1f8">
+
+
 ## サイト概要
 ### サイトテーマ
 車好きの写真映えスポットを投稿・共有出来るコミュニティサイト

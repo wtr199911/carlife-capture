@@ -12,6 +12,7 @@
  height: 135px;
 }
 
+
 .header-current {
   position: absolute;
   height: 80px;
@@ -39,8 +40,10 @@
 .logo {
   position: absolute;
   height: 80px;
-  left: 740px;
-  top: 2px;
+  top: 30%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 
 // ナビゲーションバー
