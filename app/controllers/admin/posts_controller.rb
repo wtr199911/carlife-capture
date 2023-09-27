@@ -26,6 +26,8 @@ class Admin::PostsController < ApplicationController
   end
 
   def index
+    @tags_with_counts = Tag.left_joins(:posts).group(:id).select('tags.*, COUNT(posts.id) as posts_count')
+    @selected_tag_id = params[:tag_id]
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
     @post = @posts.order("created_at DESC").page(params[:page]).per(6)
   end

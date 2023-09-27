@@ -3,6 +3,7 @@
 
   <%= form_with model: @customer, url: information_update_path, local:true do |f| %>
   <div class="row">
+    <%= render "layouts/errors", obj: @customer %>
     <div class="m-5 col-md-5 text-center">
     <%= f.label :avatar %>
     <%= f.file_field :avatar, onchange: 'previewImage()', class: 'form-control' %>

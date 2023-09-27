@@ -1,7 +1,7 @@
-<div class="container mt-5 mb-4">
-  <div class="text-center">
-   <h1>本当に退会しますか？</h1>
-    <p>
+<div class="container mt-5 mb-4  back-list">
+  <div class="text-center my-5">
+   <h1><strong>本当に退会しますか？</strong></h1>
+    <p class="my-5">
       退会すると、会員登録情報や<br>
       これまでの投稿履歴が閲覧できなくなります。<br>
       退会する場合は、「退会する」をクリックしてください。
@@ -9,11 +9,11 @@
   </div>
 
 
-   <div class="row mt-5">
+   <div class="row my-5">
    <span class= "col-3 offset-4"><%= link_to "退会しない", mypage_path, :class => "btn btn-outline-success" %></span>
 
     <%= link_to "退会する", customers_withdraw_path, method: :patch, :class => "btn btn-outline-danger", data: { confirm: "本当に退会しますか？" }  %>
 
-  </div>
+   </div>
 
 </div>

@@ -446,6 +446,8 @@ a.comment-reply-button {
   float: left;
   margin-right: -100px;
   font-size: 10px;
+  right: 38%;
+  position: absolute;
 }
 
 .reply-balloon5 .faceicon img{
@@ -467,7 +469,7 @@ a.comment-reply-button {
   font-size: 10px; /* テキストのフォントサイズを調整 */
   line-height: 1; /* テキストの行間を調整 */
   max-width: 200px;
-  left: 91%;
+  left: 84%;
   transform: translateX(-15%);
 }
 

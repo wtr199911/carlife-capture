@@ -71,7 +71,7 @@ gem 'active_storage_validations'
 
 gem 'dotenv-rails'
 group :production do
-  gem 'mysql2'
+  gem 'mysql2', '~> 0.5.3'
 end
 
 gem "net-smtp"

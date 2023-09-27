@@ -28,7 +28,9 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
+    @tags_with_counts = Tag.left_joins(:posts).group(:id).select('tags.*, COUNT(posts.id) as posts_count')
+    @selected_tag_id = params[:tag_id]
+    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all.order("created_at DESC").page(params[:page]).per(6)
     @post = @posts.order("created_at DESC").page(params[:page]).per(6)
   end
 
@@ -80,7 +82,7 @@ class Public::PostsController < ApplicationController
     @tag = Tag.find(params[:tag_id])
     #検索されたタグに紐づく投稿を表示
     @post = @tag.posts
-    @posts = @post.order("created_at DESC").page(params[:page]).per(5)
+    @posts = @post.order("created_at DESC").page(params[:page]).per(6)
   end
 
   def self.ransackable_attributes(auth_object = nil)
