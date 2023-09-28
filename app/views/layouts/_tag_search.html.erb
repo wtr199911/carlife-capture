@@ -5,8 +5,14 @@
           {
             prompt: "タグで絞り込み検索",
             onchange: "submit(this.form);"
-
           }
       %>
+    <!--もしタグで絞り込み検索じゃなければ以下を表示、それ以外は表示しない-->
+    <% if params[:tag_id].present? %>
+      <!-- Display this if a tag has been selected -->
+      <% tag_id = params[:tag_id] %>
+      <%= "(#{PostTagRelation.where(tag_id: tag_id).count})" %>
+    <% else %>
+    <% end %>
   <% end %>
 </div>

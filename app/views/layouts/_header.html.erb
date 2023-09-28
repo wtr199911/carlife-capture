@@ -8,7 +8,7 @@
           <% if admin_signed_in? %>
             管理者画面
           <% elsif customer_signed_in? %>
-            <%= current_customer.name %>　ようこそ！
+            <i class="fa-solid fa-user"></i> <%= current_customer.name %>　ようこそ！
           <% end %>
          </div>
 
@@ -31,12 +31,15 @@
           <% if customer_signed_in? %>
           <div class="bell-icon">
             <%= link_to notifications_path, class: "nav-link" do %>
-              <% if current_customer.notifications.where(checked: false).exists? %>
-                <i class="fa-solid fa-bell fa-shake" style="color: #f2ee7d;"></i>
-              <% else %>
-                <i class="fa-sharp fa-solid fa-bell" style="color: #808080;"></i>
-              <% end %>
-            <% end %>
+            <% unchecked_notifications_count = current_customer.notifications.where(checked: false).count %>
+            <% if unchecked_notifications_count > 0 %>
+              <div class="bell-count text-center">
+                <%= unchecked_notifications_count %>
+              </div>
+              <i class="fa-solid fa-bell fa-shake" style="color: #f2ee7d;"></i>
+            <% else %>
+              <i class="fa-sharp fa-solid fa-bell" style="color: #808080;"></i>
+            <% end %>            <% end %>
           </div>
           <% else %>
           <% end %>
@@ -71,6 +74,11 @@
             <div class="timeline-icon">
             <%= link_to timeline_path, class: "nav-link" do %>
               <% if current_customer.following_ids.any? { |user_id| Post.where(customer_id: user_id, checked: false).exists? } %>
+                <div class="bell-count text-center">
+                  <%= current_customer.following_ids.inject(0) do |count, user_id| %>
+                    <% count += Post.where(customer_id: user_id, checked: false).count %>
+                  <% end %>
+                </div>
                 <i class="fa-solid fa-clock fa-bounce" style="color: #66CC00;"></i>
               <% else %>
                 <i class="fa-regular fa-clock" style="color: #808080;"></i>
@@ -83,42 +91,61 @@
           <ul class="navbar-nav">
           <% if customer_signed_in? %>
             <li class="px-5">
-              <%= link_to "About", about_path, class: "nav-item" %>
+              <%= link_to about_path, class: "nav-item" do %>
+              <i class="fa-solid fa-car-side"></i> About
+              <% end %>
             </li>
             <li class="px-5">
-              <%= link_to "投稿", new_post_path, class: "nav-item" %>
+              <%= link_to new_post_path, class: "nav-item" do %>
+              <i class="fa-solid fa-image"></i> 投稿
+              <% end %>
             </li>
             <li class="px-5">
-              <%= link_to "投稿一覧", posts_path, class: "nav-item" %>
+              <%= link_to posts_path, class: "nav-item" do %>
+              <i class="fa-solid fa-images"></i> 投稿一覧
+              <% end %>
             </li>
             <li class="px-5">
-              <%= link_to "マイページ", mypage_path, class: "nav-item" %>
-            </li>
-            <li class="px-5">
-              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-item" %>
+              <%= link_to destroy_customer_session_path, method: :delete, class: "nav-item" do %>
+              <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+              <% end %>
             </li>
           <% elsif admin_signed_in? %>
             <li class="px-5">
-              <%= link_to "投稿一覧", posts_path, class: "nav-item" %>
+              <%= link_to posts_path, class: "nav-item" do %>
+              <i class="fa-solid fa-images"></i> 投稿一覧
+              <% end %>
             </li>
             <li class="px-5">
-              <%= link_to "会員一覧", admin_customers_path, class: "nav-item" %>
+              <%= link_to admin_customers_path, class: "nav-item" do %>
+              <i class="fa-solid fa-users"></i> 会員一覧
+              <% end %>
             </li>
             <li class="px-5">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-item" %>
+              <%= link_to destroy_admin_session_path, method: :delete, class: "nav-item" do %>
+              <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+              <% end %>
             </li>
           <% else %>
             <li class="px-5">
-              <%= link_to "About", about_path, class: "nav-item" %>
+              <%= link_to about_path, class: "nav-item" do %>
+              <i class="fa-solid fa-car-side"></i> About
+              <% end %>
             </li>
             <li class="px-5">
-              <%= link_to "新規登録", new_customer_registration_path, class: "nav-item" %>
+              <%= link_to new_customer_registration_path, class: "nav-item" do %>
+              <i class="fa-solid fa-user-plus"></i> 新規登録
+              <% end %>
             </li>
             <li class="px-5">
-              <%= link_to "ログイン", new_customer_session_path, class: "nav-item" %>
+              <%= link_to new_customer_session_path, class: "nav-item" do %>
+              <i class="fa-solid fa-right-to-bracket"></i> ログイン
+              <% end %>
             </li>
             <li class="px-5">
-              <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "nav-item" %>
+              <%= link_to users_guest_sign_in_path, method: :post, class: "nav-item" do %>
+              <i class="fa-solid fa-user-secret"></i> ゲストログイン
+              <% end %>
             </li>
           <% end %>
           </ul>

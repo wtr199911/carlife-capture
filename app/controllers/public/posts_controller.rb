@@ -76,11 +76,10 @@ class Public::PostsController < ApplicationController
   def search_tag
     #検索結果画面でもタグ一覧表示
     @tag_list = Tag.all
-    #検索されたタグを受け取る
     @tag = Tag.find(params[:tag_id])
     #検索されたタグに紐づく投稿を表示
-    @post = @tag.posts
-    @posts = @post.order("created_at DESC").page(params[:page]).per(6)
+    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all.order("created_at DESC").page(params[:page]).per(6)
+    @post = @posts.order("created_at DESC").page(params[:page]).per(6)
   end
 
   def self.ransackable_attributes(auth_object = nil)

@@ -1,13 +1,18 @@
 <%= link_to transition_path(notification) do %>
   <div class="text-center m-3">
-    <% if notification.subject.customer = current_customer %>
+    <% if notification.subject.customer == current_customer %>
       <%= link_to notification.subject.customer.name, mypage_path, class: "text-success" %>
     <% else %>
       <%= link_to notification.subject.customer.name, customer_path(notification.subject.customer), class: "text-success" %>
     <% end %>
     があなたの
-    <%= link_to '投稿', post_path(notification.subject.post), class: "text-success" %>
-    にコメントしました
-    <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
+    <!--もし投稿のコメントの場合は「投稿にコメントしました」と表示され、コメントの返信の場合は「コメントに返信しました」と表示-->
+    <% if notification.subject.is_a?(PostComment) && notification.subject.comment_reply? %>
+      <%= link_to "コメント", post_path(notification.subject.post), class: "text-success" %>
+      に返信しました
+    <% else %>
+      <%= link_to "投稿", post_path(notification.subject.post), class: "text-success" %>
+      にコメントしました
+    <% end %>
   </div>
 <% end %>

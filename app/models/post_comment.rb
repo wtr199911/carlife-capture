@@ -12,6 +12,10 @@ class PostComment < ApplicationRecord
 
   after_create_commit :create_notifications
 
+  def comment_reply?
+    parent_id.present?
+  end
+
   private
 
   def create_notifications

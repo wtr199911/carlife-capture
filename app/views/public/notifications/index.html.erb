@@ -1,18 +1,23 @@
 
 <div class="container mt-5 mx-auto">
-  <h2 class="text-center text-white"><strong>通知一覧</strong></h2>
-  <% if @notifications.present? %>
-    <div class="text-center">
-      <%= link_to "全削除",notification_path(@notifications), method: :delete, class: "btn btn-secondary mt-5" %>
-    </div>
-    <div class="comment-index m-5">
-      <div class="<%= "scroll-contents" if @customer.notifications.count > 5 %>">
-      <% @notifications.each do |notification| %>
-        <%= render "#{notification.action_type}", notification: notification %>
-      <% end %>
-      </div>
-    </div>
+  <h2 class="m-3 text-center mt-5 text-white"><strong>通知一覧</strong></h2>
+  <% if admin_signed_in? %>
+  <% elsif current_customer.guest_customer? %>
+    <h5 class="m-3 text-center mt-4 text-white"><strong>利用するには新規登録・ログインをして下さい</strong></h5>
   <% else %>
-    <p class="text-center text-white">通知はありません</p>
+      <% if @notifications.present? %>
+        <div class="text-center">
+          <%= link_to "全削除",notification_path(@notifications), method: :delete, class: "btn btn-secondary mt-5" %>
+        </div>
+        <div class="comment-index m-5">
+          <div class="<%= "scroll-contents" if @customer.notifications.count > 5 %>">
+          <% @notifications.each do |notification| %>
+            <%= render "#{notification.action_type}", notification: notification %>
+          <% end %>
+          </div>
+        </div>
+      <% else %>
+        <h5 class="m-3 text-center mt-4 text-white"><strong>通知はありません</strong></h5>
+      <% end %>
   <% end %>
 </div>

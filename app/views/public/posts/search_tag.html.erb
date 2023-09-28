@@ -1,16 +1,21 @@
 <div class="container">
   <div class="back-list mx-auto mt-5" style="width: 60%;">
-  <h2 class="m-3 text-center">タグが "<%=@tag.name%>" の投稿一覧</h2>
+  <h2 class="m-3 text-center">タグが "<%= @tag.name %>" の投稿一覧</h2>
 
     <!--タグリスト-->
-    <div class="my-4 px-2" style="line-height: 36px;">
-    <% @tag_list.each do |list|%>
-      <i class="fa-sharp fa-solid fa-tag"></i>
-      <%=link_to list.name,search_tag_path(tag_id: list.id) %>
-      <%="(#{list.posts.count})" %>
-    <% end %>
-    </div>
+<div class="d-flex justify-content-center my-2">
+  <%= form_with url: search_tag_path, method: :get, local: true, class: 'boards__searchForm' do |f|%>
+      <%= select_tag :tag_id,
+        options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+          {
+            onchange: "submit(this.form);"
+          }
+      %>
+    <% tag_id = params[:tag_id] || Tag.first.id %>
+    <%= "(#{PostTagRelation.where(tag_id: tag_id).count})" %>
+  <% end %>
+</div>
   </div>
 
-  <div><%= render "public/posts/index", posts: @posts, post_page: @posts %></div>
+  <div><%= render "public/posts/index", posts: @posts, post_page: @post %></div>
 </div>
