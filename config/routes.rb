@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'groups/index'
+    get 'groups/new'
+    get 'groups/show'
+    get 'groups/edit'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -58,6 +64,7 @@ Rails.application.routes.draw do
     end
 
     resources :notifications, only: [:index, :destroy]
+    resources :groups
 
   end
 

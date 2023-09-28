@@ -11,6 +11,22 @@ Admin.create!(email: "admin@email.com", password: "adminpass")
 
 # テストデータ
 
+# グループ1
+
+suvlove = Group.find_or_create_by!(name: "SUV Love") do |group|
+  group.introduction = "SUV好き募集"
+  group.owner_id = 1
+end
+
+# グループ2
+drive = Group.find_or_create_by!(name: "Car Lifeを極める") do |group|
+  group.introduction = "誰でも歓迎！！"
+  group.avatar = File.open(Rails.root.join('db', 'fixtures', 'avatar2.jpg'))
+  group.owner_id = 2
+end
+
+# タグ
+
 mountain = Tag.find_or_create_by!(name: "山")
 ocean = Tag.find_or_create_by!(name: "海")
 offroad = Tag.find_or_create_by!(name: "オフロード")
@@ -33,6 +49,8 @@ koki = Customer.find_or_create_by!(email: "koki@eample.com") do |customer|
     customer.avatar = File.open("./db/fixtures/avatar1.jpg")
 end
 
+koki.groups << suvlove
+
 #ユーザー2
 
 minato = Customer.find_or_create_by!(email: "minato@exampe.com") do |customer|
@@ -42,14 +60,17 @@ minato = Customer.find_or_create_by!(email: "minato@exampe.com") do |customer|
     customer.avatar = File.open("./db/fixtures/avatar3.jpg")
 end
 
+minato.groups << suvlove
+
 #ユーザー3
 
 kazu = Customer.find_or_create_by!(email: "kazu@example.com") do |customer|
     customer.name = "Kazu"
     customer.profile_text = "車大好き人間"
     customer.password ="password"
-    customer.avatar = File.open("./db/fixtures/avatar2.jpg")
 end
+
+kazu.groups << drive
 
 #ユーザー4
 
@@ -58,6 +79,8 @@ yuika = Customer.find_or_create_by!(email: "yuika@example.com") do |customer|
     customer.profile_text = "最近ドライブにハマりました！"
     customer.password ="password"
 end
+
+yuika.groups << drive
 
 #ユーザー5
 
@@ -82,6 +105,8 @@ suzukilove = Customer.find_or_create_by!(email: "suzuki@example.com") do |custom
     customer.profile_text = "愛車Swiftと毎日を楽しんでます！"
     customer.password ="password"
 end
+
+suzukilove.groups << drive
 
 
 #投稿1

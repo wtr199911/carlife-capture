@@ -1,0 +1,21 @@
+<div class="container back-list my-5">
+  <h2 class="text-center mt-3"><strong>New Group</strong></h2>
+  <%= render "form", group: @group %>
+</div>
+
+<script>
+    function previewImage() {
+      const target = this.event.target;
+      const file = target.files[0];
+      const reader  = new FileReader();
+      reader.onloadend = function () {
+          const preview = document.querySelector("#preview")
+          if(preview) {
+              preview.src = reader.result;
+          }
+      }
+      if (file) {
+          reader.readAsDataURL(file);
+      }
+    }
+</script>

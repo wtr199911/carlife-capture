@@ -1,35 +1,35 @@
 <table class="table table-sm table-hover text-center table-borderless">
-      <thead>
-        <tr>
-          <th class="align-middle">image</th>
-          <th class="align-middle">name</th>
-          <th class="align-middle">followed</th>
-          <th class="align-middle">followers</th>
-          <th class="align-middle">favorites<br>index</th>
-        </tr>
-      </thead>
-      <tdody>
-       <% customers.each do |customer| %>
-        <tr>
-          <td class="align-middle">
-            <% if current_customer == customer %>
-              <%= link_to mypage_path do %>
-                <%= image_tag customer.avatar.url, class: 'rounded-circle mr15', width: '80', height: '80' %>
-              <% end %>
-            <% else %>
-              <%= link_to customer_path(customer.id) do %>
-                <%= image_tag customer.avatar.url, class: 'rounded-circle mr15', width: '80', height: '80' %>
-              <% end %>
-            <% end %>
-          </td>
-          <td class="align-middle"><%= link_to customer.name, customer_path(customer.id), class: "text-dark" %></td>
-          <td class="align-middle"><%= link_to customer.followings.count, customer_followings_path(customer), class: "text-dark" %></td>
-          <td class="align-middle"><%= link_to customer.followers.count, customer_followers_path(customer), class: "text-dark" %></td>
-          <td class="align-middle"><%= render "admin/favorites/counter", customer: customer %></td>
-        </tr>
-       <% end %>
-       </tdody>
-    </table>
+  <thead>
+    <tr>
+      <th class="align-middle">image</th>
+      <th class="align-middle">name</th>
+      <th class="align-middle">followed</th>
+      <th class="align-middle">followers</th>
+      <th class="align-middle">favorites<br>index</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% customers.each do |customer| %>
+    <tr>
+      <td class="align-middle">
+        <% if current_customer == customer %>
+          <%= link_to mypage_path do %>
+            <%= image_tag customer.avatar.url, class: 'rounded-circle mr15', width: '80', height: '80' %>
+          <% end %>
+        <% else %>
+          <%= link_to customer_path(customer.id) do %>
+            <%= image_tag customer.avatar.url, class: 'rounded-circle mr15', width: '80', height: '80' %>
+          <% end %>
+        <% end %>
+      </td>
+      <td class="align-middle"><%= link_to customer.name, customer_path(customer.id), class: "text-dark" %></td>
+      <td class="align-middle"><%= link_to customer.followings.count, customer_followings_path(customer), class: "text-dark" %></td>
+      <td class="align-middle"><%= link_to customer.followers.count, customer_followers_path(customer), class: "text-dark" %></td>
+      <td class="align-middle"><%= render "admin/favorites/counter", customer: customer %></td>
+    </tr>
+   <% end %>
+  </tbody>
+</table>
 <div class="pagination mt-3 d-flex justify-content-center">
   <%= paginate customer_page, theme: 'bootstrap-5' %>
 </div>

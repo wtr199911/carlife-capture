@@ -1,0 +1,31 @@
+<%= form_with model: group, local: true do |f| %>
+<div style="height: 20%;"><%= render "layouts/errors", obj: group %></div>
+<div class="row">
+  <div class="m-5 col-md-5 text-center">
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar, onchange: 'previewImage()', class: 'form-control' %>
+  <%= f.hidden_field :avatar_cache %>
+  <% if group.avatar.present? %>
+    <%= image_tag group.avatar.url, class: 'rounded-circle mt-3', id: 'preview', size: '100x100' %>
+  <% else %>
+    <%= image_tag "group-icon.png", class: 'rounded-circle mt-3', id: 'preview', size: '100x100' %>
+  <% end %>
+  </div>
+
+  <div class="col-md-5 pt-5">
+    <table class="table table-borderless">
+      <tr>
+        <th>group name</th>
+        <td class="text-center"><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th>information</th>
+        <td><%= f.text_area :profile_text, rows:'5', class: "w-100" %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-md-2 m-5"><%= f.submit "変更を保存", class: "btn btn-outline-success" %></div>
+</div>
+<% end %>

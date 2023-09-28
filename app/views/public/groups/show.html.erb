@@ -1,0 +1,33 @@
+<div class="container my-5">
+  <h1 class="m-3 text-center mt-5 text-white" style="font-family: 'Georgia' ">Group</h1>
+  <h2 class="m-3 text-center text-white"><strong><%= @group.name %></strong></h2>
+
+    <div class="back-list m-3 text-center">
+      <h2 class="m-3 text-center">Group Detail</h2>
+      <table class="table table-sm table-hover text-center table-borderless">
+        <tr>
+          <td><%= image_tag @group.avatar.url, class: 'rounded-circle mr15', width: '80', height: '80' %></td>
+          <td class="align-middle text-dark"><%= @group.introduction %></td>
+          <td class="align-middle text-dark"><%= @group.introduction %></td>
+          <td class="align-middle">
+            <%= link_to group_path(@group.id), class: "text-dark" do %>
+            <%= @group.group_users.count %>
+            <% end %>
+          </td>
+          <td>
+            <% if @group.owner_id == current_customer.id %>
+              <%= link_to edit_group_path(@group.id), class: "link-success" do %>
+              <i class="fa-solid fa-users-gear"></i>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="back-list my-4">
+      <h2 class="m-3 text-center">Group Users</h2>
+      <%= render "public/customers/list", customers: @group_users, customer_page: @group_page %>
+    </div>
+
+</div>
