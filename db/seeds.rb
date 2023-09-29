@@ -19,7 +19,7 @@ suvlove = Group.find_or_create_by!(name: "SUV Love") do |group|
 end
 
 # グループ2
-drive = Group.find_or_create_by!(name: "Car Lifeを極める") do |group|
+drive = Group.find_or_create_by!(name: "CarLife") do |group|
   group.introduction = "誰でも歓迎！！"
   group.avatar = File.open(Rails.root.join('db', 'fixtures', 'avatar2.jpg'))
   group.owner_id = 2
