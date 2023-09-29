@@ -70,6 +70,11 @@
         </div>
 
         <% if admin_signed_in? %>
+            <div class="group-icon">
+            <%=link_to groups_path do %>
+            <i class="fa-solid fa-people-group" style="color: #3399CC;"></i>
+            <% end %>
+            </div>
         <% elsif customer_signed_in? %>
             <div class="timeline-icon">
             <%= link_to timeline_path, class: "nav-link" do %>

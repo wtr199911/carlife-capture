@@ -38,6 +38,10 @@
           <th>favorites index</th>
           <td><%= render "admin/favorites/counter", customer: @customer %></td>
         </tr>
+        <tr>
+          <th>user groups</th>
+          <td><%= render "public/groups/counter", customer: @customer %></td>
+        </tr>
         <% end %>
       </table>
     </div>

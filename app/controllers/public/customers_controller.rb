@@ -62,6 +62,11 @@ class Public::CustomersController < ApplicationController
     end
   end
 
+  def user_groups
+    @customer = Customer.find(params[:id])
+    @groups = @customer.groups
+    @group_page = Group.all.page(params[:page]).per(10)
+  end
 
 
   private

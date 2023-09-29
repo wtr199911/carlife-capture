@@ -1,0 +1,43 @@
+<table class="table table-sm table-hover text-center table-borderless">
+  <thead>
+    <tr>
+      <th class="align-middle">image</th>
+      <th class="align-middle">group name</th>
+      <th class="align-middle">introduction</th>
+      <th class="align-middle">group users</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+   <% groups.each do |group| %>
+    <tr>
+      <td class="align-middle">
+          <%= link_to group_path(group.id) do %>
+            <%= image_tag group.avatar.url, class: 'rounded-circle mr15', width: '80', height: '80' %>
+          <% end %>
+      </td>
+      <td class="align-middle"><%= link_to group.name, group_path(group.id), class: "text-dark" %></td>
+      <td class="align-middle text-dark"><%= group.introduction %></td>
+      <td class="align-middle">
+        <%= link_to group_path(group.id), class: "text-dark" do %>
+          <i class="fa-solid fa-user-group"></i> <%= group.group_users.count %>
+        <% end %>
+      </td>
+      <td class="align-middle">
+        <% if admin_signed_in? %>
+          <%= link_to edit_group_path(group.id), class: "group-edit" do %>
+          <i class="fa-solid fa-users-gear"></i>
+          <% end %>
+        <% elsif group.owner_id == current_customer.id %>
+          <%= link_to edit_group_path(group.id), class: "group-edit" do %>
+          <i class="fa-solid fa-users-gear"></i>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+   <% end %>
+  </tbody>
+</table>
+<div class="pagination mt-3 d-flex justify-content-center">
+  <%= paginate group_page, theme: 'bootstrap-5' %>
+</div>

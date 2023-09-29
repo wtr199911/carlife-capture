@@ -7,6 +7,7 @@ class Public::SearchesController < ApplicationController
     @method = ""
     @post_page = Post.order("created_at DESC").page(params[:page]).per(6)
     @customer_page = Customer.page(params[:page])
+    @group_page = Group.page(params[:page])
 
    # 選択したモデルに応じて検索を実行
     if @model == "customer"
@@ -15,6 +16,8 @@ class Public::SearchesController < ApplicationController
       @records = Post.search_for(@content, @method)
     elsif @model == "prefecture"
       @records = Prefecture.search_for(@content, @method)
+    elsif @model == "group"
+      @records = Group.search_for(@content, @method)
     end
   end
 

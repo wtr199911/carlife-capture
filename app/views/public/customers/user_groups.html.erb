@@ -1,0 +1,10 @@
+<div class="container">
+  <% if @groups.exists? %>
+    <div class="container">
+      <h2 class="m-5 text-center text-white"><strong><%= @customer.name %>さんの加入したグループ一覧</strong></h2>
+      <div class="my-5 back-list"><%= render "public/groups/index", groups: @groups, group_page: @group_page %></div>
+    </div>
+  <% else %>
+    <h2 class="text-center mt-5 text-white"><strong>加入したグループはありません</strong></h2>
+  <% end %>
+</div>

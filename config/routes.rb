@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :public do
+    get 'group_users/create'
+    get 'group_users/destroy'
+  end
+  namespace :public do
     get 'groups/index'
     get 'groups/new'
     get 'groups/show'
@@ -50,7 +54,7 @@ Rails.application.routes.draw do
     resources :customers, only: [ :show, :edit] do
       member do
         get :favorites
-        get :favorite_users
+        get :user_groups
       end
       resource :relationships, only: [:create, :destroy]
       	get "followings" => "relationships#followings", as: "followings"
@@ -64,7 +68,10 @@ Rails.application.routes.draw do
     end
 
     resources :notifications, only: [:index, :destroy]
-    resources :groups
+
+    resources :groups do
+      resource :group_users, only: [:create, :destroy]
+    end
 
   end
 

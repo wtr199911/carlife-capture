@@ -1,32 +1,64 @@
 <div class="container my-5">
   <h1 class="m-3 text-center mt-5 text-white" style="font-family: 'Georgia' ">Group</h1>
-  <h2 class="m-3 text-center text-white"><strong><%= @group.name %></strong></h2>
 
     <div class="back-list m-3 text-center">
       <h2 class="m-3 text-center">Group Detail</h2>
       <table class="table table-sm table-hover text-center table-borderless">
-        <tr>
-          <td><%= image_tag @group.avatar.url, class: 'rounded-circle mr15', width: '80', height: '80' %></td>
-          <td class="align-middle text-dark"><%= @group.introduction %></td>
-          <td class="align-middle text-dark"><%= @group.introduction %></td>
-          <td class="align-middle">
-            <%= link_to group_path(@group.id), class: "text-dark" do %>
-            <%= @group.group_users.count %>
-            <% end %>
-          </td>
-          <td>
-            <% if @group.owner_id == current_customer.id %>
-              <%= link_to edit_group_path(@group.id), class: "link-success" do %>
-              <i class="fa-solid fa-users-gear"></i>
-              <% end %>
-            <% end %>
-          </td>
-        </tr>
+        <thead>
+          <tr>
+            <th class="align-middle">image</th>
+            <th class="align-middle">group name</th>
+            <th class="align-middle">introduction</th>
+            <th class="align-middle">group users</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= image_tag @group.avatar.url, class: 'rounded-circle mr15', width: '80', height: '80' %></td>
+            <td class="align-middle text-dark"><%= @group.name %></td>
+            <td class="align-middle text-dark"><%= @group.introduction %></td>
+            <td class="align-middle text-dark"><i class="fa-solid fa-user-group"></i> <%= @group.group_users.count %></td>
+          </tr>
+        </tbody>
       </table>
     </div>
 
     <div class="back-list my-4">
-      <h2 class="m-3 text-center">Group Users</h2>
+      <div class="m-3 text-center">
+        <% if admin_signed_in? %>
+          <%= link_to edit_group_path(@group.id), class: "group-edit mr-5" do %>
+          <i class="fa-solid fa-users-gear"></i>
+          <% end %>
+          <% if current_customer && @group.owner_id == current_customer.id && @group.customers.empty? %>
+            <%= link_to 'グループを削除', group_path(@group), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-outline-danger' %>
+          <% end %>
+        <% elsif @group.owner_id == current_customer.id %>
+            <% if @group.includesUser?(current_customer)%>
+              <%= link_to group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-outline-danger mr-5" do %>
+              <i class="fa-solid fa-user-minus"></i> グループから抜ける
+              <% end %>
+            <% else %>
+              <%= link_to group_group_users_path(@group), method: :post, class: "btn btn-sm btn-outline-success mr-5" do %>
+              <i class="fa-solid fa-user-plus"></i> グループに加入する
+              <% end %>
+              <% if current_customer && @group.owner_id == current_customer.id && @group.customers.empty? %>
+                <%= link_to 'グループを削除', group_path(@group), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-outline-danger mr-5' %>
+              <% end %>
+            <% end %>
+          <%= link_to edit_group_path(@group.id), class: "group-edit" do %>
+          <i class="fa-solid fa-users-gear"></i>
+          <% end %>
+        <% elsif @group.includesUser?(current_customer)%>
+          <%= link_to group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-outline-danger" do %>
+          <i class="fa-solid fa-user-minus"></i> グループから抜ける
+          <% end %>
+        <% else %>
+          <%= link_to group_group_users_path(@group), method: :post, class: "btn btn-sm btn-outline-success" do %>
+          <i class="fa-solid fa-user-plus"></i> グループに加入する
+          <% end %>
+        <% end %>
+      </div>
+      <h2 class="m-3 text-center"><%= @group.name %> Group Users</h2>
       <%= render "public/customers/list", customers: @group_users, customer_page: @group_page %>
     </div>
 

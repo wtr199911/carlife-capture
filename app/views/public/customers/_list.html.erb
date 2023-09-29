@@ -6,6 +6,7 @@
       <th class="align-middle">followed</th>
       <th class="align-middle">followers</th>
       <th class="align-middle">favorites<br>index</th>
+      <th class="align-middle">user<br>posts</th>
     </tr>
   </thead>
   <tbody>
@@ -26,6 +27,7 @@
       <td class="align-middle"><%= link_to customer.followings.count, customer_followings_path(customer), class: "text-dark" %></td>
       <td class="align-middle"><%= link_to customer.followers.count, customer_followers_path(customer), class: "text-dark" %></td>
       <td class="align-middle"><%= render "admin/favorites/counter", customer: customer %></td>
+      <td class="align-middle"><%= customer.posts.count %></td>
     </tr>
    <% end %>
   </tbody>
