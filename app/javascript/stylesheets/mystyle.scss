@@ -226,7 +226,7 @@ footer{
 
 input[type="text"],
 input[type="email"] {
-  margin-bottom: 10px;
+  margin-bottom: 3px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -564,6 +564,12 @@ a.reply-comment-delete:hover {
 	line-height: 1.0;
 	white-space: nowrap;
 
+.text-form {
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+}
+
   /* 幅を指定しないとテキストの長さによって要素の幅が変わるため指定 */
   width: 120px;
 
@@ -586,6 +592,101 @@ a.reply-comment-delete:hover {
   font-size: 25px;
   color: #339933;
 }
+
+// セレクトボックス
+
+.cp_ipselect {
+	overflow: hidden;
+	width: 100%;
+	margin: 1em auto;
+	text-align: center;
+}
+.cp_ipselect select {
+	width: 100%;
+	padding-right: 1em;
+	cursor: pointer;
+	text-indent: 0.01px;
+	text-overflow: ellipsis;
+	border: none;
+	outline: none;
+	background: transparent;
+	background-image: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+.cp_ipselect select::-ms-expand {
+    display: none;
+}
+.cp_ipselect.cp_sl04 {
+	position: relative;
+	border: 2px solid darkred;
+  border-radius: 50px;
+	background: #ffffff;
+}
+.cp_ipselect.cp_sl04::before {
+	position: absolute;
+	top: 38%;
+	right: 0.8em;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #da3c41;
+	pointer-events: none;
+}
+.cp_ipselect.cp_sl04 select {
+	padding: 8px 38px 8px 30px;
+	color: #666600;
+	width: 260px;
+}
+
+.search_option {
+	overflow: hidden;
+}
+
+.search_option select {
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background: transparent;
+	background-image: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.search_option select::-ms-expand {
+  display: none;
+}
+.search_option.sch-op::before {
+	position: absolute;
+	top: 35%;
+	right: 0.8em;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #da3c41;
+	pointer-events: none;
+}
+
+.search_option.sch-op {
+	position: relative;
+	border: 2px solid darkred;
+  border-radius: 50px;
+	background: #ffffff;
+}
+
+.search_option.sch-op select {
+	padding-left: 25px;
+	width: 100%;
+}
+
 
 @media screen and (max-width: 425px) {
 

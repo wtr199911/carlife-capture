@@ -1,8 +1,17 @@
 <div class="container">
 
-  <div class="back-list row justify-content-ｙ mx-auto mt-5" style="width: 40%;">
-   <p class="m-auto">　タグで検索はこちら</p>
-   <div class="m-3 sel sel--black-panther">
+  <div class="text-white row justify-content-ｙ mx-auto mt-5" style="width: 40%;">
+  <!--もしタグで絞り込み検索じゃなければ以下を表示、それ以外は表示しない-->
+  <div class="mx-auto" style="font-size: 17px;">
+  <% if params[:tag_id].present? %>
+    <!-- Display this if a tag has been selected -->
+    <% tag_id = params[:tag_id] %>
+    <%= "Tag Name: （#{Tag.find(tag_id).name}）の検索結果" %>
+    <%= "全(#{PostTagRelation.where(tag_id: tag_id).count})件" %>
+  <% else %>
+  <% end %>
+  </div>
+   <div class="m-auto sel sel--black-panther">
     <%= render "layouts/tag_search", post: @posts %>
    </div>
   </div>

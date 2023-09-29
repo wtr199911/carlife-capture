@@ -3,7 +3,9 @@
   <%= form_with url: search_path, method: :get, local: true, class:"row justify-content-end" do |f| %>
   <div class="col-9 p-0 mr-2">
     <%= f.text_field :content, class:"form-control", placeholder: "Search" %>
-    <%= f.select :model, options_for_select({"User" => "customer", "投稿" => "post", "都道府県" => "prefecture", "グループ" => "group"} ), { prompt: '選択してください' } %>
+    <div class="search_option sch-op">
+      <%= f.select :model, options_for_select({"User" => "customer", "投稿" => "post", "都道府県" => "prefecture", "グループ" => "group"} ), { prompt: '選択してください' } %>
+    </div>
   </div>
   <div class="col-1 p-0">
     <button class="btn btn-outline-success" type="submit">

@@ -1,7 +1,7 @@
 <div class="container my-5">
   <div class='row'>
       <% if @model == "customer" %>
-        <div class="container back-list">
+        <div class="container back-list p-4">
           <h2 class="m-3 text-center mt-4">Userの検索結果 "<%= @content %>"</h2>
           <% if admin_signed_in? %>
             <%= render "admin/customers/index", customers: @records, customer_page: @customer_page %>
@@ -25,7 +25,7 @@
           <% if current_customer && current_customer.guest_customer? %>
             <p class="text-center text-white my-5"><strong>利用するには新規登録・ログインして下さい</strong></p>
           <% else %>
-          <div class="my-5 back-list"><%= render "public/groups/index", groups: @records, group_page: @group_page %></div>
+          <div class="my-5 p-4 back-list"><%= render "public/groups/index", groups: @records, group_page: @group_page %></div>
           <% end %>
       <% else %>
         <div class="container">

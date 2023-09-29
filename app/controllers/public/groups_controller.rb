@@ -44,7 +44,7 @@ class Public::GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
 
-    if current_customer && @group.owner_id == current_customer.id && @group.customers.empty?
+    if @group.customers.empty?
       @group.destroy
       flash[:alert] = "グループを削除しました。"
       redirect_to groups_path

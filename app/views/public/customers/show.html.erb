@@ -46,6 +46,10 @@
           <td><%= link_to @customer.followers.count, customer_followers_path(@customer), class: "text-dark" %></td>
         </tr>
         <tr>
+          <th>user groups</th>
+          <td><%= render "public/groups/counter", customer: @customer %></td>
+        </tr>
+        <tr>
           <th>user status</th>
           <td class="font-weight-bold">
             <% if @customer.is_valid %>

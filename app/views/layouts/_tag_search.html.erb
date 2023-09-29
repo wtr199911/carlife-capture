@@ -1,5 +1,6 @@
-<div class="d-flex justify-content-center">
-  <%= form_with url: posts_path, method: :get, local: true, class: 'boards__searchForm' do |f|%>
+<div class="col-md-12 text-center mt-5">
+  <h5 class="mx-auto mt-5"><strong>　タグで検索はこちら</strong></h5>
+  <%= form_with url: posts_path, method: :get, local: true, class: 'boards__searchForm cp_ipselect cp_sl04' do |f|%>
       <%= select_tag :tag_id,
         options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
           {
@@ -7,12 +8,5 @@
             onchange: "submit(this.form);"
           }
       %>
-    <!--もしタグで絞り込み検索じゃなければ以下を表示、それ以外は表示しない-->
-    <% if params[:tag_id].present? %>
-      <!-- Display this if a tag has been selected -->
-      <% tag_id = params[:tag_id] %>
-      <%= "(#{PostTagRelation.where(tag_id: tag_id).count})" %>
-    <% else %>
-    <% end %>
   <% end %>
 </div>

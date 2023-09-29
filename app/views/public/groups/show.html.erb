@@ -29,7 +29,7 @@
           <%= link_to edit_group_path(@group.id), class: "group-edit mr-5" do %>
           <i class="fa-solid fa-users-gear"></i>
           <% end %>
-          <% if current_customer && @group.owner_id == current_customer.id && @group.customers.empty? %>
+          <% if @group.customers.empty? %>
             <%= link_to 'グループを削除', group_path(@group), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-outline-danger' %>
           <% end %>
         <% elsif @group.owner_id == current_customer.id %>
