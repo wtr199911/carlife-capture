@@ -60,7 +60,7 @@ adminpass
 ## 設計書
 
 ### ER図
-<img width="1073" alt="Carlife Capture ER図" src="https://github.com/wtr199911/carlife-capture/assets/135807325/e6eeb349-d718-4c66-a008-f468d91e0160">
+<img width="836" alt="Carlife Capture ER図" src="https://github.com/wtr199911/carlife-capture/assets/135807325/1ed018c2-7578-4217-8697-37b7eecee31b">
 
 ### ワイヤーフレーム
 https://app.diagrams.net/#G1DJ9z7d5ypm_uPVFzWBAv4AUUzXf1SvfA#%7B%22pageId%22%3A%22tFomftPzgDyUvdMJbXfl%22%7D
@@ -68,17 +68,14 @@ https://app.diagrams.net/#G1DJ9z7d5ypm_uPVFzWBAv4AUUzXf1SvfA#%7B%22pageId%22%3A%
 ### 画面遷移図
 
 - 管理者側
-<img width="729" alt="Carlife-Capture　画面遷移図（管理者側）" src="https://github.com/wtr199911/carlife-capture/assets/135807325/916aaf1d-76ba-4b93-9d60-017acda444b3">
-
+<img width="984" alt="Carlife Capture 画面遷移図（管理者側）" src="https://github.com/wtr199911/carlife-capture/assets/135807325/94416298-e8fd-4100-abe9-d203c1844f90">
 - 会員側
-<img width="969" alt="Carlife Capture 画面遷移図（会員側）" src="https://github.com/wtr199911/carlife-capture/assets/135807325/552fa1fe-9acc-4392-bd6a-af3feaf5661b">
-
+<img width="652" alt="Carlife Capture 画面遷移図（会員側）" src="https://github.com/wtr199911/carlife-capture/assets/135807325/c1667cff-ee5c-46af-9c26-e766a144b123">
 ### テーブル定義書
 https://docs.google.com/spreadsheets/d/18_-kBj2UU4riZohXxwQG5YgbN1PUKjnKqeBxAAv-2NU/edit#gid=1285004865
 
 ### アプリケーション詳細設計書
-<img width="570" alt="carlife-capture アプリケーション詳細設計書" src="https://github.com/wtr199911/carlife-capture/assets/135807325/840966dd-0786-4288-a956-88fb50ed3e26">
-
+<img width="568" alt="Carlife Capture アプリケーション詳細設計書" src="https://github.com/wtr199911/carlife-capture/assets/135807325/434c57a2-a24f-4e74-9b64-7721389ae407">
 ## Gem一覧
 <img width="318" alt="carlife-capture-gem" src="https://github.com/wtr199911/carlife-capture/assets/135807325/73a5de05-a547-4ad2-b127-9175398ae781">
 
