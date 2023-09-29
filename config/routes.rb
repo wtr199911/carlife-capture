@@ -51,6 +51,10 @@ Rails.application.routes.draw do
     get "search_tag" => "posts#search_tag"
     get "search" => "searches#search"
 
+    resources :groups do
+      resource :group_users, only: [:create, :destroy]
+    end
+
     resources :customers, only: [ :show, :edit] do
       member do
         get :favorites
@@ -69,9 +73,6 @@ Rails.application.routes.draw do
 
     resources :notifications, only: [:index, :destroy]
 
-    resources :groups do
-      resource :group_users, only: [:create, :destroy]
-    end
 
   end
 
