@@ -687,6 +687,55 @@ a.reply-comment-delete:hover {
 	width: 100%;
 }
 
+.tp_ipselect {
+	overflow: hidden;
+	width: 40%;
+	margin: 1em auto;
+	text-align: center;
+}
+.tp_ipselect select {
+	width: 100%;
+	padding-right: 1em;
+	cursor: pointer;
+	text-indent: 0.01px;
+	text-overflow: ellipsis;
+	border: none;
+	outline: none;
+	background: transparent;
+	background-image: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+.tp_ipselect select::-ms-expand {
+    display: none;
+}
+.tp_ipselect.tp_sl04 {
+	position: relative;
+	border: 2px solid darkred;
+  border-radius: 50px;
+	background: #ffffff;
+}
+.tp_ipselect.tp_sl04::before {
+	position: absolute;
+	top: 38%;
+	right: 0.8em;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #da3c41;
+	pointer-events: none;
+}
+.tp_ipselect.tp_sl04 select {
+	padding: 8px 38px 8px 30px;
+	color: #666600;
+	width: 260px;
+}
+
+
 
 @media screen and (max-width: 425px) {
 
