@@ -1,6 +1,6 @@
 # Carlife Capture
 
-<img width="1680" alt="Carlife Capture top" src="https://github.com/wtr199911/carlife-capture/assets/135807325/c9f74398-932f-4d9d-9ac1-1c787b82c2a4">
+<img width="1680" alt="Carlife Capture top" src="https://github.com/wtr199911/carlife-capture/assets/135807325/01667445-e3d4-4fd4-a9e4-a1f2a4452676">
 
 ## サイト概要
 ### サイトテーマ
