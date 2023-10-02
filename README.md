@@ -77,6 +77,7 @@ https://docs.google.com/spreadsheets/d/18_-kBj2UU4riZohXxwQG5YgbN1PUKjnKqeBxAAv-
 
 ### アプリケーション詳細設計書
 <img width="568" alt="Carlife Capture アプリケーション詳細設計書" src="https://github.com/wtr199911/carlife-capture/assets/135807325/434c57a2-a24f-4e74-9b64-7721389ae407">
+
 ## Gem一覧
 <img width="318" alt="carlife-capture-gem" src="https://github.com/wtr199911/carlife-capture/assets/135807325/73a5de05-a547-4ad2-b127-9175398ae781">
 
@@ -93,11 +94,11 @@ https://docs.google.com/spreadsheets/d/18_-kBj2UU4riZohXxwQG5YgbN1PUKjnKqeBxAAv-
 
 ## 使用素材
 
-- ロゴ作成
+- ロゴ作成<br>
   flaticon  https://www.flaticon.com/free-icons/gps
 
-- その他画像
+- その他画像<br>
   unsplash  https://unsplash.com/ja
 
-- アイコン
+- アイコン<br>
   fontawesome  https://fontawesome.com
