@@ -66,9 +66,9 @@ https://app.diagrams.net/#G1DJ9z7d5ypm_uPVFzWBAv4AUUzXf1SvfA#%7B%22pageId%22%3A%
 
 ### 画面遷移図
 
-- 管理者側
+- 管理者側<br>
 <img width="984" alt="Carlife Capture 画面遷移図（管理者側）" src="https://github.com/wtr199911/carlife-capture/assets/135807325/94416298-e8fd-4100-abe9-d203c1844f90">
-- 会員側
+- 会員側<br>
 <img width="652" alt="Carlife Capture 画面遷移図（会員側）" src="https://github.com/wtr199911/carlife-capture/assets/135807325/c1667cff-ee5c-46af-9c26-e766a144b123">
 
 ### テーブル定義書
