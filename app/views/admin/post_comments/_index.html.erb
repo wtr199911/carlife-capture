@@ -2,6 +2,7 @@
    <h4 class="text-center my-3">コメント一覧　<%= post.post_comments.where(parent_id: nil).count %> 件</h4>
    <hr style="border-top: 1px solid #C0C0C0;">
   <div class="<%= "scroll-contents" if post.post_comments.where(parent_id: nil).count > 5 %>">
+    
     <% post.post_comments.where(parent_id: nil).each do |post_comment| %>
       <div class="balloon5">
         <div class="faceicon text-center">
